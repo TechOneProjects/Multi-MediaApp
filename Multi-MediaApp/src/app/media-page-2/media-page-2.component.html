@@ -1,0 +1,14 @@
+<h2 class="title__top3">Top 3 Trending today!</h2>
+
+<div class="card__wrapper">
+  @for (movie of trendingTop3; track $index) {
+  <mat-card class="movie-card">
+    <mat-card-header>
+      <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>{{ movie.original_title }}</mat-card-title>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>
