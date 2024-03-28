@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,11 +10,12 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
   styleUrl: './login-page.component.sass'
 })
 export class LoginPageComponent {
-  serverAddress:string = "http://localhost:3000"
+  http = inject(HttpClient);
+  serverAddress:string = "http://localhost:3000/users";
   userInfo:FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
-  })
+  });
 
   onSubmitForm():void{
     console.log(this.userInfo);
