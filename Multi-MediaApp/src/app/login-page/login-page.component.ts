@@ -9,12 +9,18 @@ import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
   styleUrl: './login-page.component.sass'
 })
 export class LoginPageComponent {
+  serverAddress:string = "http://localhost:3000"
   userInfo:FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   })
 
-  onSubmitForm(){
+  onSubmitForm():void{
     console.log(this.userInfo);
+
+    const userLoginObj:Object = {
+      "email": this.userInfo.value.email,
+      "password": this.userInfo.value.password
+    }
   }
 }
