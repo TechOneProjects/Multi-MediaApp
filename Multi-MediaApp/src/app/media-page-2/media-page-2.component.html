@@ -1,7 +1,8 @@
-<h2 class="title__top3">Top 3 Trending today!</h2>
+<h2 class="title__top3">Top Trending Movies Today!</h2>
 
 <div class="card__wrapper">
   @for (movie of trendingTop3; track $index) {
+
   <mat-card class="movie-card">
     <mat-card-header>
       <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
@@ -11,4 +12,11 @@
     </mat-card-content>
   </mat-card>
   }
+  
 </div>
+<div class="button__wrapper">
+  <button mat-flat-button type="button">Add Movie</button>
+</div>
+
+<img class="database-logo" src="../../assets/movie-page/logo/the-movie-database-logo.svg" />
+

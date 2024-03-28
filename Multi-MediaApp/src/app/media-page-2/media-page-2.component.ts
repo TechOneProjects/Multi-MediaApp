@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import axios from 'axios';
 import {MatCardModule} from "@angular/material/card"
+import {MatButtonModule} from "@angular/material/button"
 
 @Component({
   selector: 'app-media-page-2',
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MatCardModule, MatButtonModule],
   templateUrl: './media-page-2.component.html',
   styleUrl: './media-page-2.component.sass',
 })
@@ -45,11 +46,8 @@ export class MediaPage2Component {
       .catch((err) => console.error('error:' + err));
   }
 
-  getImages(image: {poster_path:string}) {
-    const baseImageUrl = "https://image.tmdb.org/t/p/original"
-    const imageUrl = `${baseImageUrl}${image.poster_path}`
-
-    return imageUrl
+  getData(array: any[]) {
+    return JSON.stringify(array)
   }
 
   ngOnInit(): void {
