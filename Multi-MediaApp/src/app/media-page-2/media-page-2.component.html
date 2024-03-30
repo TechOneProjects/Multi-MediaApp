@@ -2,21 +2,24 @@
 
 <div class="card__wrapper">
   @for (movie of trendingTop3; track $index) {
-
-  <mat-card class="movie-card">
-    <mat-card-header>
-      <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
-    </mat-card-header>
-    <mat-card-content>
-      <mat-card-title>{{ movie.original_title }}</mat-card-title>
-    </mat-card-content>
-  </mat-card>
-  }
+    <mat-card class="movie-card">
+      <mat-card-header>
+        <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
+      </mat-card-header>
+      <mat-card-content>
+        <mat-card-title>{{ movie.title }}</mat-card-title>
+      </mat-card-content>
+    </mat-card>
   
+  }
 </div>
 <div class="button__wrapper">
-  <button mat-flat-button type="button">Add Movie</button>
+  <button mat-flat-button color="primary" type="button" aria-label="add movie button" (click)="openDialog()">Add Movie</button>
 </div>
 
-<img class="database-logo" src="../../assets/movie-page/logo/the-movie-database-logo.svg" />
-
+<a href="https://developer.themoviedb.org/">
+  <img
+    class="database-logo"
+    src="../../assets/movie-page/logo/the-movie-database-logo.svg"
+  />
+</a>
