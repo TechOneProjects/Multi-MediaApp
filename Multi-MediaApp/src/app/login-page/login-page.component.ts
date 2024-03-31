@@ -13,6 +13,7 @@ export class LoginPageComponent implements OnInit {
   http = inject(HttpClient);
   serverAddress:string = "http://localhost:3000/users";
   allUserData:{email:String, password:String}[] = [];
+  loginMessage:String = "";
 
   ngOnInit(): void {
     this.http.get(this.serverAddress).subscribe(response => {
@@ -30,25 +31,29 @@ export class LoginPageComponent implements OnInit {
     ])
   });
 
+  changeLoginMessage(message:String){
+    this.loginMessage = message;
+    setTimeout(() => {
+      this.loginMessage = "";
+    }, 10000);
+  }
 
   async onSubmitForm(){
-    console.log(this.userInfo);
-
     const userLoginObj:{email:String, password:String} = {
       'email': this.userInfo.value.email,
       'password': this.userInfo.value.password
     }
 
     const getUser:{email:String, password:String} | undefined = this.allUserData.find( ( user:{ email:String, password:String } ) => {
-      // if(userLoginObj.email === user.email && userLoginObj.password === user.password)
-      // {
-      //   return user;
-      // }
       return userLoginObj.email === user.email && userLoginObj.password === user.password;
-    })
+    }) // get user should be sending a full http request to the server
 
     if (getUser) {
       console.log('found user : ', getUser);
+      this.changeLoginMessage("User found!!");
+    }
+    else {
+      this.changeLoginMessage("ERROR: User not found!!");
     }
 
   }
