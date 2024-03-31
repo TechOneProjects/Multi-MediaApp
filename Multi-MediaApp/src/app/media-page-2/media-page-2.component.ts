@@ -1,23 +1,34 @@
-import { Component, inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { Component, inject} from '@angular/core';
 import axios from 'axios';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { AddMovieComponent } from '../add-movie/add-movie.component';
+import { UpdateMovieComponent } from '../update-movie/update-movie.component';
+import { MovieResolveService } from '../movie-resolve.service';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 
 @Component({
   selector: 'app-media-page-2',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, AddMovieComponent],
+  imports: [MatCardModule, MatButtonModule, AddMovieComponent, InfiniteScrollModule],
   templateUrl: './media-page-2.component.html',
   styleUrl: './media-page-2.component.sass',
 })
 export class MediaPage2Component {
   constructor(public dialog: MatDialog) {}
-  openDialog() {
+  movieResolveService = inject(MovieResolveService)
+  openDialog(): void {
     this.dialog.open(AddMovieComponent);
   }
+
+  openUpdateDialog(movieId: string, title: string, complete_poster_path: string): void {
+    console.log(movieId, title, complete_poster_path);
+    this.dialog.open(UpdateMovieComponent);
+    this.movieResolveService.sendData(movieId, title, complete_poster_path)
+  }
+
   baseUrl: string = 'https://api.themoviedb.org/3';
   trendingUrl: string = `${this.baseUrl}/trending/movie/day?language=en-US`;
 
@@ -38,8 +49,8 @@ export class MediaPage2Component {
 
   loadMovies() {
     const databaseUrl = 'http://localhost:3000/data';
-    axios.get(databaseUrl).then((data) => {
-      this.databaseMovies = data
+    axios.get(databaseUrl).then((data: any) => {
+      this.databaseMovies = data.data;
     });
   }
 
@@ -57,11 +68,17 @@ export class MediaPage2Component {
       .catch((err) => console.error('error:' + err));
   }
 
-  getData(array: any[]) {
-    return JSON.stringify(array);
-  }
+  
+
+  
+  // getData(array: any[]) {
+  //   return JSON.stringify(array);
+  // }
+
+  
 
   ngOnInit(): void {
     this.fetchData();
+    this.loadMovies();    
   }
 }

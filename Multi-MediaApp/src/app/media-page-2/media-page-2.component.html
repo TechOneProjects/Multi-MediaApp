@@ -2,19 +2,42 @@
 
 <div class="card__wrapper">
   @for (movie of trendingTop3; track $index) {
-    <mat-card class="movie-card">
-      <mat-card-header>
-        <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
-      </mat-card-header>
-      <mat-card-content>
-        <mat-card-title>{{ movie.title }}</mat-card-title>
-      </mat-card-content>
-    </mat-card>
-  
+  <mat-card class="movie-card">
+    <mat-card-header>
+      <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+    </mat-card-content>
+  </mat-card>
+
   }
 </div>
+<h2 class="database-title text-center">Movies from the Database</h2>
 <div class="button__wrapper">
-  <button mat-flat-button color="primary" type="button" aria-label="add movie button" (click)="openDialog()">Add Movie</button>
+  <button
+    mat-flat-button
+    color="primary"
+    type="button"
+    aria-label="add movie button"
+    (click)="openDialog()"
+  >
+    Add Movie
+  </button>
+</div>
+
+<div class="database-card__wrapper" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="4000" [scrollWindow]="false">
+  @for (movie of databaseMovies; track $index) {
+
+  <mat-card class="movie-card" (click)="openUpdateDialog(movie.id, movie.title, movie.poster_path)">
+    <mat-card-header>
+      <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" />
+    </mat-card-header>
+    <mat-card-content>
+      <mat-card-title>{{ movie.title }}</mat-card-title>
+    </mat-card-content>
+  </mat-card>
+  }
 </div>
 
 <a href="https://developer.themoviedb.org/">
