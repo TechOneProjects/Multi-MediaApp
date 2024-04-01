@@ -1,0 +1,7 @@
+<form [formGroup]="trackListForm">
+    @for(e of elemetnsArr; track e) {
+        <input type="text" formControlName="{{e}}">
+    }
+</form>
+
+<button (click)="addElement()">Add element</button>
