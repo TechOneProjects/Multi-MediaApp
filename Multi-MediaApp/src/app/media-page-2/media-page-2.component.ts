@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import axios from 'axios';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,25 +8,34 @@ import { UpdateMovieComponent } from '../update-movie/update-movie.component';
 import { MovieResolveService } from '../movie-resolve.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-
 @Component({
   selector: 'app-media-page-2',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, AddMovieComponent, InfiniteScrollModule],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    AddMovieComponent,
+    InfiniteScrollModule,
+  ],
   templateUrl: './media-page-2.component.html',
   styleUrl: './media-page-2.component.sass',
 })
 export class MediaPage2Component {
   constructor(public dialog: MatDialog) {}
-  movieResolveService = inject(MovieResolveService)
+
+  movieResolveService = inject(MovieResolveService);
   openDialog(): void {
     this.dialog.open(AddMovieComponent);
   }
 
-  openUpdateDialog(movieId: string, title: string, complete_poster_path: string): void {
+  openUpdateDialog(
+    movieId: string,
+    title: string,
+    complete_poster_path: string
+  ): void {
     console.log(movieId, title, complete_poster_path);
     this.dialog.open(UpdateMovieComponent);
-    this.movieResolveService.sendData(movieId, title, complete_poster_path)
+    this.movieResolveService.sendData(movieId, title, complete_poster_path);
   }
 
   baseUrl: string = 'https://api.themoviedb.org/3';
@@ -68,17 +77,12 @@ export class MediaPage2Component {
       .catch((err) => console.error('error:' + err));
   }
 
-  
-
-  
-  // getData(array: any[]) {
-  //   return JSON.stringify(array);
-  // }
-
-  
+  onScroll() {
+    console.log("scrolled")
+  }
 
   ngOnInit(): void {
     this.fetchData();
-    this.loadMovies();    
+    this.loadMovies();
   }
 }

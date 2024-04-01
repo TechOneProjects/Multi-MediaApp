@@ -39,7 +39,8 @@
       "release_date": "2024-03-08",
       "video": false,
       "vote_average": 7.263,
-      "vote_count": 718
+      "vote_count": 718,
+      "complete_poster_path": "/bXi6IQiQDHD00JFio5ZSZOeRSBh.jpg"
     },
     {
       "adult": false,
@@ -411,21 +412,6 @@
       "video": false,
       "vote_average": 6.818,
       "vote_count": 2135
-    },
-    {
-      "id": "f1d7",
-      "title": "dfgsdgf",
-      "complete_poster_path": "sdfgdfgdfg"
-    },
-    {
-      "id": "02c4",
-      "title": "fgdfgd",
-      "complete_poster_path": "cvbcvbcbv"
-    },
-    {
-      "id": "7a40",
-      "title": "dgdfgdfg",
-      "complete_poster_path": "cvbdfhghgfnmm"
     }
   ]
 }

@@ -71,6 +71,7 @@ export class AddMovieComponent {
       .post(`http://localhost:3000/data`, this.addMovie.value)
       .then((res: any) => {
         isAddedToDatabase = true;
+        // Youtube tutorial
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['./movie'], {
@@ -86,13 +87,6 @@ export class AddMovieComponent {
         this.dialogRef.closeAll();
       });
   }
-
-  // loadMovies() {
-  //   const databaseUrl = 'http://localhost:3000/data';
-  //   axios.get(databaseUrl).then((data: any) => {
-  //     this.databaseMovies = data.data;
-  //   });
-  // }
 
   ngOnInit(): void {
     this.addMovie = this.formBuilder.group({

@@ -1,4 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
+import axios from 'axios';
 import {
   MatDialogModule,
   MatDialogTitle,
@@ -22,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieResolveService } from '../movie-resolve.service';
 import { DatabaseServiceService } from '../database-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-movie',
@@ -44,14 +46,19 @@ export class UpdateMovieComponent {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialog,
-    private databaseService: DatabaseServiceService
+    private databaseService: DatabaseServiceService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
+  baseUrl: string = 'http://localhost:3000/data';
+  moviesFromDB: any[] = [];
   movieId: string = '';
 
   floatLabelControl = new FormControl('auto' as FloatLabelType);
 
   updateMovie = new FormGroup({
+    id: new FormControl<string>(''),
     title: new FormControl<string>(''),
     complete_poster_path: new FormControl<string>(''),
   });
@@ -63,39 +70,55 @@ export class UpdateMovieComponent {
     return this.floatLabelControl.value || 'auto';
   }
 
+  onDelete() {
+    axios.delete(`${this.baseUrl}/${this.movieId}`).then((res: any) => {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate(['./movie'], {
+        relativeTo: this.route,
+      });
+    });
+    this._snackBar.open('Movie Successfully Deleted', 'Close');
+    this.dialogRef.closeAll();
+  }
+
   onSubmit() {
-    console.log(this.updateMovie.value);
     this.updateMovie.markAllAsTouched();
     const isFormValid = this.updateMovie.valid;
-    let isDatabaseUpdate = false;
-    this.databaseService
-      .updateMovie(this.updateMovie.value)
-      .subscribe((res: any) => {
-        console.log(res);
+    let isDatabaseUpdated = false;
+
+    axios
+      .patch(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
+      .then((res: any) => {
+        isDatabaseUpdated = true;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['./movie'], {
+          relativeTo: this.route,
+        });
+        if (isFormValid && isDatabaseUpdated) {
+          this._snackBar.open('Movie Successfully Updated', 'Close');
+          this.dialogRef.closeAll();
+        }
+      })
+      .catch((err) => {
+        this._snackBar.open(err, 'Close');
+        this.dialogRef.closeAll();
       });
-    if (isFormValid && isDatabaseUpdate) {
-      this._snackBar.open('Movie Successfully Updated', 'Close');
-      this.dialogRef.closeAll();
-    }
   }
 
   // following stackoverflow example
   subscription: any;
 
   ngOnInit(): void {
-    // this.updateMovie = this.formBuilder.group({
-    //   title: ['', Validators.required],
-    //   complete_poster_path: ['', Validators.required],
-    // });
-
     this.subscription = this.movieResolveService.getDetails.subscribe(
       (res: any) => {
-        console.log(res);
+        this.movieId = res.movieId;
         this.updateMovie = this.formBuilder.group({
+          id: [res.movieId, Validators.required],
           title: [res.title, Validators.required],
           complete_poster_path: [res.complete_poster_path, Validators.required],
         });
-        this.movieId = res.movieId;
       }
     );
   }
