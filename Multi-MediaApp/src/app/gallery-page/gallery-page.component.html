@@ -1,1 +1,5 @@
-<p>gallery-page works!</p>
+<h2>Gallery Page</h2>
+
+<div infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScrolled($event)" [horizontal]="true">
+    Gallery goes here
+</div>

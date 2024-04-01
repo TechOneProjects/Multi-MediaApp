@@ -11,4 +11,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 })
 export class GalleryPageComponent {
   http = inject(HttpClient);
+
+  onScrolled(e:any){
+    console.log(e);
+  }
 }
