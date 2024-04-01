@@ -1,0 +1,43 @@
+<div id="home-container">
+    <ul id="nav-container">
+        <li>
+            <a routerLink = "/">Home</a>
+        </li>
+        <li>
+            <a routerLink = "/daniels-media">Dnaiel's media</a>
+        </li>
+        <li>
+            <a routerLink = "/games">Games</a> 
+        </li>
+        <li>
+            <a routerLink = "/gallery">Gallery</a>
+        </li>
+        <li>
+            <a routerLink = "/music">Music</a>
+        </li>
+        <li>
+            <a routerLink = "/character">Character Creator</a>
+        </li>
+        <li>
+          <a routerLink = "/movies">Movies</a>
+        </li>
+    </ul>
+    <div id="title-container">
+        <h1>TechOne's Multi-Media</h1>
+    </div>
+    <div id="sub-nav">
+        <button (click)="changeSelectedMedia('games')">Games</button>
+        <button (click)="changeSelectedMedia('gallery')">Gallery</button>
+        <button (click)="changeSelectedMedia('movies')">Movies</button>
+        <button (click)="changeSelectedMedia('music')">Music</button>
+        <button (click)="changeSelectedMedia('character')">Character</button>
+        <button (click)="changeSelectedMedia('daniel')">Daniel</button>
+    </div>
+    <div id="content-container">
+        <a [routerLink]="featuredMedia?.contentLink">
+            <h3>{{featuredMedia?.title}}</h3>
+            <img [src]="featuredMedia?.imageURL">
+            <p>{{featuredMedia?.contentDesciption}}</p>
+        </a>
+    </div>
+</div>
