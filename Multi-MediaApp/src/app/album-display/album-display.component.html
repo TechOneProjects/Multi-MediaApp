@@ -1,6 +1,8 @@
-<div>
+<div style="display: flex; flex-wrap: wrap;">
     @for(album of albumArr; track album.basic_information.id) {
-        <p>{{album.basic_information.title}} - {{album.basic_information.artists[0].name}}</p>
-        <img [src]="album.basic_information.cover_image" >
+        <div>
+            <p>{{album.basic_information.title}} - {{album.basic_information.artists[0].name}}</p>
+            <img [src]="album.basic_information.cover_image" >
+        </div>
     }
 </div>

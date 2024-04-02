@@ -6,6 +6,11 @@
 
 <button (click)="addElement()">Add element</button>
 
-<button>Albums</button>
-<button>Search</button>
-<app-album-display [albumArr]="albumArr"></app-album-display>
+<button (click)="switchComp('album')">Albums</button>
+<button (click)="switchComp('search')">Search</button>
+
+@if(selectedComp == "album") {
+    <app-album-display [albumArr]="albumArr"></app-album-display>
+}@else {
+    <app-album-search (selectedCompEvent)="switchComp($event)"></app-album-search>
+}

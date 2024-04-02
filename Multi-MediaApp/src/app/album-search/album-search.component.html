@@ -1,0 +1,10 @@
+<input type="text" [(ngModel)]="searchQuery">
+<button (click)="queryDiscogs()">Search</button>
+
+<div>
+    @for(album of searchResults; track album.id) {
+        <p>{{album.title}}</p>
+        <img [src]="album.cover_image" />
+        <button (click)="addAlbumToCollection(album.id)">Add to collection</button>
+    }
+</div>
