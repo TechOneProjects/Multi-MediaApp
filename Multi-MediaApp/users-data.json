@@ -1,6 +1,12 @@
 {
     "users": [
       {
+        "id" : 0,
+        "username" : "THE_Rock",
+        "email" : "d.johnson@nottherock.com",
+        "password" : "neverlose"
+      },
+      {
         "id": 1,
         "username": "john_doe",
         "email": "john.doe@example.com",
@@ -23,6 +29,104 @@
         "username": "sarah_miller",
         "email": "sarah.miller@example.com",
         "password": "strongpassword"
+      }
+    ],
+    "gallery": [
+      {
+        "id" : 0,
+        "title" : "Joker 2 Folie au Deux",
+        "imageURL" : "https://hips.hearstapps.com/hmg-prod/images/joker-2-uk-poster-660c386c12e94.jpg",
+        "uid" : 4
+      },
+      {
+        "id" : 1,
+        "title" : "Star Wars",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/StarWarsMoviePoster1977.jpg/400px-StarWarsMoviePoster1977.jpg",
+        "uid" : 4
+      },
+      {
+        "id" : 2,
+        "title" : "Apollo 13",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Apollo_thirteen_movie.jpg/400px-Apollo_thirteen_movie.jpg",
+        "uid" : 4
+      },
+      {
+        "id" : 3,
+        "title" : "The Godfather",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+        "uid" : 1
+      },
+      {
+        "id" : 4,
+        "title" : "Goodfellas",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+        "uid" : 4
+      },
+      {
+        "id" : 5,
+        "title" : "Goodfellas",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+        "uid" : 2
+      },
+      {
+        "id" : 6,
+        "title" : "Dead Poets Society",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/4/49/Dead_poets_society.jpg",
+        "uid" : 0
+      },
+      {
+        "id" : 7,
+        "title" : "Amadeus",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/2/2f/Amadeusmov.jpg",
+        "uid" : 0
+      },
+      {
+        "id" : 8,
+        "title" : "The People Vs Harry Flynt",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/b/b5/People_vs_larry_flynt_poster.jpg",
+        "uid" : 2
+      },
+      {
+        "id" : 9,
+        "title" : "The Iron Claw",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/3/3a/Iron_claw_film_posterjpg.jpg",
+        "uid" : 0
+      },
+      {
+        "id" : 10,
+        "title" : "Blade Runner 2049",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/9/9b/Blade_Runner_2049_poster.png",
+        "uid" : 3
+      },
+      {
+        "id" : 11,
+        "title" : "Dunkirk",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg",
+        "uid" : 0
+      },
+      {
+        "id" : 12,
+        "title" : "The Irishman",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/8/80/The_Irishman_poster.jpg",
+        "uid" : 4
+      },
+      {
+        "id" : 13,
+        "title" : "Judas and the Black Messiah",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/5/55/Judas_and_the_Black_Messiah_poster.png",
+        "uid" : 2
+      },
+      {
+        "id" : 13,
+        "title" : "The Trial of the Chicago 7",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/c/c2/TrialChicago7poster.jpeg",
+        "uid" : 3
+      },
+      {
+        "id" : 13,
+        "title" : "Elvis",
+        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/79/Elvis_2022_poster.jpg",
+        "uid" : 1
       }
     ]
   }
