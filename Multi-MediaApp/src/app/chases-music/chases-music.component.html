@@ -10,7 +10,7 @@
 <button (click)="switchComp('search')">Search</button>
 
 @if(selectedComp == "album") {
-    <app-album-display [albumArr]="albumArr"></app-album-display>
+    <app-album-display [dbAlbumArr]="dbAlbumArr"></app-album-display>
 }@else {
-    <app-album-search (selectedCompEvent)="switchComp($event)"></app-album-search>
+    <app-album-search (selectedCompEvent)="switchComp($event)" (addAlbumEvent)="addAlbum($event)"></app-album-search>
 }

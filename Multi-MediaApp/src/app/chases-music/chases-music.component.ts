@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { Album } from './album.interface';
+import { Album, DBAlbum } from './album.interface';
 import { AlbumDisplayComponent } from '../album-display/album-display.component';
 import { AlbumSearchComponent } from '../album-search/album-search.component';
 import { v4 as uuidv4 } from "uuid";
@@ -17,6 +17,7 @@ export class ChasesMusicComponent implements OnInit{
 
   elemetnsArr: string[] = [];
   albumArr: Album[] = [];
+  dbAlbumArr : DBAlbum[] = [];
 
   selectedComp: string = "album";
 
@@ -24,7 +25,7 @@ export class ChasesMusicComponent implements OnInit{
   })
 
   switchComp(comp : string) {
-    this.fetchDiscogs();
+    // this.fetchDiscogs();
     this.selectedComp = comp;
   }
 
@@ -32,6 +33,11 @@ export class ChasesMusicComponent implements OnInit{
     this.elemetnsArr.push(`track${this.elemetnsArr.length + 1}`);
     this.trackListForm.addControl(`track${this.elemetnsArr.length}`, new FormControl("", Validators.required));
     console.log(this.trackListForm.value)
+  }
+
+  addAlbum(album: DBAlbum) {
+    this.dbAlbumArr.push(album);
+    this.switchComp("album");
   }
 
   async fetchDiscogs():Promise<void> {
@@ -42,6 +48,7 @@ export class ChasesMusicComponent implements OnInit{
         }});
         const data = await response.json();
         this.albumArr = data.releases;
+        this.transformData();
         // console.log(this.albumArr)
     } catch (e) {
       console.log(e);
@@ -59,7 +66,32 @@ export class ChasesMusicComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.fetchDiscogs();
-    this.checkLogin();
+    // this.fetchDiscogs();
+    // this.checkLogin();
   }
+
+  transformData(): void {
+    for(let album of this.albumArr) {
+      let artistName: string = album.basic_information.artists[0].name
+      if(artistName.includes("(")) {
+        artistName = artistName.slice(0, artistName.indexOf("(") - 1)
+        console.log(artistName)
+      }
+
+      const newAlbum: DBAlbum = {
+        id: album.basic_information.id,
+        artist: artistName,
+        cover_image: album.basic_information.cover_image,
+        title:album.basic_information.title,
+        year: album.basic_information.year,
+        genres: album.basic_information.genres
+      }
+      this.dbAlbumArr.push(newAlbum);
+    }
+    console.log(this.dbAlbumArr)
+  }
+
 }
+
+
+// mongodb+srv://Admin:<password>@multi-media-app.nywmu3r.mongodb.net/?retryWrites=true&w=majority&appName=Multi-Media-App

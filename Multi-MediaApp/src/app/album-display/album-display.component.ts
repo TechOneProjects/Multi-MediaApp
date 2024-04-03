@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Album } from '../chases-music/album.interface';
+import { Album, DBAlbum } from '../chases-music/album.interface';
 
 @Component({
   selector: 'app-album-display',
@@ -9,5 +9,5 @@ import { Album } from '../chases-music/album.interface';
   styleUrl: './album-display.component.sass'
 })
 export class AlbumDisplayComponent {
-  @Input() albumArr: Album[] = [];
+  @Input() dbAlbumArr: DBAlbum[] = [];
 }
