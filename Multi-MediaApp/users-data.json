@@ -1,246 +1,246 @@
 {
-    "users": [
-      {
-        "id" : 0,
-        "username" : "THE_Rock",
-        "email" : "d.johnson@nottherock.com",
-        "password" : "neverlose"
-      },
-      {
-        "id": 1,
-        "username": "john_doe",
-        "email": "john.doe@example.com",
-        "password": "password123"
-      },
-      {
-        "id": 2,
-        "username": "jane_smith",
-        "email": "jane.smith@example.com",
-        "password": "securepass"
-      },
-      {
-        "id": 3,
-        "username": "alexander92",
-        "email": "alexander92@emailprovider.com",
-        "password": "qwerty!@#"
-      },
-      {
-        "id": 4,
-        "username": "sarah_miller",
-        "email": "sarah.miller@example.com",
-        "password": "strongpassword"
-      }
-    ],
-    "gallery": [
-      {
-        "id" : 0,
-        "title" : "Joker 2 Folie au Deux",
-        "imageURL" : "https://hips.hearstapps.com/hmg-prod/images/joker-2-uk-poster-660c386c12e94.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 1,
-        "title" : "Star Wars",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/StarWarsMoviePoster1977.jpg/400px-StarWarsMoviePoster1977.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 2,
-        "title" : "Apollo 13",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Apollo_thirteen_movie.jpg/400px-Apollo_thirteen_movie.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 3,
-        "title" : "The Godfather",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      },
-      {
-        "id" : 4,
-        "title" : "Goodfellas",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 5,
-        "title" : "Goodfellas",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 2
-      },
-      {
-        "id" : 6,
-        "title" : "Dead Poets Society",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/4/49/Dead_poets_society.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 7,
-        "title" : "Amadeus",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/2/2f/Amadeusmov.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 8,
-        "title" : "The People Vs Harry Flynt",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/b/b5/People_vs_larry_flynt_poster.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 2
-      },
-      {
-        "id" : 9,
-        "title" : "The Iron Claw",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/3/3a/Iron_claw_film_posterjpg.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 10,
-        "title" : "Blade Runner 2049",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/9/9b/Blade_Runner_2049_poster.png",
-        "altText" : "Lorem Ipsum",
-        "uid" : 3
-      },
-      {
-        "id" : 11,
-        "title" : "Dunkirk",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 12,
-        "title" : "The Irishman",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/8/80/The_Irishman_poster.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 13,
-        "title" : "Judas and the Black Messiah",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/5/55/Judas_and_the_Black_Messiah_poster.png",
-        "altText" : "Lorem Ipsum",
-        "uid" : 2
-      },
-      {
-        "id" : 14,
-        "title" : "The Trial of the Chicago 7",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/c/c2/TrialChicago7poster.jpeg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 3
-      },
-      {
-        "id" : 15,
-        "title" : "Elvis",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/79/Elvis_2022_poster.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      },
-      {
-        "id" : 16,
-        "title" : "Rock Band 2",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/e/e6/Rock_band_2_screen.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      },
-      {
-        "id" : 17,
-        "title" : "Uncharted 2",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/7b/Uncharted_2_box_artwork.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 3
-      },
-      {
-        "id" : 18,
-        "title" : "Metal Gear Solid 4",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/4/4b/Mgs4us_cover_small.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 19,
-        "title" : "Shadow of the Colossus",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/a/a4/Shadow_of_the_Colossus_%282005%29_-_Mono_and_Wander.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 20,
-        "title" : "Prince of Persia: Sand of Time",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/8/86/Sands_of_time_cover.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 2
-      },
-      {
-        "id" : 21,
-        "title" : "Star Wars: Knights of the Old Republic",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/11/Kotorbox.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 3
-      },
-      {
-        "id" : 22,
-        "title" : "Skies of Arcadia",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/6/65/ArcadiaDC.png",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 23,
-        "title" : "Skies of Arcadia",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/6/65/ArcadiaDC.png",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      },
-      {
-        "id" : 24,
-        "title" : "The Legend of Zelda: Ocarina of Time",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      },
-      {
-        "id" : 25,
-        "title" : "Parrapa the Rapper",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/74/JPPaRappacover.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 3
-      },
-      {
-        "id" : 26,
-        "title" : "Roller Coaster Tycoon",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1d/Rct-box.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 4
-      },
-      {
-        "id" : 27,
-        "title" : "Jet Set Radio",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/7b/Jetsetradiopalboxart.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 2
-      },
-      {
-        "id" : 28,
-        "title" : "Metal Gear Solid",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/2/25/MGS_screen_psx.jpg",
-        "altText" : "Lorem Ipsum",
-        "uid" : 0
-      },
-      {
-        "id" : 29,
-        "title" : "Pokemon Red/Blue/Yellow",
-        "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pok%C3%A9mon_Red_and_Blue_cover_art.webp/330px-Pok%C3%A9mon_Red_and_Blue_cover_art.webp.png",
-        "altText" : "Lorem Ipsum",
-        "uid" : 1
-      }
-    ]
-  }
+  "users": [
+    {
+      "id": 0,
+      "username": "THE_Rock",
+      "email": "d.johnson@nottherock.com",
+      "password": "neverlose"
+    },
+    {
+      "id": 1,
+      "username": "john_doe",
+      "email": "john.doe@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 2,
+      "username": "jane_smith",
+      "email": "jane.smith@example.com",
+      "password": "securepass"
+    },
+    {
+      "id": 3,
+      "username": "alexander92",
+      "email": "alexander92@emailprovider.com",
+      "password": "qwerty!@#"
+    },
+    {
+      "id": 4,
+      "username": "sarah_miller",
+      "email": "sarah.miller@example.com",
+      "password": "strongpassword"
+    }
+  ],
+  "gallery": [
+    {
+      "id" : 0,
+      "title" : "Joker 2 Folie au Deux",
+      "imageURL" : "https://hips.hearstapps.com/hmg-prod/images/joker-2-uk-poster-660c386c12e94.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 1,
+      "title" : "Star Wars",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/8/87/StarWarsMoviePoster1977.jpg/400px-StarWarsMoviePoster1977.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 2,
+      "title" : "Apollo 13",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Apollo_thirteen_movie.jpg/400px-Apollo_thirteen_movie.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 3,
+      "title" : "The Godfather",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    },
+    {
+      "id" : 4,
+      "title" : "Goodfellas",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 5,
+      "title" : "Goodfellas",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 2
+    },
+    {
+      "id" : 6,
+      "title" : "Dead Poets Society",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/4/49/Dead_poets_society.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 7,
+      "title" : "Amadeus",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/2/2f/Amadeusmov.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 8,
+      "title" : "The People Vs Harry Flynt",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/b/b5/People_vs_larry_flynt_poster.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 2
+    },
+    {
+      "id" : 9,
+      "title" : "The Iron Claw",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/3/3a/Iron_claw_film_posterjpg.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 10,
+      "title" : "Blade Runner 2049",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/9/9b/Blade_Runner_2049_poster.png",
+      "altText" : "Lorem Ipsum",
+      "uid" : 3
+    },
+    {
+      "id" : 11,
+      "title" : "Dunkirk",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 12,
+      "title" : "The Irishman",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/8/80/The_Irishman_poster.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 13,
+      "title" : "Judas and the Black Messiah",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/5/55/Judas_and_the_Black_Messiah_poster.png",
+      "altText" : "Lorem Ipsum",
+      "uid" : 2
+    },
+    {
+      "id" : 14,
+      "title" : "The Trial of the Chicago 7",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/c/c2/TrialChicago7poster.jpeg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 3
+    },
+    {
+      "id" : 15,
+      "title" : "Elvis",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/79/Elvis_2022_poster.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    },
+    {
+      "id" : 16,
+      "title" : "Rock Band 2",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/e/e6/Rock_band_2_screen.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    },
+    {
+      "id" : 17,
+      "title" : "Uncharted 2",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/7b/Uncharted_2_box_artwork.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 3
+    },
+    {
+      "id" : 18,
+      "title" : "Metal Gear Solid 4",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/4/4b/Mgs4us_cover_small.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 19,
+      "title" : "Shadow of the Colossus",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/a/a4/Shadow_of_the_Colossus_%282005%29_-_Mono_and_Wander.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 20,
+      "title" : "Prince of Persia: Sand of Time",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/8/86/Sands_of_time_cover.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 2
+    },
+    {
+      "id" : 21,
+      "title" : "Star Wars: Knights of the Old Republic",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/11/Kotorbox.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 3
+    },
+    {
+      "id" : 22,
+      "title" : "Skies of Arcadia",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/6/65/ArcadiaDC.png",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 23,
+      "title" : "Skies of Arcadia",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/6/65/ArcadiaDC.png",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    },
+    {
+      "id" : 24,
+      "title" : "The Legend of Zelda: Ocarina of Time",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/5/57/The_Legend_of_Zelda_Ocarina_of_Time.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    },
+    {
+      "id" : 25,
+      "title" : "Parrapa the Rapper",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/74/JPPaRappacover.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 3
+    },
+    {
+      "id" : 26,
+      "title" : "Roller Coaster Tycoon",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/1/1d/Rct-box.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 4
+    },
+    {
+      "id" : 27,
+      "title" : "Jet Set Radio",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/7/7b/Jetsetradiopalboxart.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 2
+    },
+    {
+      "id" : 28,
+      "title" : "Metal Gear Solid",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/2/25/MGS_screen_psx.jpg",
+      "altText" : "Lorem Ipsum",
+      "uid" : 0
+    },
+    {
+      "id" : 29,
+      "title" : "Pokemon Red/Blue/Yellow",
+      "imageURL" : "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pok%C3%A9mon_Red_and_Blue_cover_art.webp/330px-Pok%C3%A9mon_Red_and_Blue_cover_art.webp.png",
+      "altText" : "Lorem Ipsum",
+      "uid" : 1
+    }
+  ]
+}
