@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { GalleryPageComponent } from './gallery-page/gallery-page.component';
+import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, GalleryPageComponent],
+  imports: [RouterOutlet, GeneralAboutUsPageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
