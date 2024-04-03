@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { User } from "../../../server/schemas/userSchema";
 
 @Component({
   selector: 'app-sign-up',
@@ -17,8 +18,17 @@ export class SignUpComponent {
     confirmPassword: new FormControl('')
   })
 
-  onSubmit(){
-    console.log(this.userInfo.value)
+  async onSubmit(){
+    // logic that adds new users to the databse
+
+    const newUser = new User({
+      username: this.userInfo.value.username,
+      email: this.userInfo.value.email,
+      password: this.userInfo.value.password
+    })
+    if (this.userInfo.value.password === this.userInfo.value.confirmPassword) {
+      
+    }
   }
 
 }
