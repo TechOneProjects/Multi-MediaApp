@@ -34,18 +34,8 @@ export class AlbumSearchComponent {
   }
 
   async addAlbumToCollection(id: number): Promise<void> {
-    // console.log(id);
-    // try {
-    //   const response = await fetch(`https://api.discogs.com/users/cforlini/collection/folders/1/releases/${id}?oauth_consumer_key=wTPpJsCySNodlbLlmBsP&oauth_token=mvOSiWtKTcQLpvODAnhfivIyJncuYExFgAkrxDwh&oauth_signature_method=PLAINTEXT&oauth_timestamp=${new Date().getTime()}&oauth_nonce=I7DWlVvbmuu&oauth_version=1.0&oauth_signature=RwsRavuQuLPLnIruuDDptdhAKmHIHcYy%26SGJOxupzMPQDgZIyTvViHWsJThUgANniOGwpOVcK`, {
-    //     method: "POST"
-    //   })
-    //   const data = await response.json();
-    //   this.selectedCompEvent.emit("album")
-    // } catch (error) {
-    //   console.log(error);
-    // }
     let selectedAlbum: SearchAlbum = this.searchResults.filter(album => album.id == id)[0];
-    // console.log(selectedAlbum)
+
     let albumToAdd: DBAlbum = {
       artist: selectedAlbum.title.slice(0, selectedAlbum.title.indexOf("-") - 1),
       cover_image: selectedAlbum.cover_image,
@@ -54,7 +44,6 @@ export class AlbumSearchComponent {
       genres: selectedAlbum.genre,
       id: selectedAlbum.id
     }
-    // console.log(albumToAdd)
 
     this.addAlbumEvent.emit(albumToAdd);
   }

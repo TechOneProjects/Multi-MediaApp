@@ -3,9 +3,6 @@ import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators} f
 import {  DBAlbum } from './album.interface';
 import { AlbumDisplayComponent } from '../album-display/album-display.component';
 import { AlbumSearchComponent } from '../album-search/album-search.component';
-import { v4 as uuidv4 } from "uuid";
-import mongoose from 'mongoose';
-// import { Album } from '../../../server/models/Album';
 
 @Component({
   selector: 'app-chases-music',
@@ -78,29 +75,6 @@ export class ChasesMusicComponent implements OnInit{
     const data = await response.json();
     console.log(data)
   }
-
-  // transformData(): void {
-  //   for(let album of this.albumArr) {
-  //     let artistName: string = album.basic_information.artists[0].name
-  //     if(artistName.includes("(")) {
-  //       artistName = artistName.slice(0, artistName.indexOf("(") - 1)
-  //       console.log(artistName)
-  //     }
-
-  //     const newAlbum: DBAlbum = {
-  //       id: album.basic_information.id,
-  //       artist: artistName,
-  //       cover_image: album.basic_information.cover_image,
-  //       title:album.basic_information.title,
-  //       year: album.basic_information.year,
-  //       genres: album.basic_information.genres
-  //     }
-  //     this.dbAlbumArr.push(newAlbum);
-  //   }
-  //   console.log(this.dbAlbumArr)
-  // }
-
-
 
 }
 
