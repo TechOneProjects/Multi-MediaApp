@@ -57,18 +57,19 @@ export class AddMovieComponent {
     poster_path: new FormControl<string>(''),
   });
 
+  // from docs
   getFloatLabelValue(): FloatLabelType {
     return this.floatLabelControl.value || 'auto';
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.addMovie.value));
+    console.log(this.addMovie.value);
     this.addMovie.markAllAsTouched();
     const isFormValid = this.addMovie.valid;
     let isAddedToDatabase = false;
-    this.databaseMovies.push(JSON.stringify(this.addMovie.value));
+    this.databaseMovies.push(this.addMovie.value);
     axios
-      .post(`http://localhost:5000/movies`, JSON.stringify(this.addMovie.value))
+      .post(`http://localhost:5000/movies`, this.addMovie.value)
       .then((res: any) => {
         isAddedToDatabase = true;
         // Youtube tutorial for reloading component

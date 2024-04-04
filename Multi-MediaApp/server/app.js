@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const movieModel = require("./schemas/movieSchema");
-const cors = require("cors")
+const cors = require("cors");
 
 const app = express();
 
@@ -10,7 +10,7 @@ const uri =
   "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mongodb.net/Multi-Media-App?retryWrites=true&w=majority&appName=Multi-Media-App";
 
 // middleware
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -35,12 +35,11 @@ app.get("/movies/:id", async (req, res) => {
 
 app.post("/movies", async (req, res) => {
   try {
-    res.header("Access-Control-Allow-Origin", "*");
     const movie = await movieModel.create(req.body);
     res.status(200).json(movie);
   } catch (error) {
-    console.error(err.message);
-    res.status(500).json({ message: error.message });
+    console.error(error.message);
+    // res.status(500).json({ message: error.message });
   }
 });
 
