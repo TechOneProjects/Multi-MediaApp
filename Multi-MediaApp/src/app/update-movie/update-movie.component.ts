@@ -22,7 +22,6 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MovieResolveService } from '../movie-resolve.service';
-import { DatabaseServiceService } from '../database-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -46,7 +45,6 @@ export class UpdateMovieComponent {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialog,
-    private databaseService: DatabaseServiceService,
     private router: Router,
     private route: ActivatedRoute
   ) {}

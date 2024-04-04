@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,7 +22,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   styleUrl: './media-page-2.component.sass',
 })
 export class MediaPage2Component {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   movieResolveService = inject(MovieResolveService);
   openDialog(): void {
@@ -84,12 +85,17 @@ export class MediaPage2Component {
       .catch((err) => console.error('error:' + err));
   }
 
-  onScroll() {
-    console.log('scrolled');
+  verifyUser(): void {
+    const token = localStorage.getItem("token")
+
+    if(!token) {
+      this.router.navigate(["/login"])
+    }
   }
 
   ngOnInit(): void {
     this.fetchData();
     this.loadMovies();
+    this.verifyUser();
   }
 }
