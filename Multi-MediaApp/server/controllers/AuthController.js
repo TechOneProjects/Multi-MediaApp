@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/UserModel.ts");
+const jwt = require("jsonwebtoken");
 
 router.post("/signup", async (req, res)=>{
     console.log(req.body);
@@ -10,7 +11,8 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
-        res.status(200).send({user: newUser});
+        const token = jwt.sign({newUser}, "secret");
+        res.status(200).send(JSON.stringify(token));
     }
     else{
         res.status(406).send({error:"Passwords do not match"})
@@ -25,7 +27,8 @@ router.post("/login", async ( req, res ) => {
     const userLookup = await User.findOne({email:email});
     if(userLookup){
         if(userLookup.password === password){
-            res.status(200).send(userLookup);
+            const token = jwt.sign({userLookup}, "secret");
+            res.status(200).send(JSON.stringify(token));
         }
         else{
             res.status(404).send({error:"Wrong password"});
