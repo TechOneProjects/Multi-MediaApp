@@ -3,6 +3,17 @@ const router = express.Router();
 const User = require("../models/UserModel.ts");
 const jwt = require("jsonwebtoken");
 
+router.get("/", async ( req, res ) => {
+    console.log(req.get("Authorization"));
+    const token = jwt.get; // this doesnt actually get a token
+    if(token){
+        res.status(200).send(JSON.stringify(token));
+    }
+    else{
+        res.status(200).send({msg:"no log in"});
+    }
+})
+
 router.post("/signup", async (req, res)=>{
     console.log(req.body);
     const { email, password, passwordConfirmation, username } = req.body;
