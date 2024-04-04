@@ -49,7 +49,7 @@ export class UpdateMovieComponent {
     private route: ActivatedRoute
   ) {}
 
-  baseUrl: string = 'http://localhost:5000/movies';
+  baseUrl: string = 'http://localhost:3000/movies';
   moviesFromDB: any[] = [];
   movieId: string = '';
 

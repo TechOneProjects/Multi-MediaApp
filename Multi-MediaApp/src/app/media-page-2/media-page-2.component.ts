@@ -58,7 +58,7 @@ export class MediaPage2Component {
   databaseMovies: any[] = [];
 
   loadMovies() {
-    const databaseUrl = 'http://localhost:5000/movies';
+    const databaseUrl = 'http://localhost:3000/movies';
     axios
       .get(databaseUrl, {
         headers: {
@@ -74,7 +74,7 @@ export class MediaPage2Component {
   fetchData(): void {
     axios
       .get(this.trendingUrl, this.options)
-      .then((json) => {
+      .then((json: any) => {
         this.trendingResults = json.data.results;
         if (this.trendingResults.length > 0) {
           this.trendingTop3.push(this.trendingResults[0]);
@@ -82,7 +82,7 @@ export class MediaPage2Component {
           this.trendingTop3.push(this.trendingResults[2]);
         }
       })
-      .catch((err) => console.error('error:' + err));
+      .catch((error: any) => console.error('error:' + error));
   }
 
   verifyUser(): void {
