@@ -1,9 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { Album, DBAlbum } from './album.interface';
+import {  DBAlbum } from './album.interface';
 import { AlbumDisplayComponent } from '../album-display/album-display.component';
 import { AlbumSearchComponent } from '../album-search/album-search.component';
 import { v4 as uuidv4 } from "uuid";
+import mongoose from 'mongoose';
+import { Album } from '../../../server/models/Album';
 
 @Component({
   selector: 'app-chases-music',
@@ -16,7 +18,6 @@ export class ChasesMusicComponent implements OnInit{
   formBuilder = inject(FormBuilder);
 
   elemetnsArr: string[] = [];
-  albumArr: Album[] = [];
   dbAlbumArr : DBAlbum[] = [];
 
   selectedComp: string = "album";
@@ -36,24 +37,25 @@ export class ChasesMusicComponent implements OnInit{
   }
 
   addAlbum(album: DBAlbum) {
+    const newAlbum = new Album(album)
     this.dbAlbumArr.push(album);
     this.switchComp("album");
   }
 
-  async fetchDiscogs():Promise<void> {
-    try {
-      const response = await fetch("https://api.discogs.com/users/cforlini/collection/folders/0/releases", {
-        headers: {
-          "Authorization": "Discogs key=wTPpJsCySNodlbLlmBsP, secret=RwsRavuQuLPLnIruuDDptdhAKmHIHcYy"
-        }});
-        const data = await response.json();
-        this.albumArr = data.releases;
-        this.transformData();
-        // console.log(this.albumArr)
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  // async fetchDiscogs():Promise<void> {
+  //   try {
+  //     const response = await fetch("https://api.discogs.com/users/cforlini/collection/folders/0/releases", {
+  //       headers: {
+  //         "Authorization": "Discogs key=wTPpJsCySNodlbLlmBsP, secret=RwsRavuQuLPLnIruuDDptdhAKmHIHcYy"
+  //       }});
+  //       const data = await response.json();
+  //       this.albumArr = data.releases;
+  //       this.transformData();
+  //       // console.log(this.albumArr)
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
   async checkLogin() : Promise<void> {
     const response = await fetch("https://api.discogs.com/oauth/identity", {
       headers: {
@@ -65,31 +67,34 @@ export class ChasesMusicComponent implements OnInit{
     console.log(data);
   }
 
-  ngOnInit(): void {
-    // this.fetchDiscogs();
-    // this.checkLogin();
+  async ngOnInit(): Promise<void> {
+    const response = await fetch("http://localhost:3000/");
+    const data = await response.json();
+    console.log(data)
   }
 
-  transformData(): void {
-    for(let album of this.albumArr) {
-      let artistName: string = album.basic_information.artists[0].name
-      if(artistName.includes("(")) {
-        artistName = artistName.slice(0, artistName.indexOf("(") - 1)
-        console.log(artistName)
-      }
+  // transformData(): void {
+  //   for(let album of this.albumArr) {
+  //     let artistName: string = album.basic_information.artists[0].name
+  //     if(artistName.includes("(")) {
+  //       artistName = artistName.slice(0, artistName.indexOf("(") - 1)
+  //       console.log(artistName)
+  //     }
 
-      const newAlbum: DBAlbum = {
-        id: album.basic_information.id,
-        artist: artistName,
-        cover_image: album.basic_information.cover_image,
-        title:album.basic_information.title,
-        year: album.basic_information.year,
-        genres: album.basic_information.genres
-      }
-      this.dbAlbumArr.push(newAlbum);
-    }
-    console.log(this.dbAlbumArr)
-  }
+  //     const newAlbum: DBAlbum = {
+  //       id: album.basic_information.id,
+  //       artist: artistName,
+  //       cover_image: album.basic_information.cover_image,
+  //       title:album.basic_information.title,
+  //       year: album.basic_information.year,
+  //       genres: album.basic_information.genres
+  //     }
+  //     this.dbAlbumArr.push(newAlbum);
+  //   }
+  //   console.log(this.dbAlbumArr)
+  // }
+
+
 
 }
 

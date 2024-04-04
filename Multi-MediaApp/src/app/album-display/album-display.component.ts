@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Album, DBAlbum } from '../chases-music/album.interface';
+import {  DBAlbum } from '../chases-music/album.interface';
 
 @Component({
   selector: 'app-album-display',
