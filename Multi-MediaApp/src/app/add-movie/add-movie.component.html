@@ -9,12 +9,12 @@
         <mat-label>Title</mat-label>
         <input formControlName="title" matInput placeholder="Movie Title..." required />
       </mat-form-field>
-      @if(addMovie.controls['complete_poster_path'].invalid && (addMovie.controls['complete_poster_path'].touched || addMovie.controls['complete_poster_path'].dirty)){
+      @if(addMovie.controls['poster_path'].invalid && (addMovie.controls['poster_path'].touched || addMovie.controls['poster_path'].dirty)){
         <span class="text-red">Poster image link is required.</span>
       }
       <mat-form-field [floatLabel]="getFloatLabelValue()">
         <mat-label>Poster Image</mat-label>
-        <input formControlName="complete_poster_path" matInput placeholder="Link to poster image..." required />
+        <input formControlName="poster_path" matInput placeholder="Link to poster image..." required />
       </mat-form-field>
 
     </form>

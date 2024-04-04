@@ -57,10 +57,17 @@ export class MediaPage2Component {
   databaseMovies: any[] = [];
 
   loadMovies() {
-    const databaseUrl = 'http://localhost:3000/data';
-    axios.get(databaseUrl).then((data: any) => {
-      this.databaseMovies = data.data;
-    });
+    const databaseUrl = 'http://localhost:5000/movies';
+    axios
+      .get(databaseUrl, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((data: any) => {
+        console.log(data.data);
+        this.databaseMovies = data.data;
+      });
   }
 
   fetchData(): void {
@@ -78,7 +85,7 @@ export class MediaPage2Component {
   }
 
   onScroll() {
-    console.log("scrolled")
+    console.log('scrolled');
   }
 
   ngOnInit(): void {

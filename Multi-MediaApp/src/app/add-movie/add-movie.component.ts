@@ -54,7 +54,7 @@ export class AddMovieComponent {
 
   addMovie = new FormGroup({
     title: new FormControl<string>(''),
-    complete_poster_path: new FormControl<string>(''),
+    poster_path: new FormControl<string>(''),
   });
 
   getFloatLabelValue(): FloatLabelType {
@@ -62,16 +62,16 @@ export class AddMovieComponent {
   }
 
   onSubmit() {
-    console.log(this.addMovie.value);
+    console.log(JSON.stringify(this.addMovie.value));
     this.addMovie.markAllAsTouched();
     const isFormValid = this.addMovie.valid;
     let isAddedToDatabase = false;
-    this.databaseMovies.push(this.addMovie.value);
+    this.databaseMovies.push(JSON.stringify(this.addMovie.value));
     axios
-      .post(`http://localhost:5000/movies`, this.addMovie.value)
+      .post(`http://localhost:5000/movies`, JSON.stringify(this.addMovie.value))
       .then((res: any) => {
         isAddedToDatabase = true;
-        // Youtube tutorial
+        // Youtube tutorial for reloading component
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['./movie'], {
@@ -91,7 +91,7 @@ export class AddMovieComponent {
   ngOnInit(): void {
     this.addMovie = this.formBuilder.group({
       title: ['', Validators.required],
-      complete_poster_path: ['', Validators.required],
+      poster_path: ['', Validators.required],
     });
   }
 }
