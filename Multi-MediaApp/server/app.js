@@ -47,6 +47,7 @@ app.use(async (req, res, next) => {
     }
 })
 
+//simple route to check if authorized
 app.get("/check-auth", async (req, res) => {
     if(req.user) {
         res.json({message: "You are authorized",
