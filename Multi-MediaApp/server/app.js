@@ -47,6 +47,15 @@ app.use(async (req, res, next) => {
     }
 })
 
+app.get("/check-auth", async (req, res) => {
+    if(req.user) {
+        res.json({message: "You are authorized",
+     user: req.user})
+    } else {
+        res.status(405).json({message: "You are not authorized"})
+    }
+})
+
 // controllers and their routes
 app.use('/auth', auth);
 app.use('/albums', albums);
