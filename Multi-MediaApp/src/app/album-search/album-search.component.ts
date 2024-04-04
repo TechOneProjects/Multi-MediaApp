@@ -45,7 +45,7 @@ export class AlbumSearchComponent {
     //   console.log(error);
     // }
     let selectedAlbum: SearchAlbum = this.searchResults.filter(album => album.id == id)[0];
-    console.log(selectedAlbum)
+    // console.log(selectedAlbum)
     let albumToAdd: DBAlbum = {
       artist: selectedAlbum.title.slice(0, selectedAlbum.title.indexOf("-") - 1),
       cover_image: selectedAlbum.cover_image,
@@ -54,7 +54,7 @@ export class AlbumSearchComponent {
       genres: selectedAlbum.genre,
       id: selectedAlbum.id
     }
-    console.log(albumToAdd)
+    // console.log(albumToAdd)
 
     this.addAlbumEvent.emit(albumToAdd);
   }

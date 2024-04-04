@@ -5,7 +5,7 @@ import { AlbumDisplayComponent } from '../album-display/album-display.component'
 import { AlbumSearchComponent } from '../album-search/album-search.component';
 import { v4 as uuidv4 } from "uuid";
 import mongoose from 'mongoose';
-import { Album } from '../../../server/models/Album';
+// import { Album } from '../../../server/models/Album';
 
 @Component({
   selector: 'app-chases-music',
@@ -36,10 +36,16 @@ export class ChasesMusicComponent implements OnInit{
     console.log(this.trackListForm.value)
   }
 
-  addAlbum(album: DBAlbum) {
-    const newAlbum = new Album(album)
-    this.dbAlbumArr.push(album);
-    this.switchComp("album");
+  async addAlbum(album: DBAlbum) {
+    const response = await fetch("http://localhost:3000/albums", {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify(album)
+    })
+    const data = await response.json();
+    console.log(data)
   }
 
   // async fetchDiscogs():Promise<void> {
@@ -56,16 +62,16 @@ export class ChasesMusicComponent implements OnInit{
   //     console.log(e);
   //   }
   // }
-  async checkLogin() : Promise<void> {
-    const response = await fetch("https://api.discogs.com/oauth/identity", {
-      headers: {
-        "Authorization" : `OAuth oauth_consumer_key="wTPpJsCySNodlbLlmBsP",oauth_token="mvOSiWtKTcQLpvODAnhfivIyJncuYExFgAkrxDwh",oauth_signature_method="PLAINTEXT",oauth_timestamp="${new Date().getTime()}",oauth_nonce="${uuidv4()}",oauth_version="1.0",oauth_signature="RwsRavuQuLPLnIruuDDptdhAKmHIHcYy%26SGJOxupzMPQDgZIyTvViHWsJThUgANniOGwpOVcK"`,
-        "Cookie" : "__cf_bm=ZRBJhla1.0V8zQKzEXR5RrnbmF6PH_mKFT3CsNNdBDQ-1712082306-1.0.1.1-VddeI_5khmbe24ebOy2ZIHXihH7CFausk7qzUcN.66Ic.qvCT7rhUOjpXQEFj_1Xlj56RG7XaFXpQ6_5bJn44Q"
-      }
-    })
-    const data = await response.json();
-    console.log(data);
-  }
+  // async checkLogin() : Promise<void> {
+  //   const response = await fetch("https://api.discogs.com/oauth/identity", {
+  //     headers: {
+  //       "Authorization" : `OAuth oauth_consumer_key="wTPpJsCySNodlbLlmBsP",oauth_token="mvOSiWtKTcQLpvODAnhfivIyJncuYExFgAkrxDwh",oauth_signature_method="PLAINTEXT",oauth_timestamp="${new Date().getTime()}",oauth_nonce="${uuidv4()}",oauth_version="1.0",oauth_signature="RwsRavuQuLPLnIruuDDptdhAKmHIHcYy%26SGJOxupzMPQDgZIyTvViHWsJThUgANniOGwpOVcK"`,
+  //       "Cookie" : "__cf_bm=ZRBJhla1.0V8zQKzEXR5RrnbmF6PH_mKFT3CsNNdBDQ-1712082306-1.0.1.1-VddeI_5khmbe24ebOy2ZIHXihH7CFausk7qzUcN.66Ic.qvCT7rhUOjpXQEFj_1Xlj56RG7XaFXpQ6_5bJn44Q"
+  //     }
+  //   })
+  //   const data = await response.json();
+  //   console.log(data);
+  // }
 
   async ngOnInit(): Promise<void> {
     const response = await fetch("http://localhost:3000/");

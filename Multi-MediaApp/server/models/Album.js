@@ -1,4 +1,4 @@
-import { Model, Schema, model } from "mongoose";
+const {Schema, model} = require("mongoose")
 
 const album = new Schema({
     artist: String,
@@ -9,4 +9,4 @@ const album = new Schema({
     id: Number
 })
 
-export const Album = model("albums", album);
+module.exports = model("albums", album);
