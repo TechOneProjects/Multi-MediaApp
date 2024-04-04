@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server" : "nodemon server/app.js"
+    "dev": "nodemon server/app.js"
   },
   "private": true,
   "dependencies": {
@@ -21,10 +21,8 @@
     "@angular/router": "^17.3.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
-    "mongodb": "6.5",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.0",
-    "nodemon": "^3.1.0",
-    "oauth": "^0.10.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "uuid": "^9.0.1",
@@ -42,6 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.1.0",
     "typescript": "~5.4.2"
   }
 }
