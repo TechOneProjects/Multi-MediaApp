@@ -10,13 +10,30 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
-        res.send({user: newUser});
+        res.status(200).send({user: newUser});
+    }
+    else{
+        res.status(406).send({error:"Passwords do not match"})
     }
 })
 
-router.post("/login", ( req, res ) => {
-    console.log(req.body);
-    res.send({msg: "getting data"});
+router.post("/login", async ( req, res ) => {
+    const { email, password } = req.body;
+    // model.find() returns an array
+    // model.findOne() returns a single document
+    // these are both asynchronous operations
+    const userLookup = await User.findOne({email:email});
+    if(userLookup){
+        if(userLookup.password === password){
+            res.status(200).send(userLookup);
+        }
+        else{
+            res.status(404).send({error:"Wrong password"});
+        }
+    }
+    else{
+        res.status(404).send({error:"user not found"});
+    }
 })
 
 module.exports = router;
