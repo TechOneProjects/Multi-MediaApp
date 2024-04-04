@@ -51,7 +51,7 @@ export class UpdateMovieComponent {
     private route: ActivatedRoute
   ) {}
 
-  baseUrl: string = 'http://localhost:3000/data';
+  baseUrl: string = 'http://localhost:5000/movies';
   moviesFromDB: any[] = [];
   movieId: string = '';
 
@@ -60,7 +60,7 @@ export class UpdateMovieComponent {
   updateMovie = new FormGroup({
     id: new FormControl<string>(''),
     title: new FormControl<string>(''),
-    complete_poster_path: new FormControl<string>(''),
+    poster_path: new FormControl<string>(''),
   });
 
   movieResolveService = inject(MovieResolveService);
@@ -71,15 +71,23 @@ export class UpdateMovieComponent {
   }
 
   onDelete() {
-    axios.delete(`${this.baseUrl}/${this.movieId}`).then((res: any) => {
-      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-      this.router.onSameUrlNavigation = 'reload';
-      this.router.navigate(['./movie'], {
-        relativeTo: this.route,
+    axios
+      .delete(`${this.baseUrl}/${this.movieId}`)
+      .then((res: any) => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate(['./movie'], {
+          relativeTo: this.route,
+        });
+      })
+      .then((res: any) => {
+        this._snackBar.open('Movie Successfully Deleted', 'Close');
+        this.dialogRef.closeAll();
+      })
+      .catch((error) => {
+        this._snackBar.open(error, 'Close');
+        this.dialogRef.closeAll();
       });
-    });
-    this._snackBar.open('Movie Successfully Deleted', 'Close');
-    this.dialogRef.closeAll();
   }
 
   onSubmit() {
@@ -88,7 +96,7 @@ export class UpdateMovieComponent {
     let isDatabaseUpdated = false;
 
     axios
-      .patch(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
+      .put(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
       .then((res: any) => {
         isDatabaseUpdated = true;
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -101,8 +109,8 @@ export class UpdateMovieComponent {
           this.dialogRef.closeAll();
         }
       })
-      .catch((err) => {
-        this._snackBar.open(err, 'Close');
+      .catch((error) => {
+        this._snackBar.open(error, 'Close');
         this.dialogRef.closeAll();
       });
   }
@@ -113,11 +121,12 @@ export class UpdateMovieComponent {
   ngOnInit(): void {
     this.subscription = this.movieResolveService.getDetails.subscribe(
       (res: any) => {
+        console.log(res)
         this.movieId = res.movieId;
         this.updateMovie = this.formBuilder.group({
           id: [res.movieId, Validators.required],
           title: [res.title, Validators.required],
-          complete_poster_path: [res.complete_poster_path, Validators.required],
+          poster_path: [res.poster_path, Validators.required],
         });
       }
     );

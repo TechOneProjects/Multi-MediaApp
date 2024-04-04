@@ -83,8 +83,8 @@ export class AddMovieComponent {
           this.dialogRef.closeAll();
         }
       })
-      .catch((err: string) => {
-        this._snackBar.open(err, 'Close');
+      .catch((error: string) => {
+        this._snackBar.open(error, 'Close');
         this.dialogRef.closeAll();
       });
   }

@@ -11,11 +11,11 @@ export class MovieResolveService {
   // followed example in stackoverflow
   private subjects = new BehaviorSubject("")
   getDetails = this.subjects.asObservable();
-    sendData(movieId: any, title: any, complete_poster_path: any) {
+    sendData(movieId: any, title: any, poster_path: any) {
       let body: any = {
         movieId: movieId,
         title: title,
-        complete_poster_path: complete_poster_path
+        poster_path: poster_path
       }
       this.subjects.next(body)
     }
