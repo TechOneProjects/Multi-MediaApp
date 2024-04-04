@@ -9,9 +9,9 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send({message: "Hello"})    
+    res.send({message: "Hello"});
 })
 
 mongoose.connect(MONGODB_URI).then(() => {
-    app.listen(3000)
+    app.listen(3000);
 })
