@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-app.put("/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const movie = await movieModel.findByIdAndUpdate(id, req.body);
@@ -49,7 +49,7 @@ app.put("/:id", async (req, res) => {
   }
 });
 
-app.delete("/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const movie = await movieModel.findByIdAndDelete(id);
