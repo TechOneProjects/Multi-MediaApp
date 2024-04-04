@@ -19,11 +19,14 @@ export class AppComponent implements OnInit {
     const response = await fetch("http://localhost:3000/auth/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": "Bearer<token>"
       },
       body: JSON.stringify({email: "test@mail.com", password: "test"})
     })
     const data = await response.json();
+    console.log(data);
+    // token data comes back as a random, hashed string
     localStorage.setItem("token", data)
     this.isLoggedIn = true;
   }
