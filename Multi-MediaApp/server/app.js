@@ -8,7 +8,7 @@ const MONGODB_URI = "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mon
 app.use(express.json());
 app.use(cors());
 
-app.get("/sign-up", (req, res) => {
+app.get("/", (req, res) => {
     res.send({message: "Hello"})    
 })
 
