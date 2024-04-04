@@ -1,5 +1,11 @@
-<input type="text" [(ngModel)]="searchQuery">
-<button (click)="queryDiscogs()">Search</button>
+
+
+<div>
+    <mat-form-field>
+        <input matInput type="text" [(ngModel)]="searchQuery">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="queryDiscogs()">Search</button>
+</div>
 
 <div>
     @for(album of searchResults; track album.id) {

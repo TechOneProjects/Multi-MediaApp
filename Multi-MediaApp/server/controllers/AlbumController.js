@@ -10,4 +10,9 @@ router.post("/new", async ( req, res ) =>{
         res.status(200).send(newAlbum);
 })
 
+router.get("/", async (req, res) => {
+        const albums = await Album.find();
+        res.send(albums)
+})
+
 module.exports = router;

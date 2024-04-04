@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchAlbum } from './search-album.interface';
-import { v4 as uuidv4 } from "uuid";
 import { DBAlbum } from '../chases-music/album.interface';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-album-search',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatButtonModule, MatInputModule, MatFormFieldModule],
   templateUrl: './album-search.component.html',
   styleUrl: './album-search.component.sass'
 })
@@ -44,6 +46,7 @@ export class AlbumSearchComponent {
       genres: selectedAlbum.genre,
       id: selectedAlbum.id
     }
+    this.selectedCompEvent.emit("album")
 
     this.addAlbumEvent.emit(albumToAdd);
   }
