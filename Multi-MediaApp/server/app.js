@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 // const MONGODB_URI = "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mongodb.net/?retryWrites=true&w=majority&appName=Multi-Media-App"
@@ -14,13 +15,46 @@ const movies = require("./controllers/MoviesController.js");
 app.use(express.json());
 app.use(cors());
 
+//authorization middlewear
+app.use(async (req, res, next) => {
+    console.log("checking for auth")
+    const prefix = 'Bearer ';
+    let auth = "";
+    if (req.header("Authorization")) {
+        auth = req.header('Authorization');
+    }
+    if (req.header("authorization")) {
+        auth = req.header("authorization")
+    }
+   
+    if (!auth) {
+        next();
+    } else if (auth.startsWith(prefix)) {
+        const token = auth.slice(prefix.length);
+        try {
+            const user = jwt.verify(token, "secret");
+            req.user = user.newUser
+            console.log("added to req.user", req.user)
+            next();
+
+        } catch (error) {
+            res.send(error)
+        }
+    } else {
+        res.status(403).send({
+            name: 'AuthorizationHeaderError',
+            message: `Authorization token must start with ${prefix}`
+        });
+    }
+})
+
 // controllers and their routes
 app.use('/auth', auth);
 app.use('/albums', albums);
 app.use('/movies', movies)
 
 app.get("/", (req, res) => {
-    res.send({message: "Hello"});
+    res.send({ message: "Hello" });
 })
 
 mongoose.connect(MONGODB_URI).then(() => {
