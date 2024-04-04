@@ -9,4 +9,6 @@ const album = new Schema({
     genres: Array,
 })
 
-export const Album = model("albums", album);
+const Album = model("albums", album);
+
+module.exports = Album;

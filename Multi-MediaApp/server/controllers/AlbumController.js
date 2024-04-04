@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Album = require("../models/AlbumModel.ts");
+const Album = require("../models/AlbumModel.js");
 
 router.post("/new", async ( req, res ) =>{
         // console.log(req.body)
