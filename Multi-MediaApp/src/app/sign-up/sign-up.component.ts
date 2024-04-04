@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { User } from "../../../server/schemas/userSchema";
+import mongoose from 'mongoose';
 
 @Component({
   selector: 'app-sign-up',
