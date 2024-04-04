@@ -36,7 +36,6 @@ app.use(async (req, res, next) => {
             req.user = user.newUser
             console.log("added to req.user", req.user)
             next();
-
         } catch (error) {
             res.send(error)
         }
