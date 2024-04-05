@@ -1,5 +1,6 @@
-import { Component, Input, inject } from '@angular/core';
-import axios from 'axios';
+import { Component, inject } from '@angular/core';
+import { DeleteMovieService } from '../delete-movie.service';
+import { UpdateMovieService } from '../update-movie.service';
 import {
   MatDialogModule,
   MatDialogTitle,
@@ -46,7 +47,9 @@ export class UpdateMovieComponent {
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private deleteMovieService: DeleteMovieService,
+    private updateMovieService: UpdateMovieService
   ) {}
 
   baseUrl: string = 'http://localhost:3000/movies';
@@ -69,48 +72,75 @@ export class UpdateMovieComponent {
   }
 
   onDelete() {
-    axios
-      .delete(`${this.baseUrl}/${this.movieId}`)
-      .then((res: any) => {
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['./movie'], {
-          relativeTo: this.route,
-        });
-      })
-      .then((res: any) => {
-        this._snackBar.open('Movie Successfully Deleted', 'Close');
-        this.dialogRef.closeAll();
-      })
-      .catch((error) => {
-        this._snackBar.open(error, 'Close');
-        this.dialogRef.closeAll();
-      });
+    this.deleteMovieService
+      .deleteMovie(this.movieId, `${this.baseUrl}/${this.movieId}`)
+      .subscribe(
+        (res: any) => {
+          // From YouTube tutorial on how to reload a component
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(['./movie'], {
+            relativeTo: this.route,
+          });
+
+          this._snackBar.open('Movie Successfully Deleted', 'Close');
+          this.dialogRef.closeAll();
+        },
+        (error) => {
+          this._snackBar.open(`Unable to delete movie: ${error}`, 'Close');
+          this.dialogRef.closeAll();
+        }
+      );
   }
 
   onSubmit() {
     this.updateMovie.markAllAsTouched();
     const isFormValid = this.updateMovie.valid;
     let isDatabaseUpdated = false;
-
-    axios
-      .put(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
-      .then((res: any) => {
-        isDatabaseUpdated = true;
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['./movie'], {
-          relativeTo: this.route,
-        });
-        if (isFormValid && isDatabaseUpdated) {
-          this._snackBar.open('Movie Successfully Updated', 'Close');
+    this.updateMovieService
+      .updateMovie(
+        this.movieId,
+        this.updateMovie.value,
+        `${this.baseUrl}/${this.movieId}`
+      )
+      .subscribe(
+        (res: any) => {
+          isDatabaseUpdated = true;
+          // From YouTube tutorial on how to reload component
+          this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+          this.router.onSameUrlNavigation = 'reload';
+          this.router.navigate(['./movie'], {
+            relativeTo: this.route,
+          });
+          if (isFormValid && isDatabaseUpdated) {
+            this._snackBar.open('Movie Successfully Updated', 'Close');
+            this.dialogRef.closeAll();
+          }
+        },
+        (error) => {
+          this._snackBar.open(`Could not update movie: ${error}`, 'Close');
           this.dialogRef.closeAll();
         }
-      })
-      .catch((error) => {
-        this._snackBar.open(error, 'Close');
-        this.dialogRef.closeAll();
-      });
+      );
+
+    // axios
+    //   .put(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
+    //   .then((res: any) => {
+    //     isDatabaseUpdated = true;
+    //     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //     this.router.onSameUrlNavigation = 'reload';
+    //     this.router.navigate(['./movie'], {
+    //       relativeTo: this.route,
+    //     });
+    //     if (isFormValid && isDatabaseUpdated) {
+    //       this._snackBar.open('Movie Successfully Updated', 'Close');
+    //       this.dialogRef.closeAll();
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     this._snackBar.open(error, 'Close');
+    //     this.dialogRef.closeAll();
+    //   });
   }
 
   // following stackoverflow example
@@ -119,7 +149,7 @@ export class UpdateMovieComponent {
   ngOnInit(): void {
     this.subscription = this.movieResolveService.getDetails.subscribe(
       (res: any) => {
-        console.log(res)
+        console.log(res);
         this.movieId = res.movieId;
         this.updateMovie = this.formBuilder.group({
           id: [res.movieId, Validators.required],

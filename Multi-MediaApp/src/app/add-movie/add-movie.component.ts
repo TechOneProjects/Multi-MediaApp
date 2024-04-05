@@ -20,9 +20,8 @@ import {
 } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import axios from 'axios';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MediaPage2Component } from '../media-page-2/media-page-2.component';
+import { AddMovieService } from '../add-movie.service';
 
 @Component({
   selector: 'app-add-movie',
@@ -46,7 +45,8 @@ export class AddMovieComponent {
     private _snackBar: MatSnackBar,
     private dialogRef: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private addMovieService: AddMovieService
   ) {}
   databaseMovies: any[] = [];
 
@@ -63,30 +63,30 @@ export class AddMovieComponent {
   }
 
   onSubmit() {
-    console.log(this.addMovie.value);
     this.addMovie.markAllAsTouched();
     const isFormValid = this.addMovie.valid;
     let isAddedToDatabase = false;
     this.databaseMovies.push(this.addMovie.value);
-    axios
-      .post(`http://localhost:3000/movies`, this.addMovie.value)
-      .then((res: any) => {
+    if (isFormValid) {
+      this.addMovieService.addMovie(this.addMovie.value)
+      .subscribe((res: any) => {
         isAddedToDatabase = true;
-        // Youtube tutorial for reloading component
-        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-        this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['./movie'], {
+        // YouTube tutorial for reloading component
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false
+        this.router.onSameUrlNavigation = "reload"
+        this.router.navigate(["./movie"], {
           relativeTo: this.route,
-        });
-        if (isFormValid && isAddedToDatabase) {
-          this._snackBar.open('Movie Successfully Added', 'Close');
+        })
+
+        if(isFormValid && isAddedToDatabase) {
+          this._snackBar.open("Movie Successfully Added", "Close");
           this.dialogRef.closeAll();
         }
+      }, (error: string) => {
+        this._snackBar.open(error, "Close")
+        this.dialogRef.closeAll()
       })
-      .catch((error: string) => {
-        this._snackBar.open(error, 'Close');
-        this.dialogRef.closeAll();
-      });
+    }
   }
 
   ngOnInit(): void {

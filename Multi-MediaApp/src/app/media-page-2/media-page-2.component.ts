@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios';
+import { TrendingService } from '../trending.service';
+import { DatabaseService } from '../database.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,7 +23,12 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   styleUrl: './media-page-2.component.sass',
 })
 export class MediaPage2Component {
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private databaseService: DatabaseService,
+    private trendingService: TrendingService
+  ) {}
 
   movieResolveService = inject(MovieResolveService);
   openDialog(): void {
@@ -59,37 +65,37 @@ export class MediaPage2Component {
 
   loadMovies() {
     const databaseUrl = 'http://localhost:3000/movies';
-    axios
-      .get(databaseUrl, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then((data: any) => {
-        console.log(data.data);
-        this.databaseMovies = data.data;
-      });
+
+    this.databaseService.getDatabaseMovies(databaseUrl).subscribe(
+      (data: any) => {
+        this.databaseMovies = data;
+      },
+      (error) => {
+        console.error('Error fetching data:', error);
+      }
+    );
   }
 
   fetchData(): void {
-    axios
-      .get(this.trendingUrl, this.options)
-      .then((json: any) => {
-        this.trendingResults = json.data.results;
+    this.trendingService
+      .getTrendingMovies(this.trendingUrl, this.options)
+      .subscribe((json: any) => {
+        this.trendingResults = json.results;
         if (this.trendingResults.length > 0) {
           this.trendingTop3.push(this.trendingResults[0]);
           this.trendingTop3.push(this.trendingResults[1]);
           this.trendingTop3.push(this.trendingResults[2]);
         }
-      })
-      .catch((error: any) => console.error('error:' + error));
+      }, (error) => {
+        console.error("Error fetching data:", error)
+      });
   }
 
   verifyUser(): void {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token');
 
-    if(!token) {
-      this.router.navigate(["/login"])
+    if (!token) {
+      this.router.navigate(['/login']);
     }
   }
 
