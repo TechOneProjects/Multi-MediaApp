@@ -17,7 +17,7 @@ export class GeneralAboutUsPageComponent {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
   }
 
