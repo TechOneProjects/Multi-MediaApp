@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    this.testLogin();
-    this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
+    //this.testLogin();
+    //this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
   }
 }

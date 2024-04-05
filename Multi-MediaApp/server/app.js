@@ -11,6 +11,7 @@ const auth = require("./controllers/AuthController.js");
 const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
 
+
 app.use(express.json());
 app.use(cors());
 
