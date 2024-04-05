@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SignUpComponent],
+  imports: [RouterOutlet, LoginPageComponent, SignUpComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
