@@ -40,8 +40,8 @@ export class SignUpComponent {
     console.log(newUser)
 
     this.http.post("http://localhost:3000/auth/signup", newUser).subscribe(res => {
-      console.log(res)
-      localStorage.setItem("token", JSON.stringify(res))
+      console.log(res);
+      localStorage.setItem("token", JSON.stringify(res));
     })
   }
 
