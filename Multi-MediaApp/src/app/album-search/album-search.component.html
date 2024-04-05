@@ -1,16 +1,33 @@
+<div id="container">
+    <div id="search-box-container">
+            <mat-form-field id="search-box" appearance="outline">
+                <input matInput type="text" [(ngModel)]="searchQuery" (keydown.enter)="searchClicked()">
+                <mat-hint>Enter album or artist name</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="searchClicked()">Search</button>
+    </div>
 
-
-<div>
-    <mat-form-field>
-        <input matInput type="text" [(ngModel)]="searchQuery">
-    </mat-form-field>
-    <button mat-flat-button color="primary" (click)="queryDiscogs()">Search</button>
-</div>
-
-<div>
-    @for(album of searchResults; track album.id) {
-        <p>{{album.title}}</p>
-        <img [src]="album.cover_image" />
-        <button (click)="addAlbumToCollection(album.id)">Add to collection</button>
+    @if(isLoading) {
+        <mat-progress-bar mode="indeterminate" id="progress-bar"></mat-progress-bar>
+    } @else {
+        <div id="search-result-container">
+            @for(album of searchResults; track album.id) {
+                <div class="album-container">
+                    <h4>{{album.title}}</h4>
+                    <img [src]="album.cover_image" class="album-image"/>
+                    <button mat-raised-button (click)="addAlbumToCollection(album.id)" class="add-button">Add</button>
+                </div>
+            }
+        </div>
     }
+
+    <div id="page-button-container">
+        @if(pageNumber > 1) {
+            <button mat-stroked-button color="primary" class="page-button" (click)="prevPage()">Prev Page</button>
+        }
+        @if(searchResults.length) {
+            <button mat-stroked-button color="primary" class="page-button" (click)="nextPage()">Next Page</button>
+        }
+    </div>
+    
 </div>

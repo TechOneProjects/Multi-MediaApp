@@ -1,18 +1,7 @@
-<!-- <form [formGroup]="trackListForm">
-    @for(e of elemetnsArr; track e) {
-        <input type="text" formControlName="{{e}}">
-    }
-</form>
-
-<button (click)="addElement()">Add element</button>
-
- -->
-
 
 @if(selectedComp == "album") {
-    <button mat-button (click)="switchComp('search')">Add Album</button>
-    <app-album-display [dbAlbumArr]="dbAlbumArr"></app-album-display>
+    <app-album-display [dbAlbumArr]="dbAlbumArr" (selectedCompEvent)="switchComp($event)"></app-album-display>
 }@else {
-    <button mat-button (click)="switchComp('album')">Albums</button>
+    <button mat-button (click)="switchComp('album')">Back</button>
     <app-album-search (selectedCompEvent)="switchComp($event)" (addAlbumEvent)="addAlbum($event)"></app-album-search>
 }
