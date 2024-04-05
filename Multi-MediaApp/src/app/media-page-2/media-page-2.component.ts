@@ -68,6 +68,10 @@ export class MediaPage2Component {
 
     this.databaseService.getDatabaseMovies(databaseUrl).subscribe(
       (data: any) => {
+        if(Array.isArray(data)) {
+          this.databaseMovies = data.reverse()
+        }
+
         this.databaseMovies = data;
       },
       (error) => {

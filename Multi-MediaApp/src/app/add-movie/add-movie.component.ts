@@ -79,11 +79,15 @@ export class AddMovieComponent {
         })
 
         if(isFormValid && isAddedToDatabase) {
-          this._snackBar.open("Movie Successfully Added", "Close");
+          this._snackBar.open("Movie Successfully Added", "Close", {
+            duration: 3000
+          });
           this.dialogRef.closeAll();
         }
       }, (error: string) => {
-        this._snackBar.open(error, "Close")
+        this._snackBar.open(error, "Close", {
+          duration: 3000
+        })
         this.dialogRef.closeAll()
       })
     }

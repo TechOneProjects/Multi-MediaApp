@@ -83,11 +83,15 @@ export class UpdateMovieComponent {
             relativeTo: this.route,
           });
 
-          this._snackBar.open('Movie Successfully Deleted', 'Close');
+          this._snackBar.open('Movie Successfully Deleted', 'Close', {
+            duration: 3000
+          });
           this.dialogRef.closeAll();
         },
         (error) => {
-          this._snackBar.open(`Unable to delete movie: ${error}`, 'Close');
+          this._snackBar.open(`Unable to delete movie: ${error}`, 'Close', {
+            duration: 3000
+          });
           this.dialogRef.closeAll();
         }
       );
@@ -113,34 +117,19 @@ export class UpdateMovieComponent {
             relativeTo: this.route,
           });
           if (isFormValid && isDatabaseUpdated) {
-            this._snackBar.open('Movie Successfully Updated', 'Close');
+            this._snackBar.open('Movie Successfully Updated', 'Close', {
+              duration: 3000
+            });
             this.dialogRef.closeAll();
           }
         },
         (error) => {
-          this._snackBar.open(`Could not update movie: ${error}`, 'Close');
+          this._snackBar.open(`Could not update movie: ${error}`, 'Close', {
+            duration: 3000
+          });
           this.dialogRef.closeAll();
         }
       );
-
-    // axios
-    //   .put(`${this.baseUrl}/${this.movieId}`, this.updateMovie.value)
-    //   .then((res: any) => {
-    //     isDatabaseUpdated = true;
-    //     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    //     this.router.onSameUrlNavigation = 'reload';
-    //     this.router.navigate(['./movie'], {
-    //       relativeTo: this.route,
-    //     });
-    //     if (isFormValid && isDatabaseUpdated) {
-    //       this._snackBar.open('Movie Successfully Updated', 'Close');
-    //       this.dialogRef.closeAll();
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     this._snackBar.open(error, 'Close');
-    //     this.dialogRef.closeAll();
-    //   });
   }
 
   // following stackoverflow example
