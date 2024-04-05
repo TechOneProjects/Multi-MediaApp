@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SignUpComponent } from './sign-up/sign-up.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SignUpComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
@@ -32,7 +34,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    this.testLogin();
-    this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
+    //this.testLogin();
+    //this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
   }
 }
