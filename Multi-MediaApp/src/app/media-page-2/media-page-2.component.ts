@@ -79,23 +79,26 @@ export class MediaPage2Component {
   fetchData(): void {
     this.trendingService
       .getTrendingMovies(this.trendingUrl, this.options)
-      .subscribe((json: any) => {
-        this.trendingResults = json.results;
-        if (this.trendingResults.length > 0) {
-          this.trendingTop3.push(this.trendingResults[0]);
-          this.trendingTop3.push(this.trendingResults[1]);
-          this.trendingTop3.push(this.trendingResults[2]);
+      .subscribe(
+        (json: any) => {
+          this.trendingResults = json.results;
+          if (this.trendingResults.length > 0) {
+            this.trendingTop3.push(this.trendingResults[0]);
+            this.trendingTop3.push(this.trendingResults[1]);
+            this.trendingTop3.push(this.trendingResults[2]);
+          }
+        },
+        (error) => {
+          console.error('Error fetching data:', error);
         }
-      }, (error) => {
-        console.error("Error fetching data:", error)
-      });
+      );
   }
 
   verifyUser(): void {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
     }
   }
 
