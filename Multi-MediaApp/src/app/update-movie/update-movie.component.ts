@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { DeleteMovieService } from '../delete-movie.service';
 import { UpdateMovieService } from '../update-movie.service';
 import {
@@ -41,7 +41,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './update-movie.component.html',
   styleUrl: './update-movie.component.sass',
 })
-export class UpdateMovieComponent {
+export class UpdateMovieComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,

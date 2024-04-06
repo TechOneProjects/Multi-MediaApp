@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   MatDialogModule,
   MatDialogTitle,
@@ -39,7 +39,7 @@ import { AddMovieService } from '../add-movie.service';
   templateUrl: './add-movie.component.html',
   styleUrl: './add-movie.component.sass',
 })
-export class AddMovieComponent {
+export class AddMovieComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrendingService } from '../trending.service';
 import { DatabaseService } from '../database.service';
@@ -22,7 +22,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   templateUrl: './media-page-2.component.html',
   styleUrl: './media-page-2.component.sass',
 })
-export class MediaPage2Component {
+export class MediaPage2Component implements OnInit{
   constructor(
     public dialog: MatDialog,
     private router: Router,
