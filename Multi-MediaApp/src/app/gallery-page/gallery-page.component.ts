@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GalleryImageComponent } from '../gallery-image/gallery-image.component';
+import { GalleryFormComponent } from '../gallery-form/gallery-form.component';
 
 @Component({
   selector: 'app-gallery-page',
   standalone: true,
-  imports: [InfiniteScrollModule, GalleryImageComponent],
+  imports: [InfiniteScrollModule, GalleryImageComponent, GalleryFormComponent],
   templateUrl: './gallery-page.component.html',
   styleUrl: './gallery-page.component.sass',
 })

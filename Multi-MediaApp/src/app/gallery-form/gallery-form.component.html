@@ -1,0 +1,22 @@
+<h3>Submit a new Image to the Gallery</h3>
+<p id="gallery-form-instructions">
+    Please use the form below to submit a new image to the Gallery.
+    <br />
+    Please 
+</p>
+<p id="gallery-warning">
+    Admins have the right to remove harmful or offensive images from the gallery. This is a shared 
+    space for a collective experience, please respect your fellow human beings.
+</p>
+<form [formGroup]="newImageForm" (ngSubmit)="handleSubmit()" >
+    <label for="title">Title</label>
+    <input type="text" id="title" formControlName="title" />
+    <br />
+    <label for="imageURL">URL of the Image</label>
+    <input type="text" id="imageURL" formControlName="imageURL" />
+    <br />
+    <label for="altText">Title</label>
+    <input type="text" id="altText" formControlName="altText" />
+    <br />
+    <button type="submit">Submit Image</button>
+</form>
