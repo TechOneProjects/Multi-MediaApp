@@ -32,8 +32,8 @@ app.use(async (req, res, next) => {
     } else if (auth.startsWith(prefix)) {
         const token = auth.slice(prefix.length);
         try {
-            const user = jwt.verify(token, "secret");
-            req.user = user.newUser
+            const obj = jwt.verify(token, "secret");
+            req.user = obj.user
             console.log("added to req.user", req.user)
             next();
         } catch (error) {

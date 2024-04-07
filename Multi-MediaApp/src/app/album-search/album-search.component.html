@@ -15,7 +15,11 @@
                 <div class="album-container">
                     <h4>{{album.title}}</h4>
                     <img [src]="album.cover_image" class="album-image"/>
-                    <button mat-raised-button (click)="addAlbumToCollection(album.id)" class="add-button">Add</button>
+                    @if(isLoggedIn) {
+                        <button mat-raised-button (click)="addAlbumToCollection(album.id)" class="add-button">Add</button>
+                    } @else {
+                        <p class="login-message">Please log in to add albums</p>
+                    }
                 </div>
             }
         </div>

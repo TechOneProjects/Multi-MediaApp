@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchAlbum } from './search-album.interface';
 import { DBAlbum } from '../chases-music/album.interface';
@@ -14,7 +14,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
   templateUrl: './album-search.component.html',
   styleUrl: './album-search.component.sass'
 })
-export class AlbumSearchComponent {
+export class AlbumSearchComponent implements OnInit {
   @Output() selectedCompEvent = new EventEmitter<string>(); 
   @Output() addAlbumEvent = new EventEmitter<DBAlbum>();
 
@@ -22,6 +22,7 @@ export class AlbumSearchComponent {
   pageNumber: number = 1;
 
   isLoading:boolean = false;
+  isLoggedIn: boolean = false;
 
   searchResults: SearchAlbum[] = [];
 
@@ -74,6 +75,13 @@ export class AlbumSearchComponent {
   prevPage() {
     this.pageNumber--
     this.queryDiscogs();
+  }
+
+  ngOnInit(): void {
+    //check login
+    if(localStorage.getItem("token") != null) {
+      this.isLoggedIn = true;
+    }
   }
   
 }

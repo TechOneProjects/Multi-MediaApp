@@ -30,7 +30,8 @@ export class ChasesMusicComponent implements OnInit{
     const response = await fetch("http://localhost:3000/albums/new", {
       method: "POST",
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        "Authorization" : `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify(album)
     })
@@ -45,6 +46,22 @@ export class ChasesMusicComponent implements OnInit{
       this.dbAlbumArr = data;
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async login(): Promise<void> {
+    try {
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          "content-Type" : "application/json"
+        },
+        body: JSON.stringify({email: "cforlini24@gamil.com", password: "password"})
+      });
+      const data = await response.json();
+      localStorage.setItem("token", data);
+    } catch(error) {
+      console.log(error)
     }
   }
 

@@ -3,11 +3,14 @@ const router = express.Router();
 const Album = require("../models/AlbumModel.js");
 
 router.post("/new", async ( req, res ) =>{
-        // console.log(req.body)
-        const newAlbum = new Album(req.body);
-        // console.log(newAlbum)
-        await newAlbum.save();
-        res.status(200).send(newAlbum);
+        console.log(req.user);
+        if(req.user) {         
+                const newAlbum = new Album(req.body);
+                await newAlbum.save();
+                res.status(200).send(newAlbum);
+        } else {
+                res.status(405).json({message: "Unauthorized"});
+        }
 })
 
 router.get("/", async (req, res) => {

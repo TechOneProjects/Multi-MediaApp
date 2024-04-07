@@ -1,4 +1,4 @@
-
+<button (click)="login()">Login</button>
 @if(selectedComp == "album") {
     <app-album-display [dbAlbumArr]="dbAlbumArr" (selectedCompEvent)="switchComp($event)"></app-album-display>
 }@else {
