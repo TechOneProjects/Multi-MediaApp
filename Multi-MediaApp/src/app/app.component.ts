@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,ChasesMusicComponent],
+  imports: [RouterOutlet, LoginPageComponent, SignUpComponent,ChasesMusicComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
@@ -34,7 +36,7 @@ export class AppComponent implements OnInit {
   }
  
   ngOnInit(): void {
-    // this.testLogin();
-    // this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
+    //this.testLogin();
+    //this.http.get("http://localhost:3000/").subscribe(data=>console.log(data));
   }
 }
