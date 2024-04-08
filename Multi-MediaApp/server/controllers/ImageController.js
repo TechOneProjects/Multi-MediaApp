@@ -20,40 +20,40 @@ router.post("/", async (req, res) => {
   }
 });
 
-// router.put("/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const movie = await movieModel.findByIdAndUpdate(id, req.body);
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const image = await Image.findByIdAndUpdate(id, req.body);
 
-//     if (!movie) {
-//       return res
-//         .status(404)
-//         .json({ message: `Cannot find movie with ID ${id}` });
-//     }
+    if (!image) {
+      return res
+        .status(404)
+        .json({ message: `Cannot find image with ID ${id}` });
+    }
 
-//     const updatedMovie = await movieModel.findById(id);
+    const updatedImage = await Image.findById(id);
 
-//     res.status(200).json(updatedMovie);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+    res.status(200).json(updatedImage);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const movie = await movieModel.findByIdAndDelete(id);
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const image = await Image.findByIdAndDelete(id);
 
-//     if (!movie) {
-//       return res
-//         .status(404)
-//         .json({ message: `Cannot find any movies with ID ${id}.` });
-//     }
+    if (!image {
+      return res
+        .status(404)
+        .json({ message: `Whoops! No Images with ID of ${id}.` });
+    }
 
-//     res.status(200).json(movie);
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+    res.status(200).json(image);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 module.exports = router;
