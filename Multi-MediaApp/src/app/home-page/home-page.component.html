@@ -34,10 +34,7 @@
         <button (click)="changeSelectedMedia('daniel')">Daniel</button>
     </div>
     <div id="content-container">
-        <a [routerLink]="featuredMedia?.contentLink">
-            <h3>{{featuredMedia?.title}}</h3>
+            <h3>{{featuredMedia?.contentDesc}}</h3>
             <img [src]="featuredMedia?.imageURL">
-            <p>{{featuredMedia?.contentDesciption}}</p>
-        </a>
     </div>
 </div>

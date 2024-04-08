@@ -10,24 +10,40 @@ import { Featured } from "./featured.interface"
   styleUrl: './home-page.component.sass'
 })
 export class HomePageComponent implements OnInit{
-  allFeatured: any = {}
-  featuredMedia: Featured | undefined
+  allFeatured: any = {
+    "movies" : {
+      "imageURL" : "https://image.tmdb.org/t/p/w500/czembW0Rk1Ke7lCJGahbOhdCuhV.jpg",
+      "contentDesc" : "Dune: Part Two"
+    },
+     "music" : {
+      "imageURL" : "https://i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg",
+      "contentDesc": "Radiohead - Ok, Computer" 
+    },
+     "games" : {
+      "imageURL" : "",
+      "contentDesc": "" 
+    },
+     "gallery" : {
+      "imageURL" : "",
+      "contentDesc": "" 
+    },
+     "characters" : {
+      "imageURL" : "",
+      "contentDesc": "" 
+    },
+     "daniel" : {
+      "imageURL" : "",
+      "contentDesc": "" 
+    },
+    
+  }
+  featuredMedia: Featured | undefined 
   
   changeSelectedMedia(option: string) : void {
     this.featuredMedia = this.allFeatured[option]
   }
   
-  async fetchFeatured() : Promise<void> {
-    const response = await fetch(`http://localhost:3000/featured`);
-    const data = await response.json();
-    this.allFeatured = data;
-    this.featuredMedia = data.music
-
-    //pseudo response
-    // this.featuredMedia.type = music;
-  }
-  
   ngOnInit(): void {
-    this.fetchFeatured();
+
   }
 }

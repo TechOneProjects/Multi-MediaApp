@@ -3,11 +3,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginPageComponent, SignUpComponent],
+  imports: [RouterOutlet, LoginPageComponent, SignUpComponent, HomePageComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
