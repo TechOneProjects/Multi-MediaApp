@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { setUser } from '../actions/user.actions';
+// import { Store } from '@ngrx/store';
+// import { setUser } from '../actions/user.actions';
 import { User } from '../user';
 
 
@@ -15,7 +15,7 @@ import { User } from '../user';
 })
 export class LoginPageComponent {
   http = inject(HttpClient);
-  store = inject(Store);
+  // store = inject(Store);
 
   serverAddress:string = "http://localhost:3000/auth";
 
@@ -45,9 +45,9 @@ export class LoginPageComponent {
     }
 
     this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe( res => {
-      // console.log(res);
+      console.log(res);
       const { user, token } = res as {user:User, token:string};
-      this.store.dispatch(setUser())
+      // this.store.dispatch(setUser())
       localStorage.setItem("token", JSON.stringify(res));
       
     })
@@ -55,7 +55,7 @@ export class LoginPageComponent {
 
   getUserFromStore(){
     console.log("getting user");
-    console.log(this.store.select('user'));
+    // console.log(this.store.select('user'));
   }
 
 }

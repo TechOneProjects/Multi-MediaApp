@@ -35,6 +35,7 @@ router.post("/login", async ( req, res ) => {
     // model.find() returns an array
     // model.findOne() returns a single document
     // these are both asynchronous operations
+    console.log("loggin in")
     const userLookup = await User.findOne({email:email});
     if(userLookup){
         if(userLookup.password === password){
