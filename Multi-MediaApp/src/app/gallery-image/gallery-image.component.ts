@@ -15,4 +15,9 @@ export class GalleryImageComponent {
     altText:string,
     uid:number
   } = {id:0,title:"",imageURL:"", altText:"", uid:0};
+
+  /*
+    Gotta take the userID and compare that to `imageData.uid`
+    Gotta implement state
+  */
 }
