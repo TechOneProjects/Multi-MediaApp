@@ -39,7 +39,7 @@ router.post("/login", async ( req, res ) => {
     if(userLookup){
         if(userLookup.password === password){
             const token = jwt.sign({userLookup}, "secret");
-            res.status(200).send(JSON.stringify(token));
+            res.status(200).send(JSON.stringify({user:userLookup,token:token}));
         }
         else{
             res.status(404).send({error:"Wrong password"});

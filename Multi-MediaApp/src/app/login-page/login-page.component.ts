@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { setUser } from '../actions/user.actions';
+import { User } from '../user';
+
 
 @Component({
   selector: 'app-login-page',
@@ -11,8 +15,10 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 })
 export class LoginPageComponent {
   http = inject(HttpClient);
+  store = inject(Store);
+
   serverAddress:string = "http://localhost:3000/auth";
-  allUserData:{email:String, password:String}[] = [];
+
   loginMessage:String = "";
   
   userInfo:FormGroup = new FormGroup({
@@ -39,10 +45,17 @@ export class LoginPageComponent {
     }
 
     this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe( res => {
-      console.log(res);
+      // console.log(res);
+      const { user, token } = res as {user:User, token:string};
+      this.store.dispatch(setUser())
       localStorage.setItem("token", JSON.stringify(res));
+      
     })
+  }
 
+  getUserFromStore(){
+    console.log("getting user");
+    console.log(this.store.select('user'));
   }
 
 }
