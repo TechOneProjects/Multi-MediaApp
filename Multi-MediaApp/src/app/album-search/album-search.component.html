@@ -1,8 +1,12 @@
 <div id="container">
     <div id="search-box-container">
             <mat-form-field id="search-box" appearance="outline">
-                <input matInput type="text" [(ngModel)]="searchQuery" (keydown.enter)="searchClicked()">
-                <mat-hint>Enter album or artist name</mat-hint>
+                <input matInput type="text" [(ngModel)]="searchQuery" (keydown.enter)="searchClicked()" [disabled]="!isLoggedIn">
+                @if(isLoggedIn) {
+                    <mat-hint>Enter album or artist name</mat-hint>
+                } @else {
+                    <mat-error>Please log in to search</mat-error>
+                }
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="searchClicked()">Search</button>
     </div>
@@ -16,7 +20,7 @@
                     <h4>{{album.title}}</h4>
                     <img [src]="album.cover_image" class="album-image"/>
                     @if(isLoggedIn) {
-                        <button mat-raised-button (click)="addAlbumToCollection(album.id)" class="add-button">Add</button>
+                        <button mat-flat-button (click)="addAlbumToCollection(album.id)" color="primary" class="add-button">Add</button>
                     } @else {
                         <p class="login-message">Please log in to add albums</p>
                     }
