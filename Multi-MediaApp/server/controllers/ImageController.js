@@ -44,7 +44,7 @@ router.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const image = await Image.findByIdAndDelete(id);
 
-    if (!image {
+    if (!image) {
       return res
         .status(404)
         .json({ message: `Whoops! No Images with ID of ${id}.` });
