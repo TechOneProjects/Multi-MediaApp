@@ -22,7 +22,7 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
-        const token = jwt.sign({newUser}, "secret");
+        const token = {"token", jwt.sign({newUser}, "secret")};
         res.status(200).send(JSON.stringify(token));
     }
     else{
@@ -38,7 +38,7 @@ router.post("/login", async ( req, res ) => {
     const userLookup = await User.findOne({email:email});
     if(userLookup){
         if(userLookup.password === password){
-            const token = jwt.sign({userLookup}, "secret");
+            const token = {"token" : jwt.sign({userLookup}, "secret")};
             res.status(200).send(JSON.stringify(token));
         }
         else{
