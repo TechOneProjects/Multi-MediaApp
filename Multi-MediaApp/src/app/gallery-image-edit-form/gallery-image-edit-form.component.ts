@@ -1,17 +1,25 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Inject, Input, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-gallery-image-edit-form',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './gallery-image-edit-form.component.html',
   styleUrl: './gallery-image-edit-form.component.sass'
 })
 export class GalleryImageEditFormComponent {
-  @Input() imageData!:{id:String, imageURL:String, altText:String, title:String};
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: { id:String, imageURL:String, altText:String, title:String }) { }
+  imageData:{id:String, imageURL:String, altText:String, title:String} = {
+    id: this.data.id,
+    imageURL: this.data.imageURL,
+    altText: this.data.altText,
+    title: this.data.title
+  }
   http = inject(HttpClient);
+  bottomSheetRef = inject(MatBottomSheetRef);
   endpoint:String = `http://localhost:3000/gallery/${this.imageData.id}`
 
   editImageForm:FormGroup = new FormGroup({
@@ -34,5 +42,10 @@ export class GalleryImageEditFormComponent {
     this.http.delete(`${this.endpoint}`).subscribe( res =>{
       console.log("deleted this one");
     })
+  }
+
+  closeElement(e: MouseEvent){
+    this.bottomSheetRef.dismiss();
+    e.preventDefault();
   }
 }
