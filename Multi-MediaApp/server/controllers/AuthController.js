@@ -20,9 +20,9 @@ router.post("/signup", async (req, res)=>{
     if(password === passwordConfirmation){
         // The model.create() method is the same as calling new User() and User().save() at the same time
         // it is an asynchronous method, use async-await
-        const user = await User.create({email:email, password:password, username:username});
-        console.log(user);
-        const token = jwt.sign({user}, "secret");
+        const newUser = await User.create({email:email, password:password, username:username});
+        console.log(newUser);
+        const token = {"token": jwt.sign({newUser}, "secret")};
         res.status(200).send(JSON.stringify(token));
     }
     else{
@@ -35,10 +35,10 @@ router.post("/login", async ( req, res ) => {
     // model.find() returns an array
     // model.findOne() returns a single document
     // these are both asynchronous operations
-    const user = await User.findOne({email:email});
-    if(user){
-        if(user.password === password){
-            const token = jwt.sign({user}, "secret");
+    const userLookup = await User.findOne({email:email});
+    if(userLookup){
+        if(userLookup.password === password){
+            const token = {"token" : jwt.sign({userLookup}, "secret")};
             res.status(200).send(JSON.stringify(token));
         }
         else{
