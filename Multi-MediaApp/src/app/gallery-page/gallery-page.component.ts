@@ -48,11 +48,28 @@ export class GalleryPageComponent implements OnInit {
     }
   }
 
+  sendDataToServer(data:{title:string, imageURL:string, altText:string}){
+    const imageObj:{ title:string, imageURL:string, altText:string, uid:Number } = {
+      title: data.title,
+      imageURL: data.imageURL,
+      altText: data.altText,
+      uid: 0
+    }
+    this.http.post(`${this.serverAddress}/`, imageObj).subscribe(res => {
+      console.log(res);
+      this.galleryData.push(res as {
+        id: number;
+        uid: number;
+        title: string;
+        imageURL: string;
+        altText: string;
+      })
+    })
+  }
+
   ngOnInit(): void {
     this.http.get(this.serverAddress).subscribe((data) => {
       this.galleryData = data as [];
-      console.log(this.galleryData);
-      this.addImagesToRender();
     });
   }
 
