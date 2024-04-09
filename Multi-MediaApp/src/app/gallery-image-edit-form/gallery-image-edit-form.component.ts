@@ -11,10 +11,10 @@ import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bott
   styleUrl: './gallery-image-edit-form.component.sass'
 })
 export class GalleryImageEditFormComponent {
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: { id:String, imageURL:String, altText:String, title:String }) { }
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: { _id:String, imageURL:String, altText:String, title:String }) { }
   
-  imageData:{id:String, imageURL:String, altText:String, title:String} = {
-    id: this.data.id,
+  imageData:{_id:String, imageURL:String, altText:String, title:String} = {
+    _id: this.data._id,
     imageURL: this.data.imageURL,
     altText: this.data.altText,
     title: this.data.title
@@ -22,11 +22,11 @@ export class GalleryImageEditFormComponent {
   
   http = inject(HttpClient);
   bottomSheetRef = inject(MatBottomSheetRef);
-  endpoint:String = `http://localhost:3000/gallery/${this.imageData.id}`
+  endpoint:String = `http://localhost:3000/gallery/${this.imageData._id}`
   editImageForm:FormGroup = new FormGroup({
-    title: new FormControl(""),
-    imageURL: new FormControl(""),
-    altText: new FormControl("")
+    title: new FormControl(this.imageData.title),
+    imageURL: new FormControl(this.imageData.imageURL),
+    altText: new FormControl(this.imageData.altText)
   })
   
   
@@ -38,6 +38,7 @@ export class GalleryImageEditFormComponent {
     }
     this.http.put(`${this.endpoint}`, imageObj).subscribe( res=>{
       console.log(res);
+      this.bottomSheetRef.dismiss();
     })
   }
 
@@ -45,7 +46,7 @@ export class GalleryImageEditFormComponent {
   handleDelete(){
     this.http.delete(`${this.endpoint}`).subscribe( res =>{
       console.log("deleted this one");
-      this.deleteMeEvent.emit(this.imageData.id);
+      this.deleteMeEvent.emit(this.imageData._id);
     })
   }
 

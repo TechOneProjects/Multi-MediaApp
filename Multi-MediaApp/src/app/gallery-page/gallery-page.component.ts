@@ -22,31 +22,6 @@ export class GalleryPageComponent implements OnInit {
     imageURL: string;
     altText: string;
   }[] = [];
-  
-  // renderedGalleryData: {
-  //   id: number;
-  //   uid: number;
-  //   title: string;
-  //   imageURL: string;
-  //   altText: string;
-  // }[] = [];
-  // renderIndex: number = 0;
-  // addImagesToRender() {
-  //   let addCount = 0;
-  //   const imagesToAdd: any[] = this.galleryData.slice(
-  //     this.renderIndex,
-  //     this.galleryData.length - 1
-  //   );
-  //   for (let imageData of imagesToAdd) {
-  //     console.log(imageData);
-  //     this.renderedGalleryData.push(imageData);
-  //     addCount++;
-  //     this.renderIndex++;
-  //     if (addCount >= 9) {
-  //       break;
-  //     }
-  //   }
-  // }
 
   sendDataToServer(data:{title:string, imageURL:string, altText:string}){
     const imageObj:{ title:string, imageURL:string, altText:string, uid:Number } = {

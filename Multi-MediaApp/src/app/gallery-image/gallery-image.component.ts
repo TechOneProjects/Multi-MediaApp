@@ -31,7 +31,7 @@ export class GalleryImageComponent {
 
   openEditForm():void{
     this.editForm.open(GalleryImageEditFormComponent, {
-      data: { id: this.imageData._id, imageURL: this.imageData.imageURL, altText: this.imageData.altText, title: this.imageData.title }
+      data: { _id: this.imageData._id, imageURL: this.imageData.imageURL, altText: this.imageData.altText, title: this.imageData.title }
     });
   }
   /*
