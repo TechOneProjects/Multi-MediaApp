@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MediaPage4Component } from './media-page-4/media-page-4.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, MediaPage4Component],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit {
       body: JSON.stringify({email: "test@mail.com", password: "test"})
     })
     const data = await response.json();
-    // token data comes back as a random, hashed string
+    // token data comes back as a random, hashed stringY
     localStorage.setItem("token", data)
     this.isLoggedIn = true;
   }
