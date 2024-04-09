@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import {
   MatBottomSheet,
   MatBottomSheetModule
@@ -14,18 +14,24 @@ import { GalleryImageEditFormComponent } from '../gallery-image-edit-form/galler
 })
 export class GalleryImageComponent {
   @Input() imageData:{
-    id:number,
+    _id:string,
     title:string,
     imageURL:string,
     altText:string,
-    uid:number
-  } = {id:0,title:"",imageURL:"", altText:"", uid:0};
+    uid:string
+  } = {_id:"",title:"",imageURL:"", altText:"", uid:""};
+  
+  @Output() deleteImageEvent:EventEmitter<String> = new EventEmitter<String>;
+  handleDeleteEvent():void{
+    console.log(`id is ${this.imageData._id}`);
+    this.deleteImageEvent.emit(this.imageData._id);
+  }
 
   editForm = inject(MatBottomSheet);
 
   openEditForm():void{
     this.editForm.open(GalleryImageEditFormComponent, {
-      data: { id: this.imageData.id, imageURL: this.imageData.imageURL, altText: this.imageData.altText, title: this.imageData.title }
+      data: { id: this.imageData._id, imageURL: this.imageData.imageURL, altText: this.imageData.altText, title: this.imageData.title }
     });
   }
   /*

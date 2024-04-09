@@ -7,8 +7,8 @@
 </div> -->
 
 <div class="scrolling-gallery">
-    @for (imageData of galleryData; track imageData.id) {
-        <app-gallery-image [imageData]="imageData" />
+    @for (imageData of galleryData; track imageData._id) {
+        <app-gallery-image [imageData]="imageData" (deleteImageEvent)="deleteImage($event)" />
     }
 </div>
 
