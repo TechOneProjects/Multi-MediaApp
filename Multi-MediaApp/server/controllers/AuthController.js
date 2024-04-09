@@ -3,6 +3,17 @@ const router = express.Router();
 const User = require("../models/UserModel.js");
 const jwt = require("jsonwebtoken");
 
+router.get("/", async ( req, res ) => {
+    console.log(req.get("Authorization"));
+    const token = jwt.get; // this doesnt actually get a token
+    if(token){
+        res.status(200).send(JSON.stringify(token));
+    }
+    else{
+        res.status(200).send({msg:"no log in"});
+    }
+})
+
 router.post("/signup", async (req, res)=>{
     console.log(req.body);
     const { email, password, passwordConfirmation, username } = req.body;
@@ -17,7 +28,7 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
-        const token = jwt.sign({newUser}, "secret");
+        const token = {"token": jwt.sign({newUser}, "secret")};
         res.status(200).send(JSON.stringify(token));
     }
     else{
@@ -33,7 +44,7 @@ router.post("/login", async ( req, res ) => {
     const userLookup = await User.findOne({email:email});
     if(userLookup){
         if(userLookup.password === password){
-            const token = jwt.sign({userLookup}, "secret");
+            const token = {"token" : jwt.sign({userLookup}, "secret")};
             res.status(200).send(JSON.stringify(token));
         }
         else{
