@@ -16,15 +16,24 @@ export class GalleryPageComponent implements OnInit {
   http = inject(HttpClient);
   galleryHelper = inject(GalleryHelperService);
   serverAddress = 'http://localhost:3000/gallery';
+  scrollPanel:HTMLElement | null = document.getElementById("");
 
   ngOnInit(): void {
     this.galleryHelper.getAllGalleryData();
+    this.scrollPanel = document.getElementById("scrolling-gallery");
+
+    if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+      this.beginScrollPanelAnimation();
+    }
   }
 
-  onScrolled(e: any) {
+  beginScrollPanelAnimation():void{
+    this.scrollPanel?.setAttribute("data-animated", "true");
+  }
+  // onScrolled(e: any) {
     // if(this.galleryData.length > 0){
     //   console.log("scrolled!!");
       // this.addImagesToRender();
     // }
-  }
+  // }
 }

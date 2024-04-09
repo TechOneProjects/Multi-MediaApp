@@ -26,8 +26,6 @@ export class GalleryHelperService implements OnInit {
   getAllGalleryData():void{
     this.http.get(this.serverAddress).subscribe( (res) => {
       this.gallery = res as [];
-      console.log("Gallery is : " + this.gallery);
-      console.log(this.gallery);
     }) 
   }
 

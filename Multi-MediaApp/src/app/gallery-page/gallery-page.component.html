@@ -6,10 +6,12 @@
     }
 </div> -->
 
-<div class="scrolling-gallery">
-    @for (imageData of galleryHelper.gallery; track imageData._id) {
-        <app-gallery-image [imageData]="imageData" />
-    }
+<div id="scrolling-gallery">
+    <div id="scroll-panel">
+        @for (imageData of galleryHelper.gallery; track imageData._id) {
+            <app-gallery-image [imageData]="imageData" />
+        }
+    </div>
 </div>
 
 <app-gallery-form />
