@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from './sign-up.user.interface'
-import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
-import { UserService } from '../../services/user.service';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -23,11 +21,18 @@ export class SignUpComponent {
     password: new FormControl('', Validators.required),
     passwordConfirmation: new FormControl('', Validators.required)
   })
-
-  userService = inject(UserService)
   http = inject(HttpClient)
+  errorMessage: string = '';
+
   async onSubmit(){
-    // logic that adds new users to the databse
+    if (this.userInfo.invalid) {
+      this.errorMessage = 'Please fill out all fields.';
+      return;
+    }
+    if (this.userInfo.value.password !== this.userInfo.value.passwordConfirmation) {
+      this.errorMessage = 'Passwords do not match.';
+      return;
+    }
     const newUser: User = {
       id: uuidv4(),
       email: this.userInfo.value.email,
@@ -39,9 +44,14 @@ export class SignUpComponent {
 
     console.log(newUser)
 
-    this.http.post("http://localhost:3000/auth/signup", newUser).subscribe(res => {
+    this.http.post("http://localhost:3000/auth/signup", newUser).subscribe((res: any) => {
+      if (res.error){
+        this.errorMessage = res.error;
+      }
+      else {
       console.log(res)
       localStorage.setItem("token", JSON.stringify(res))
+      }
     })
   }
 

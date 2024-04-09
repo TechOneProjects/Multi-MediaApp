@@ -6,6 +6,12 @@ const jwt = require("jsonwebtoken");
 router.post("/signup", async (req, res)=>{
     console.log(req.body);
     const { email, password, passwordConfirmation, username } = req.body;
+    const emailExists = await User.findOne({email:email})
+    if(emailExists){
+        console.log("email exists")
+        res.send({error:"Email Already Exists"})
+        return
+    }
     if(password === passwordConfirmation){
         // The model.create() method is the same as calling new User() and User().save() at the same time
         // it is an asynchronous method, use async-await
