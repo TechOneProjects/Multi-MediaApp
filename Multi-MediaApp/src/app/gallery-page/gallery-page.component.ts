@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 // import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { GalleryImageComponent } from '../gallery-image/gallery-image.component';
 import { GalleryFormComponent } from '../gallery-form/gallery-form.component';
+import { GalleryHelperService } from '../services/gallery-helper.service';
 
 @Component({
   selector: 'app-gallery-page',
@@ -13,57 +14,17 @@ import { GalleryFormComponent } from '../gallery-form/gallery-form.component';
 })
 export class GalleryPageComponent implements OnInit {
   http = inject(HttpClient);
+  galleryHelper = inject(GalleryHelperService);
   serverAddress = 'http://localhost:3000/gallery';
 
-  galleryData: {
-    _id: string;
-    uid: string;
-    title: string;
-    imageURL: string;
-    altText: string;
-  }[] = [];
-
-  sendDataToServer(data:{title:string, imageURL:string, altText:string}){
-    const imageObj:{ title:string, imageURL:string, altText:string, uid:Number } = {
-      title: data.title,
-      imageURL: data.imageURL,
-      altText: data.altText,
-      uid: 0
-    }
-    this.http.post(`${this.serverAddress}/`, imageObj).subscribe(res => {
-      console.log(res);
-      this.galleryData.push(res as {
-        _id: string;
-        uid: string;
-        title: string;
-        imageURL: string;
-        altText: string;
-      })
-    })
-  }
-
-  deleteImage(id:String):void{
-    this.http.delete(`${this.serverAddress}/${id}`).subscribe( res =>{
-      this.galleryData = this.galleryData.filter( (image) => {
-        if(image._id != id){
-          return image;
-        }
-        else return null;
-      })
-    })
-  }
-
   ngOnInit(): void {
-    this.http.get(this.serverAddress).subscribe((data) => {
-      console.log(data);
-      this.galleryData = data as [];
-    });
+    this.galleryHelper.getAllGalleryData();
   }
 
   onScrolled(e: any) {
-    if(this.galleryData.length > 0){
-      console.log("scrolled!!");
+    // if(this.galleryData.length > 0){
+    //   console.log("scrolled!!");
       // this.addImagesToRender();
-    }
+    // }
   }
 }

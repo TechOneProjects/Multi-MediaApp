@@ -13,8 +13,8 @@ export class GalleryHelperService implements OnInit {
     title:string,
     imageURL:string,
     altText:string,
-    uid:String
-    _id:String
+    uid:string
+    _id:string
   }[] = [];
 
   ngOnInit(): void {
@@ -23,15 +23,22 @@ export class GalleryHelperService implements OnInit {
     })
   }
 
+  getAllGalleryData():void{
+    this.http.get(this.serverAddress).subscribe( (res) => {
+      this.gallery = res as [];
+      console.log("Gallery is : " + this.gallery);
+      console.log(this.gallery);
+    }) 
+  }
+
   addImageToGallery(data:{title:string, imageURL:string, altText:string}){
     const imageObj:{ title:string, imageURL:string, altText:string, uid:String } = {
       title: data.title,
       imageURL: data.imageURL,
       altText: data.altText,
-      uid: ""
+      uid: "0"
     }
     this.http.post(`${this.serverAddress}/`, imageObj).subscribe(res => {
-      console.log(res);
       this.gallery.push(res as {
         _id: string;
         uid: string;
@@ -41,18 +48,7 @@ export class GalleryHelperService implements OnInit {
       })
     })
   }
-
-  deleteImage(id:String):void{
-    this.http.delete(`${this.serverAddress}/${id}`).subscribe( res =>{
-      this.gallery = this.gallery.filter( (image:{_id:String}) => {
-        if(image._id != id){
-          return image;
-        }
-        else return null;
-      })
-    })
-  }
-
+    
   updateImage(imageObj:{
     title:string,
     imageURL:string,
@@ -68,7 +64,7 @@ export class GalleryHelperService implements OnInit {
       imageURL:imageObj.imageURL,
       altText:imageObj.altText
     }
-
+    
     this.http.put(`${this.serverAddress}/${imageObj._id}`, data).subscribe( (res) => {
       this.gallery = this.gallery.map( (image) => {
         if(image._id === imageObj._id){
@@ -84,5 +80,16 @@ export class GalleryHelperService implements OnInit {
       })
     })
   }
+  
+    deleteImage(id:String):void{
+      this.http.delete(`${this.serverAddress}/${id}`).subscribe( res =>{
+        this.gallery = this.gallery.filter( (image:{_id:String}) => {
+          if(image._id != id){
+            return image;
+          }
+          else return null;
+        })
+      })
+    }
 
 }

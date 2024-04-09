@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import {
   MatBottomSheet,
   MatBottomSheetModule
 } from "@angular/material/bottom-sheet"
 import { GalleryImageEditFormComponent } from '../gallery-image-edit-form/gallery-image-edit-form.component';
+import { GalleryHelperService } from '../services/gallery-helper.service';
 
 @Component({
   selector: 'app-gallery-image',
@@ -21,10 +22,11 @@ export class GalleryImageComponent {
     uid:string
   } = {_id:"",title:"",imageURL:"", altText:"", uid:""};
   
-  @Output() deleteImageEvent:EventEmitter<String> = new EventEmitter<String>;
+  galleryHelper = inject(GalleryHelperService);
+  
   handleDeleteEvent():void{
     console.log(`id is ${this.imageData._id}`);
-    this.deleteImageEvent.emit(this.imageData._id);
+    this.galleryHelper.deleteImage(this.imageData._id);
   }
 
   editForm = inject(MatBottomSheet);

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { GalleryHelperService } from '../services/gallery-helper.service';
 
 @Component({
   selector: 'app-gallery-form',
@@ -14,14 +15,20 @@ export class GalleryFormComponent {
     imageURL: new FormControl(""),
     altText: new FormControl("")
   })
-  
-  @Output() sendFormData:EventEmitter<{title:string, imageURL:string, altText:string}> = new EventEmitter<{title:string, imageURL:string, altText:string}>
 
-  handleSubmit(){
-    this.sendFormData.emit({
-      title: this.newImageForm.value.title,
-      imageURL: this.newImageForm.value.imageURL,
-      altText: this.newImageForm.value.altText
+  galleryHelper = inject(GalleryHelperService);
+  
+  handleSubmitNewImage(){
+    // this.sendFormData.emit({
+    //   title: this.newImageForm.value.title,
+    //   imageURL: this.newImageForm.value.imageURL,
+    //   altText: this.newImageForm.value.altText
+    // })
+    this.galleryHelper.addImageToGallery({
+      title:this.newImageForm.value.title,
+      altText:this.newImageForm.value.altText,
+      imageURL:this.newImageForm.value.imageURL
     })
+    this.newImageForm.reset();
   }
 }
