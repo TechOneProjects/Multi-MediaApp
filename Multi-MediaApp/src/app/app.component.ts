@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
       body: JSON.stringify({email: "test@mail.com", password: "test"})
     })
     const data = await response.json();
-    console.log(data);
     // token data comes back as a random, hashed string
     localStorage.setItem("token", data)
     this.isLoggedIn = true;
