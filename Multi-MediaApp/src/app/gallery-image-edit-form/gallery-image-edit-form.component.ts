@@ -1,5 +1,4 @@
-// import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Inject, Output, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { GalleryHelperService } from '../services/gallery-helper.service';
@@ -22,8 +21,6 @@ export class GalleryImageEditFormComponent {
   }
   
   galleryHelper = inject(GalleryHelperService);
-  // http = inject(HttpClient);
-  // endpoint:String = `http://localhost:3000/gallery/${this.imageData._id}`
   bottomSheetRef = inject(MatBottomSheetRef);
   editImageForm:FormGroup = new FormGroup({
     title: new FormControl(this.imageData.title),

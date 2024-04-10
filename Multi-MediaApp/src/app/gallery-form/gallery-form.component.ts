@@ -19,11 +19,6 @@ export class GalleryFormComponent {
   galleryHelper = inject(GalleryHelperService);
   
   handleSubmitNewImage(){
-    // this.sendFormData.emit({
-    //   title: this.newImageForm.value.title,
-    //   imageURL: this.newImageForm.value.imageURL,
-    //   altText: this.newImageForm.value.altText
-    // })
     this.galleryHelper.addImageToGallery({
       title:this.newImageForm.value.title,
       altText:this.newImageForm.value.altText,

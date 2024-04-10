@@ -1,14 +1,8 @@
 <h2>Gallery Page</h2>
 
-<!-- <div class="scrolling-gallery" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1000" (scrolled)="onScrolled($event)" [horizontal]="true">
-    @for (imageData of galleryData; track imageData.id) {
-        <app-gallery-image [imageData]="imageData" />
-    }
-</div> -->
-
-<div id="scrolling-gallery">
-    <div id="scroll-panel">
-        @for (imageData of galleryHelper.gallery; track imageData._id) {
+<div id="scrolling-gallery" >
+    <div id="scroll-panel" >
+        @for (imageData of gallery; track imageData._id) {
             <app-gallery-image [imageData]="imageData" />
         }
     </div>

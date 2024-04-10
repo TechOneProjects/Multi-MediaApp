@@ -1,5 +1,5 @@
 #scrolling-gallery
-    max-width: 95%
+    max-width: 90%
     mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent)
     -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent) // for chromium browsers
 
@@ -14,9 +14,10 @@
     overflow: hidden
 
 #scrolling-gallery[data-animated="true"] #scroll-panel
+    width: max-content
     flex-wrap: nowrap
-    animation: scroll 35s linear infinite
+    animation: scroll 45s linear infinite
 
 @keyframes scroll
     to
-        transform: translate(-100%)
+        transform: translate(-50%)
