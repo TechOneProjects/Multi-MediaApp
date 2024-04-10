@@ -1,16 +1,23 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-// import { Store } from '@ngrx/store';
-// import { setUser } from '../actions/user.actions';
 import { User } from '../user';
-import { Observer } from 'rxjs';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatButtonModule
+  ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.sass'
 })
