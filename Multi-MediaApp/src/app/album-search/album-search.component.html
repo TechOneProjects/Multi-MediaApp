@@ -8,7 +8,7 @@
                     <mat-error>Please log in to search</mat-error>
                 }
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="searchClicked()">Search</button>
+            <button mat-raised-button color="primary" (click)="searchClicked()" [disabled]="!isLoggedIn">Search</button>
     </div>
 
     @if(isLoading) {
