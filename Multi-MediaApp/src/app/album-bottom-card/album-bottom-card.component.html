@@ -1,0 +1,13 @@
+<div id="bottom-card">
+    <h2>{{data.album.title}} - {{data.album.artist}}</h2>
+    <h3>
+        {{data.album.year}}  ---
+        @for(genre of data.album.genres; track $index) {
+            @if($index > 0) {
+                |
+            }
+            <span> {{genre}} </span>
+        }
+    </h3>
+    <img [src]="data.album.cover_image" class="album-image">
+</div>

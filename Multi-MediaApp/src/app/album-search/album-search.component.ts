@@ -1,63 +1,87 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchAlbum } from './search-album.interface';
-import { v4 as uuidv4 } from "uuid";
 import { DBAlbum } from '../chases-music/album.interface';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import jwt, { JwtPayload } from 'jsonwebtoken'
 
 @Component({
   selector: 'app-album-search',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatProgressBarModule],
   templateUrl: './album-search.component.html',
   styleUrl: './album-search.component.sass'
 })
-export class AlbumSearchComponent {
+export class AlbumSearchComponent implements OnInit {
   @Output() selectedCompEvent = new EventEmitter<string>(); 
   @Output() addAlbumEvent = new EventEmitter<DBAlbum>();
 
   searchQuery: string = "";
+  pageNumber: number = 1;
+
+  isLoading:boolean = false;
+  isLoggedIn: boolean = false;
 
   searchResults: SearchAlbum[] = [];
 
+  searchClicked(): void {
+    this.pageNumber = 1;
+    this.queryDiscogs();
+  }
+
   async queryDiscogs():Promise<void> {
     try {
-      console.log(this.searchQuery)
-      const response = await fetch(`https://api.discogs.com/database/search?q=${this.searchQuery}&type=release&page=1&per_page=5`,{
+      this.isLoading = true;
+      const response = await fetch(`https://api.discogs.com/database/search?q=${this.searchQuery}&type=master&page=${this.pageNumber}&per_page=8`,{
         headers: {
           "Authorization": "Discogs key=wTPpJsCySNodlbLlmBsP, secret=RwsRavuQuLPLnIruuDDptdhAKmHIHcYy"
         }});
         const data = await response.json();
         this.searchResults = data.results;
+        this.isLoading = false;
     } catch (error) {
       console.log(error);
     }
   }
 
   async addAlbumToCollection(id: number): Promise<void> {
-    // console.log(id);
-    // try {
-    //   const response = await fetch(`https://api.discogs.com/users/cforlini/collection/folders/1/releases/${id}?oauth_consumer_key=wTPpJsCySNodlbLlmBsP&oauth_token=mvOSiWtKTcQLpvODAnhfivIyJncuYExFgAkrxDwh&oauth_signature_method=PLAINTEXT&oauth_timestamp=${new Date().getTime()}&oauth_nonce=I7DWlVvbmuu&oauth_version=1.0&oauth_signature=RwsRavuQuLPLnIruuDDptdhAKmHIHcYy%26SGJOxupzMPQDgZIyTvViHWsJThUgANniOGwpOVcK`, {
-    //     method: "POST"
-    //   })
-    //   const data = await response.json();
-    //   this.selectedCompEvent.emit("album")
-    // } catch (error) {
-    //   console.log(error);
-    // }
     let selectedAlbum: SearchAlbum = this.searchResults.filter(album => album.id == id)[0];
-    console.log(selectedAlbum)
+    let artistName = selectedAlbum.title.slice(0, selectedAlbum.title.indexOf("-") - 1)
+    let albumTitle = selectedAlbum.title.slice(selectedAlbum.title.indexOf("-") + 2, selectedAlbum.title.length)
+    if(artistName.indexOf("(") > 0) {
+      artistName = artistName.slice(0, artistName.indexOf("(") - 1)
+    }
+
     let albumToAdd: DBAlbum = {
-      artist: selectedAlbum.title.slice(0, selectedAlbum.title.indexOf("-") - 1),
+      artist: artistName,
       cover_image: selectedAlbum.cover_image,
-      title: selectedAlbum.title.slice(selectedAlbum.title.indexOf("-") + 2, selectedAlbum.title.length),
+      title: albumTitle,
       year: parseInt(selectedAlbum.year),
       genres: selectedAlbum.genre,
       id: selectedAlbum.id
     }
-    console.log(albumToAdd)
+    this.selectedCompEvent.emit("album")
 
     this.addAlbumEvent.emit(albumToAdd);
   }
 
+  nextPage(){
+    this.pageNumber++
+    this.queryDiscogs();
+  }
+
+  prevPage() {
+    this.pageNumber--
+    this.queryDiscogs();
+  }
+
+  ngOnInit(): void {
+    if(localStorage.getItem("token")) {
+        this.isLoggedIn = true;
+    }
+  }
   
 }
