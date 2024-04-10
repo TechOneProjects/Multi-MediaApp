@@ -5,11 +5,20 @@ import {
 } from "@angular/material/bottom-sheet"
 import { GalleryImageEditFormComponent } from '../gallery-image-edit-form/gallery-image-edit-form.component';
 import { GalleryHelperService } from '../services/gallery-helper.service';
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card"
+import { MatDividerModule } from "@angular/material/divider"
 
 @Component({
   selector: 'app-gallery-image',
   standalone: true,
-  imports: [MatBottomSheetModule, GalleryImageEditFormComponent],
+  imports: [
+    MatBottomSheetModule,
+    GalleryImageEditFormComponent,
+    MatCardModule,
+    MatButtonModule,
+    MatDividerModule
+  ],
   templateUrl: './gallery-image.component.html',
   styleUrl: './gallery-image.component.sass'
 })
@@ -36,8 +45,5 @@ export class GalleryImageComponent {
       data: { _id: this.imageData._id, imageURL: this.imageData.imageURL, altText: this.imageData.altText, title: this.imageData.title }
     });
   }
-  /*
-    Gotta take the userID and compare that to `imageData.uid`
-    Gotta implement state
-  */
+  
 }
