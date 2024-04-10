@@ -17,7 +17,7 @@ export class ChasesMusicComponent implements OnInit{
 
   dbAlbumArr : DBAlbum[] = [];
 
-  selectedComp: string = "search";
+  selectedComp: string = "album";
 
   switchComp(comp : string) {
     // this.fetchDiscogs();
