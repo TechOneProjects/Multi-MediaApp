@@ -11,6 +11,7 @@ const MONGODB_URI = "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mon
 const auth = require("./controllers/AuthController.js");
 const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
+const thought = require("./controllers/ThoughtController.js")
 
 
 app.use(express.json());
@@ -62,6 +63,7 @@ app.get("/check-auth", async (req, res) => {
 app.use('/auth', auth);
 app.use('/albums', albums);
 app.use('/movies', movies)
+app.use('/thought', thought)
 
 app.get("/", (req, res) => {
     res.send({ message: "Hello" });

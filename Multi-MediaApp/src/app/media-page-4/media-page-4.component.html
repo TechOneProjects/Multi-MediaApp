@@ -1,13 +1,13 @@
 <h1>Share a Thought!</h1>
 <form [formGroup]="thought" (submit)="onSubmit()">
-    <label for="message">Message:</label><br>
-    <input type="text" placeholder="Any Thoughts?" id="message" formControlName="message"><br>
-    <label for="image"></label><br>
-    <input type="file" (change)="onFileSelect($event)" id="image" formControlName="image"><br>
-    <div>
-        @if (imageData) {
-            <img [src]="imageData" alt="Selected Image">
-        }
-    </div> <br>
-    <button type="submit">Share Thought</button>
+    <label for="message">Share Thought:</label><br>
+    <input type="text" placeholder="What's on your mind...." id="message" formControlName="message"><br>    
+    <button type="submit">Create Thought</button>
 </form>
+
+<hr>
+<h1>All Thoughts</h1>
+@for (thought of thoughts; track $index) {
+    <p>{{ thought.message }}</p>
+  <small>{{ thought.timestamp | date:'h:mma MM-dd-yyyy'}}</small>
+}

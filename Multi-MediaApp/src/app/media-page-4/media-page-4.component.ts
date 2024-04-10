@@ -1,47 +1,62 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
-import { Thoughts } from "./Thoughts"
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ThoughtsModle } from './thought.interface';
+import { DatePipe } from '@angular/common';
+import { Subscription, interval } from 'rxjs';
+
 
 
 @Component({
   selector: 'app-media-page-4',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, DatePipe],
   templateUrl: './media-page-4.component.html',
   styleUrl: './media-page-4.component.sass'
 })
 
-export class MediaPage4Component implements OnInit {
+export class MediaPage4Component implements OnInit, OnDestroy{
   thought: FormGroup = new FormGroup({
-    message: new FormControl(null),
-    image: new FormControl(null)
+    message: new FormControl('', Validators.required),
   })
-  imageData: any;
+
+  http = inject(HttpClient)
+  thoughts!: any[]
+  timeStamp = new Date()
+  private subscription!: Subscription
+
+  constructor() { }
 
   onSubmit() {
-    this.thought.reset()
-    this.imageData = null
+    if (this.thought.invalid) {
+      return;
+    }
+    const thought: ThoughtsModle = {message: this.thought.value.message}
+    this.http.post("http://localhost:3000/thought", thought).subscribe()
+    console.log(thought)
+    }
+
+    fetchMessages() {
+      this.http.get<any[]>('http://localhost:3000/thought').subscribe(messages => {
+        this.thoughts = messages;
+      });
+    }
+
+    ngOnInit(): void {
+      this.fetchMessages()
+
+      this.subscription = interval(1000).subscribe(() => {
+        this.fetchMessages();
+      });
+    }
+
+    ngOnDestroy(): void {
+      this.subscription.unsubscribe();
+      
+    }
+
   }
 
-  onFileSelect(event: Event): void {
-    const target = event.target as HTMLInputElement;
-    if (target.files && target.files[0]) {
-      const file = target.files[0]
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imageData = reader.result as string;
-      }
-
-      reader.readAsDataURL(file);
-  }
-
-  }
-
-  ngOnInit(): void {
-
-  }
 
 
-}
 
