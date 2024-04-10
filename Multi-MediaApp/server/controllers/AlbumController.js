@@ -3,7 +3,7 @@ const router = express.Router();
 const Album = require("../models/AlbumModel.js");
 
 router.post("/new", async ( req, res ) =>{
-        console.log(req.user);
+        console.log(req);
         if(req.user) {         
                 const newAlbum = new Album(req.body);
                 await newAlbum.save();

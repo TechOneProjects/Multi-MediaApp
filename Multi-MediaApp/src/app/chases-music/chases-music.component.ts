@@ -34,7 +34,11 @@ export class ChasesMusicComponent implements OnInit{
       body: JSON.stringify(album)
     })
     const data = await response.json();
-    this.dbAlbumArr.push(data)
+    if(response.status == 200) {
+      this.dbAlbumArr.push(data)
+    }else {
+      alert("Error adding album. Please check your log in.")
+    }
   }
 
   async fetchDB(): Promise<void> {
