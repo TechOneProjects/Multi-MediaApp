@@ -1,0 +1,378 @@
+[
+    {
+        "id": 10792551,
+        "artist": "Portugal. The Man",
+        "cover_image": "https://i.discogs.com/KcSO7uOzmg8oZTg28OInxSF9glbO-vzOD3by_YXSmec/rs:fit/g:sm/q:90/h:533/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEwNzky/NTUxLTE1NjU2NjQ1/NDMtNTM5NC5qcGVn.jpeg",
+        "title": "Woodstock",
+        "year": 2017,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 8625478,
+        "artist": "Kaleo",
+        "cover_image": "https://i.discogs.com/Nv5yUf3vdkg_-GveY9IE6vWprukVk95IZY_R5fSlLPA/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg2MjU0/NzgtMTQ2NTQwMDY5/My0xMDY0LmpwZWc.jpeg",
+        "title": "A/B",
+        "year": 2016,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 12226106,
+        "artist": "Xxxtentacion",
+        "cover_image": "https://i.discogs.com/6vVP-r2uNd0gUCC5NuymvjgZg2Pt_ukmbDZubV4qCb4/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMjI2/MTA2LTE1MzMyNDQ5/MDMtMTk4Mi5qcGVn.jpeg",
+        "title": "?",
+        "year": 2018,
+        "genres": [
+            "Hip Hop",
+            "Rock"
+        ]
+    },
+    {
+        "id": 6400452,
+        "artist": "Starfucker",
+        "cover_image": "https://i.discogs.com/s7HikB-29iFn860VnfkSODGUMwY5a3t0oZXUKxf2qvs/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTY0MDA0/NTItMTQ3Mjk1NDA2/Ny0zNjIyLmpwZWc.jpeg",
+        "title": "STRFKR",
+        "year": 2014,
+        "genres": [
+            "Electronic"
+        ]
+    },
+    {
+        "id": 16230,
+        "artist": "Rhythm & Sound",
+        "cover_image": "https://i.discogs.com/kSyMgyZClOscDuXaT4Ki3KUjATlcTRyduRiCB4z2FHI/rs:fit/g:sm/q:90/h:586/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2MjMw/LTEyMzI5MTkwNTEu/anBlZw.jpeg",
+        "title": "Why",
+        "year": 1998,
+        "genres": [
+            "Electronic",
+            "Reggae"
+        ]
+    },
+    {
+        "id": 26679401,
+        "artist": "NF",
+        "cover_image": "https://i.discogs.com/jZJ1I6qT8qrrCtnNENuamUKtuwkMEpzyVTubZC3GMlY/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2Njc5/NDAxLTE2ODA4NzQz/MDktODg0MC5qcGVn.jpeg",
+        "title": "Hope",
+        "year": 2023,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 370782,
+        "artist": "Cake",
+        "cover_image": "https://i.discogs.com/uU-EBpYtyCaBLvKRhRAxuRk13RkvCHzDB14a6Tb1ULM/rs:fit/g:sm/q:90/h:492/w:500/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3MDc4/Mi0xMjk2NzY2MzYz/LmpwZWc.jpeg",
+        "title": "Fashion Nugget",
+        "year": 1996,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 9258657,
+        "artist": "Drake",
+        "cover_image": "https://i.discogs.com/TesA4uyriga_we6aPnvFJNxYdaAId0ZgvPoy9lj0aFk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyNTg2/NTctMTY0Mzc3ODg4/Mi04NDA3LmpwZWc.jpeg",
+        "title": "If You're Reading This It's Too Late",
+        "year": 2016,
+        "genres": [
+            "Hip Hop",
+            "Funk / Soul"
+        ]
+    },
+    {
+        "id": 9258657,
+        "artist": "Drake",
+        "cover_image": "https://i.discogs.com/TesA4uyriga_we6aPnvFJNxYdaAId0ZgvPoy9lj0aFk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyNTg2/NTctMTY0Mzc3ODg4/Mi04NDA3LmpwZWc.jpeg",
+        "title": "If You're Reading This It's Too Late",
+        "year": 2016,
+        "genres": [
+            "Hip Hop",
+            "Funk / Soul"
+        ]
+    },
+    {
+        "id": 9258657,
+        "artist": "Drake",
+        "cover_image": "https://i.discogs.com/TesA4uyriga_we6aPnvFJNxYdaAId0ZgvPoy9lj0aFk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkyNTg2/NTctMTY0Mzc3ODg4/Mi04NDA3LmpwZWc.jpeg",
+        "title": "If You're Reading This It's Too Late",
+        "year": 2016,
+        "genres": [
+            "Hip Hop",
+            "Funk / Soul"
+        ]
+    },
+    {
+        "id": 4570366,
+        "artist": "Daft Punk",
+        "cover_image": "https://i.discogs.com/zFVZE4s0zSXUIM7OMl2UDckSq0zlopdHBHRz23zqMJk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1NzAz/NjYtMTUzOTI5NTA5/Mi02MDg3LnBuZw.jpeg",
+        "title": "Random Access Memories",
+        "year": 2013,
+        "genres": [
+            "Electronic",
+            "Funk / Soul",
+            "Pop"
+        ]
+    },
+    {
+        "id": 24320237,
+        "artist": "J.I.D",
+        "cover_image": "https://i.discogs.com/C4aWnsyBOaFAHrmYZ2HXsBenm7ih3-qiIweV5QuCaFo/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI0MzIw/MjM3LTE2NjE2NDE2/NTMtODg2OC5qcGVn.jpeg",
+        "title": "The Forever Story",
+        "year": 2022,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 9338169,
+        "artist": "A Tribe Called Quest",
+        "cover_image": "https://i.discogs.com/vW1lbPxXTFb_z0a8kJ3RTozDc0xk2wiH44NZ3aY7RZI/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTkzMzgx/NjktMTY1NzkwOTg1/Ny0yMDA1LmpwZWc.jpeg",
+        "title": "We Got It From Here... Thank You 4 Your Service",
+        "year": 2016,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 459606,
+        "artist": "Michael Jackson",
+        "cover_image": "https://i.discogs.com/W4bMsFIhfx4xQgX4L1lD7PwtYyaqMgaC30DmSSVu9E4/rs:fit/g:sm/q:90/h:600/w:598/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ1OTYw/Ni0xNDUwMzg5NDI1/LTg4NTIuanBlZw.jpeg",
+        "title": "Bad",
+        "year": 1987,
+        "genres": [
+            "Rock",
+            "Funk / Soul",
+            "Pop"
+        ]
+    },
+    {
+        "id": 9461080,
+        "artist": "Flatbush Zombies",
+        "cover_image": "https://i.discogs.com/JhlACawAxuxXh4dPhqsoRmaRxRnZXxyf4EOqtkjGvc0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTk0NjEw/ODAtMTQ4MDk3MTk2/Mi03NzE1LmpwZWc.jpeg",
+        "title": "3001: A Laced Odyssey",
+        "year": 2016,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 375756,
+        "artist": "Pink Floyd",
+        "cover_image": "https://i.discogs.com/o7HXwNjoXG-zrAG4Or3Vj44kL72mYUmq0C5GwRc2hDU/rs:fit/g:sm/q:90/h:603/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3NTc1/Ni0xMzk5NzM1MjQy/LTIxNDkuanBlZw.jpeg",
+        "title": "Wish You Were Here",
+        "year": 1975,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 7250491,
+        "artist": "Tame Impala",
+        "cover_image": "https://i.discogs.com/RujXpx7IDYkQweZsmv6Ju5tZn8bm9YjZWGRHMV3UTyE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTcyNTA0/OTEtMTYwMjY2MjM3/NS0xNjUxLmpwZWc.jpeg",
+        "title": "Currents",
+        "year": 2015,
+        "genres": [
+            "Electronic",
+            "Rock",
+            "Pop"
+        ]
+    },
+    {
+        "id": 23889203,
+        "artist": "Steve Lacy",
+        "cover_image": "https://i.discogs.com/c2JtRpc-nUucAG-rRVLgxMtGOWxQZ89cl8tzBBdn20s/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIzODg5/MjAzLTE2NTc4NjEz/MzMtODc2OS5qcGVn.jpeg",
+        "title": "Gemini Rights",
+        "year": 2022,
+        "genres": [
+            "Funk / Soul",
+            "Pop"
+        ]
+    },
+    {
+        "id": 12330406,
+        "artist": "Denzel Curry",
+        "cover_image": "https://i.discogs.com/geOH0sbLvUaaD31lSlulZycvWwluqEk_oeDYbb5Vn6A/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMzMw/NDA2LTE1MzMwNjE2/NjctMzA0My5qcGVn.jpeg",
+        "title": "Ta13oo",
+        "year": 2018,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 13739452,
+        "artist": "Rush",
+        "cover_image": "https://i.discogs.com/cRUIJx20QhFKziPpHJdjYBSXQ3vrQwUkbdJbhv-Mn30/rs:fit/g:sm/q:90/h:586/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzNzM5/NDUyLTE1Njc5NTYy/MzMtNzY1Mi5qcGVn.jpeg",
+        "title": "Grace Under Pressure",
+        "year": 0,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 4347808,
+        "artist": "Frank Ocean",
+        "cover_image": "https://i.discogs.com/magzKpYFpZOt3jBQlyxci_iMxndbvmmLOyydD90Xc9M/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQzNDc4/MDgtMTM2NTUzMzI1/Ny00MTMyLmpwZWc.jpeg",
+        "title": "Channel Orange",
+        "year": 2013,
+        "genres": [
+            "Hip Hop",
+            "Funk / Soul",
+            "Pop"
+        ]
+    },
+    {
+        "id": 6230036,
+        "artist": "OK Go",
+        "cover_image": "https://i.discogs.com/BGVzL2pXXEv-7fR8lFrDGLySZ49luv8BxG0wkiae7Pw/rs:fit/g:sm/q:90/h:574/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTYyMzAw/MzYtMTQzMjYyNDUy/MC03MDIxLmpwZWc.jpeg",
+        "title": "Hungry Ghosts",
+        "year": 2014,
+        "genres": [
+            "Pop"
+        ]
+    },
+    {
+        "id": 474703,
+        "artist": "Gorillaz",
+        "cover_image": "https://i.discogs.com/aCeXl8jJTOta5zLI8-MPVU89epz3szLMKch1BGK_eBk/rs:fit/g:sm/q:90/h:400/w:394/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ3NDcw/My0xNDU3Mjk0MjE2/LTM5NjUuanBlZw.jpeg",
+        "title": "Demon Days",
+        "year": 2005,
+        "genres": [
+            "Electronic",
+            "Hip Hop",
+            "Rock"
+        ]
+    },
+    {
+        "id": 763528,
+        "artist": "Steely Dan",
+        "cover_image": "https://i.discogs.com/e6wdYcLeDjdf0XW-DzEhimfAvDzOcbgfF6vipB3w4pk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTc2MzUy/OC0xNDc0NjM2NjE0/LTQ0MzUuanBlZw.jpeg",
+        "title": "Can't Buy A Thrill",
+        "year": 1972,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 1635587,
+        "artist": "Test",
+        "cover_image": "https://i.discogs.com/2rCL7V0U6ehOfx1t-d4ULUXFXAt0Y5BaSTRS5p3NHVo/rs:fit/g:sm/q:90/h:602/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE2MzU1/ODctMTY5NDk2MjI0/OS05OTA1LmpwZWc.jpeg",
+        "title": "Test",
+        "year": 1974,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 25924900,
+        "artist": "Lil Yachty",
+        "cover_image": "https://i.discogs.com/5cJO3ybLizXMYV1nASzrO-4XiNMKWpr7oC1DdWXzOXE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI1OTI0/OTAwLTE2NzUwMDQ0/MDgtOTIxOS5qcGVn.jpeg",
+        "title": "Let's Start Here.",
+        "year": 2023,
+        "genres": [
+            "Rock",
+            "Funk / Soul",
+            "Pop"
+        ]
+    },
+    {
+        "id": 4982170,
+        "artist": "Cage The Elephant",
+        "cover_image": "https://i.discogs.com/RMc1CydMMVBb610ZXtIaYakF3W-I7NA_yXSdWCHBrfo/rs:fit/g:sm/q:90/h:225/w:225/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5ODIx/NzAtMTM4MTI4NDEy/NS02MTA4LmpwZWc.jpeg",
+        "title": "Melophobia",
+        "year": 2013,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 15063478,
+        "artist": "The Strokes",
+        "cover_image": "https://i.discogs.com/HqnjP3-V6nDL9wzvP5elDIu2iaKfCn0OEcIocMTI9PI/rs:fit/g:sm/q:90/h:584/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE1MDYz/NDc4LTE1OTI2ODcx/MzEtMTk5MS5qcGVn.jpeg",
+        "title": "The New Abnormal",
+        "year": 2020,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 12023637,
+        "artist": "Parquet Courts",
+        "cover_image": "https://i.discogs.com/BtXuR-ehd6Gw0zz8GMOnyK1CSnxuNp6lTQSZ-Xy9vBA/rs:fit/g:sm/q:90/h:537/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyMDIz/NjM3LTE2ODk5NTgw/NjYtNjMwMC5qcGVn.jpeg",
+        "title": "Wide Awaaaaake!",
+        "year": 2018,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 170719,
+        "artist": "Talking Heads",
+        "cover_image": "https://i.discogs.com/w3G0LxzwepwIgx7NkozV23OhlQ3j0XZ3WsvHPH6J1DQ/rs:fit/g:sm/q:90/h:595/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE3MDcx/OS0xNDM3NDU0NzA4/LTQ4OTQuanBlZw.jpeg",
+        "title": "Speaking In Tongues",
+        "year": 1983,
+        "genres": [
+            "Rock",
+            "Funk / Soul"
+        ]
+    },
+    {
+        "id": 19683439,
+        "artist": "Isaiah Rashad",
+        "cover_image": "https://i.discogs.com/pE-rpagFQBzs_UhiES3UBkxDhVuLOeU9h4jJdEKyqAk/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE5Njgz/NDM5LTE2Mjc2NzYw/MjktNDIyNi5wbmc.jpeg",
+        "title": "The House Is Burning",
+        "year": 2021,
+        "genres": [
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 2935433,
+        "artist": "The Rolling Stones",
+        "cover_image": "https://i.discogs.com/Nn3WLycfFOJV1b9cuVd_26lzEYKLmBlYxuUhlxlPPjw/rs:fit/g:sm/q:90/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI5MzU0/MzMtMTM1MjQ1MjY1/MS0yMTYxLmpwZWc.jpeg",
+        "title": "The Rolling Stones 1971-2005",
+        "year": 2010,
+        "genres": [
+            "Rock",
+            "Reggae",
+            "Funk / Soul",
+            "Blues",
+            "Pop",
+            "Folk, World, & Country"
+        ]
+    },
+    {
+        "id": 379819,
+        "artist": "The White Stripes",
+        "cover_image": "https://i.discogs.com/Tsd-CwkuTTCPnmQUjPCJnzOa8ezZStOAMYhzssNGjrM/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTM3OTgx/OS0xNTg0ODI4MjUw/LTcwODQuanBlZw.jpeg",
+        "title": "Elephant",
+        "year": 2003,
+        "genres": [
+            "Rock"
+        ]
+    },
+    {
+        "id": 2718,
+        "artist": "The Prodigy",
+        "cover_image": "https://i.discogs.com/m1J21BFLhqpt57-sZXrXelxJCCx96CjAJOukfI8p-yU/rs:fit/g:sm/q:90/h:601/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI3MTgt/MTY3MjI1OTU4MS04/MzYyLmpwZWc.jpeg",
+        "title": "The Fat Of The Land",
+        "year": 1997,
+        "genres": [
+            "Electronic",
+            "Hip Hop"
+        ]
+    },
+    {
+        "id": 1174296,
+        "artist": "Radiohead",
+        "cover_image": "https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg",
+        "title": "In Rainbows",
+        "year": 2007,
+        "genres": [
+            "Electronic",
+            "Rock"
+        ]
+    }
+]
