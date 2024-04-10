@@ -5,15 +5,24 @@
   <br />
   <input type="email" formControlName="email" />
   <br />
+  @if (userInfo.get("email")?.hasError("required")) {
+    <span class="error">Email is required to log in</span>
+  }
+  @if (userInfo.get("email")?.hasError("email")) {
+    <span class="error">Please supply a valid email</span>
+  }
   <br />
   <label for="password"> Password </label>
   <br />
   <input type="password" formControlName="password" />
   <br />
+  @if (userInfo.get("password")?.hasError("required")) {
+    <span class="error">password is required to log in</span>
+  }
   <br />
-  <button type="submit">Log In</button> | <button type="reset">Reset</button>
+  <button type="submit" [disabled]="userInfo.invalid" >Log In</button> | <button type="reset" [disabled]="userInfo.invalid" >Reset</button>
   <br />
-  {{ loginMessage }}
+  <span class="error">
+    {{ loginMessage }}
+  </span>
 </form>
-
-<button (click)="getUserFromStore()">Click to get User in Console</button>

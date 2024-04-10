@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 // import { Store } from '@ngrx/store';
 // import { setUser } from '../actions/user.actions';
 import { User } from '../user';
+import { Observer } from 'rxjs';
 
 
 @Component({
@@ -15,7 +16,6 @@ import { User } from '../user';
 })
 export class LoginPageComponent {
   http = inject(HttpClient);
-  // store = inject(Store);
 
   serverAddress:string = "http://localhost:3000/auth";
 
@@ -44,18 +44,30 @@ export class LoginPageComponent {
       'password': this.userInfo.value.password
     }
 
-    this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe( res => {
-      console.log(res);
-      const { user, token } = res as {user:User, token:string};
-      // this.store.dispatch(setUser())
-      localStorage.setItem("token", JSON.stringify(res));
-      
-    })
-  }
+    const httpObserver:{} = {
+      next: (res:{})=>{
+        console.log("logged in successfully");
+        console.log(res);
+        const { user, token } = res as {user:User, token:string};
+        localStorage.setItem("token", JSON.stringify(res));
+      },
+      error: (err:any)=>{
+        console.log(err.error.error);
+        this.changeLoginMessage(err.error.error);
+      },
+      complete: ()=>{},
+    }
 
-  getUserFromStore(){
-    console.log("getting user");
-    // console.log(this.store.select('user'));
+    try{
+      this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe( 
+        httpObserver
+  )
+    }
+    catch(err:any){
+      const errorMessage:string = err.error.error;
+      console.log(err.error);
+      console.log(errorMessage);
+    }
   }
 
 }
