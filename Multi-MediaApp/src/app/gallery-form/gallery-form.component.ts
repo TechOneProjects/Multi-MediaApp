@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { GalleryHelperService } from '../services/gallery-helper.service';
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field"
@@ -19,9 +19,15 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class GalleryFormComponent {
   newImageForm:FormGroup = new FormGroup({
-    title: new FormControl(""),
-    imageURL: new FormControl(""),
-    altText: new FormControl("")
+    title: new FormControl("", [
+      Validators.required,
+    ]),
+    imageURL: new FormControl("", [
+      Validators.required,
+    ]),
+    altText: new FormControl("", [
+      Validators.required
+    ])
   })
 
   galleryHelper = inject(GalleryHelperService);

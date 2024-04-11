@@ -1,29 +1,54 @@
 <h3>Submit a new Image to the Gallery</h3>
 <p id="gallery-form-instructions">
-    Please use the form below to submit a new image to the Gallery.
+  Please use the form below to submit a new image to the Gallery.
 </p>
 <!-- <br /> -->
 <p id="gallery-warning">
-    Admins have the right to remove harmful or offensive images from the gallery. This is a shared 
-    space for a collective experience, please respect your fellow human beings.
+  Admins have the right to remove harmful or offensive images from the gallery.
+  This is a shared space for a collective experience, please respect your fellow
+  human beings.
 </p>
 
-<form [formGroup]="newImageForm" (ngSubmit)="handleSubmitNewImage()" >
-    <mat-form-field>
-        <mat-label>Title</mat-label>
-        <input matInput formControlName="title" [value]="newImageForm.value.title" >
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>URL of the Image</mat-label>
-        <input matInput formControlName="imageURL" [value]="newImageForm.value.imageURL" />
-    </mat-form-field>
-    <br>
-    <mat-form-field>
-        <mat-label>Short Text Description</mat-label>
-        <input matInput formControlName="altText" [value]="newImageForm.value.altText" />
-    </mat-form-field>
-    <br />
-    <button mat-raised-button type="submit">Submit Image</button>
-    <button mat-raised-button type="reset">Reset Form</button>
+<form [formGroup]="newImageForm" (ngSubmit)="handleSubmitNewImage()">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      formControlName="title"
+      [value]="newImageForm.value.title"
+    />
+    @if (newImageForm.get("title")?.hasError("required") && newImageForm.value.title.touched ){
+    <span class="error">Need to enter a title</span>
+    }
+    @if (newImageForm.value.title.touched){
+        <div>Hi</div>
+    }
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>URL of the Image</mat-label>
+    <input
+      matInput
+      formControlName="imageURL"
+      [value]="newImageForm.value.imageURL"
+    />
+    @if (newImageForm.get("imageURL")?.hasError("required") && newImageForm.value.imageURL.touched ){
+        <span class="error">Need to enter an image URL</span>
+        }
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Short Text Description</mat-label>
+    <input
+      matInput
+      formControlName="altText"
+      [value]="newImageForm.value.altText"
+    />
+    @if (newImageForm.get("altText")?.hasError("required") && newImageForm.value.altText.touched ){
+        <span class="error">Give a description</span>
+        }
+  </mat-form-field>
+  <br />
+  <button mat-raised-button type="submit">Submit Image</button>
+  <button mat-raised-button type="reset">Reset Form</button>
 </form>
