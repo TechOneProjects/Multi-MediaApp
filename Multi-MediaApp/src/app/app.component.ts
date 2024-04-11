@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { VideoGamesComponent } from './video-games/video-games.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, VideoGamesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
