@@ -5,5 +5,5 @@ export interface DBAlbum {
     title: string,
     year: number,
     genres: string[],
-    id: number
+    _id: number
 }

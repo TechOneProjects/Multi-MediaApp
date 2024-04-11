@@ -61,7 +61,7 @@ export class AlbumSearchComponent implements OnInit {
       title: albumTitle,
       year: parseInt(selectedAlbum.year),
       genres: selectedAlbum.genre,
-      id: selectedAlbum.id
+      _id: selectedAlbum.id
     }
     this.selectedCompEvent.emit("album")
 

@@ -21,12 +21,17 @@ import {MatButtonModule} from '@angular/material/button';
 export class AlbumDisplayComponent implements OnChanges {
   @Input() dbAlbumArr: DBAlbum[] = [];
   @Output() selectedCompEvent = new EventEmitter<string>(); 
+  @Output() refreshFetch = new EventEmitter<string>();
 
   bottomSheet = inject(MatBottomSheet);
 
+
   openBottomSheet(album: DBAlbum):void {
     this.bottomSheet.open(AlbumBottomCardComponent, {
-      data: {album}
+      data: {album, bottomSheet: this.bottomSheet}
+    })
+    this.bottomSheet._openedBottomSheetRef?.afterDismissed().subscribe(()=> {
+      this.refreshFetch.emit("")
     })
   }
 

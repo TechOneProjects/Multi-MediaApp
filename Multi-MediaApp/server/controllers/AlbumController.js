@@ -18,4 +18,9 @@ router.get("/", async (req, res) => {
         res.send(albums)
 })
 
+router.delete("/:id", async (req, res) => {
+        const albumToDelete = await Album.deleteOne({_id: req.params.id})
+        console.log(albumToDelete)
+})
+
 module.exports = router;

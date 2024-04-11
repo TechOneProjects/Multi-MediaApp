@@ -25,13 +25,18 @@ export class ChasesMusicComponent implements OnInit{
   }
 
   async addAlbum(album: DBAlbum) {
+    console.log(album)
     const response = await fetch("http://localhost:3000/albums/new", {
       method: "POST",
       headers: {
         "Content-Type" : "application/json",
         "Authorization" : `Bearer ${localStorage.getItem("token")}`
       },
-      body: JSON.stringify(album)
+      body: JSON.stringify({
+        artist: album.artist,
+        title: album.title, 
+        genres: album.genres,
+        cover_image: album.cover_image})
     })
     const data = await response.json();
     if(response.status == 200) {
@@ -45,6 +50,7 @@ export class ChasesMusicComponent implements OnInit{
     try {
       const response = await fetch("http://localhost:3000/albums")
       const data = await response.json();
+      console.log(data)
       this.dbAlbumArr = data;
     } catch (error) {
       console.log(error);

@@ -17,7 +17,7 @@
     </div>
     
     <div id="main-album-container">
-        @for(album of filteredArr; track album.id) {
+        @for(album of filteredArr; track album._id) {
             <div class="album-container" (click)="openBottomSheet(album)">
                 <p>{{album.title}} - {{album.artist}}</p>
                 <img [src]="album.cover_image" class="album-image">
