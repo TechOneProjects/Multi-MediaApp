@@ -19,8 +19,13 @@ router.get("/", async (req, res) => {
 })
 
 router.delete("/:id", async (req, res) => {
-        const albumToDelete = await Album.deleteOne({_id: req.params.id})
-        console.log(albumToDelete)
+        if(req.user) {
+                const albumToDelete = await Album.deleteOne({_id: req.params.id})
+                res.status(200)
+        }
+        else {
+                res.status(405).json({message: "Unauthorized"})
+        }
 })
 
 module.exports = router;

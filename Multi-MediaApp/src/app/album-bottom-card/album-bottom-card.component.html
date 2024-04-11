@@ -10,7 +10,7 @@
                 <span> {{genre}} </span>
             }
         </h3>
-        <button mat-mini-fab (click)="deleteAlbum(data.album._id) " id="delete-bttn"><mat-icon>delete</mat-icon></button>
+        <button mat-mini-fab (click)="deleteAlbum(data.album._id) " id="delete-bttn" [disabled]="!isLoggedIn"><mat-icon>delete</mat-icon></button>
     </div>
     <img [src]="data.album.cover_image" class="album-image">
 </div>
