@@ -17,11 +17,8 @@
       formControlName="title"
       [value]="newImageForm.value.title"
     />
-    @if (newImageForm.get("title")?.hasError("required") && newImageForm.value.title.touched ){
+    @if (newImageForm.get("title")?.hasError("required") && newImageForm.get("title")?.touched ){
     <span class="error">Need to enter a title</span>
-    }
-    @if (newImageForm.value.title.touched){
-        <div>Hi</div>
     }
   </mat-form-field>
   <br />
@@ -32,7 +29,7 @@
       formControlName="imageURL"
       [value]="newImageForm.value.imageURL"
     />
-    @if (newImageForm.get("imageURL")?.hasError("required") && newImageForm.value.imageURL.touched ){
+    @if (newImageForm.get("imageURL")?.hasError("required") && newImageForm.get("imageURL")?.touched ){
         <span class="error">Need to enter an image URL</span>
         }
   </mat-form-field>
@@ -44,7 +41,7 @@
       formControlName="altText"
       [value]="newImageForm.value.altText"
     />
-    @if (newImageForm.get("altText")?.hasError("required") && newImageForm.value.altText.touched ){
+    @if (newImageForm.get("altText")?.hasError("required") && newImageForm.get("altText")?.touched ){
         <span class="error">Give a description</span>
         }
   </mat-form-field>

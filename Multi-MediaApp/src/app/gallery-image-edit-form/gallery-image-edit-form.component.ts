@@ -1,12 +1,20 @@
 import { Component, Inject, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { GalleryHelperService } from '../services/gallery-helper.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-gallery-image-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
+  ],
   templateUrl: './gallery-image-edit-form.component.html',
   styleUrl: './gallery-image-edit-form.component.sass'
 })
@@ -23,9 +31,15 @@ export class GalleryImageEditFormComponent {
   galleryHelper = inject(GalleryHelperService);
   bottomSheetRef = inject(MatBottomSheetRef);
   editImageForm:FormGroup = new FormGroup({
-    title: new FormControl(this.imageData.title),
-    imageURL: new FormControl(this.imageData.imageURL),
-    altText: new FormControl(this.imageData.altText)
+    title: new FormControl(this.imageData.title, [
+      Validators.required
+    ]),
+    imageURL: new FormControl(this.imageData.imageURL, [
+      Validators.required
+    ]),
+    altText: new FormControl(this.imageData.altText, [
+      Validators.required
+    ])
   })
   
   
