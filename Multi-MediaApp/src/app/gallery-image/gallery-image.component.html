@@ -5,9 +5,11 @@
     <img mat-card-image [src]="imageData.imageURL" [alt]="imageData.altText" />
     <mat-divider />
     <mat-card-footer>
-        <mat-card-actions>
-            <button mat-button (click)="openEditForm()">Edit</button>
-            <button mat-button (click)="handleDeleteEvent()">Delete</button>
-        </mat-card-actions>
+        @if (token) {
+            <mat-card-actions>
+                <button mat-button (click)="openEditForm()">Edit</button>
+                <button mat-button (click)="handleDeleteEvent()">Delete</button>
+            </mat-card-actions>
+        }
     </mat-card-footer>
 </mat-card>

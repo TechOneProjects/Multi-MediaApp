@@ -31,7 +31,7 @@ export class GalleryPageComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.galleryHelper.getAllGalleryData();
     this.scrollPanel = document.getElementById("scrolling-gallery");
-    this.token = JSON.stringify(localStorage.getItem("token"));
+    this.token = localStorage.getItem("token");
     console.log(this.token)
 
     if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
