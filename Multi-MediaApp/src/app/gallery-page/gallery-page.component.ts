@@ -4,6 +4,7 @@ import { GalleryImageComponent } from '../gallery-image/gallery-image.component'
 import { GalleryFormComponent } from '../gallery-form/gallery-form.component';
 import { GalleryHelperService } from '../services/gallery-helper.service';
 
+
 @Component({
   selector: 'app-gallery-page',
   standalone: true,
@@ -15,6 +16,8 @@ export class GalleryPageComponent implements OnInit, DoCheck {
   http = inject(HttpClient);
   galleryHelper = inject(GalleryHelperService);
   serverAddress = 'http://localhost:3000/gallery';
+  token:string | null = null;
+
   scrollPanel:HTMLElement | null = document.getElementById("");
   scrollPanelIsAnimated:boolean = true;
   gallery:{
@@ -28,6 +31,8 @@ export class GalleryPageComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     this.galleryHelper.getAllGalleryData();
     this.scrollPanel = document.getElementById("scrolling-gallery");
+    this.token = JSON.stringify(localStorage.getItem("token"));
+    console.log(this.token)
 
     if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
       this.beginScrollPanelAnimation();
