@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Update Movie</h2>
+<div class="dialog-content">
+  <mat-dialog-content>
+    <form id="updateMovieForm" [formGroup]="updateMovie" (ngSubmit)="onSubmit()">
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>ID</mat-label>
+        <input formControlName="id" matInput required readonly/>
+      </mat-form-field>
+      @if(updateMovie.controls['title'].invalid && (updateMovie.controls['title'].touched || updateMovie.controls['title'].dirty)){
+        <span class="text-red">Title is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput placeholder="Movie Title..." required />
+      </mat-form-field>
+      @if(updateMovie.controls['poster_path'].invalid && (updateMovie.controls['poster_path'].touched || updateMovie.controls['poster_path'].dirty)){
+        <span class="text-red">Poster image link is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Poster Image</mat-label>
+        <input formControlName="poster_path" matInput placeholder="Link to poster image..." required />
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close aria-label="cancel button">Cancel</button>
+    <button type="submit" mat-button form="updateMovieForm">Submit</button>
+    <button type="button" mat-flat-button color="warn" (click)="onDelete()">Delete</button>
+  </mat-dialog-actions>
+</div>
+
