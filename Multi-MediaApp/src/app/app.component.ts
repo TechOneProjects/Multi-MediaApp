@@ -3,7 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+
 
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 
