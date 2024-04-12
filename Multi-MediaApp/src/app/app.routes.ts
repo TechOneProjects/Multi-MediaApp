@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { MediaPage2Component } from './media-page-2/media-page-2.component';
 import { SargePageComponent } from './sarge-page/sarge-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AboutChaseComponent } from './about-chase/about-chase.component';
 
 export const routes: Routes = [
   {path: "janette", component: JanetteComponent },
@@ -20,4 +21,9 @@ export const routes: Routes = [
         path: "sargeaboutpage",
         component: SargePageComponent
     },
+    {
+        path: "chase",
+        component: AboutChaseComponent,
+        title: "Chase"
+    }
 ];
