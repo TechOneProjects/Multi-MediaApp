@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
@@ -13,8 +13,8 @@ const gameSchema = new Schema({
   },
   image_path: {
     type: String,
-    required: true,
-  },
+    required: false,
+  }
 });
 
 const Games = mongoose.model("Games", gameSchema);

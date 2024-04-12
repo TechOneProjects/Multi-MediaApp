@@ -13,7 +13,6 @@ const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
 const games = require("./controllers/GamesController.js")
 
-
 app.use(express.json());
 app.use(cors());
 
@@ -59,7 +58,6 @@ app.get("/check-auth", async (req, res) => {
     }
 })
 
-
 // controllers and their routes
 app.use('/auth', auth);
 app.use('/albums', albums);
@@ -71,5 +69,7 @@ app.get("/", (req, res) => {
 })
 
 mongoose.connect(MONGODB_URI).then(() => {
-    app.listen(3000);
+    app.listen(3000, () => {
+        console.log('Server Running')
+    });
 })
