@@ -1,7 +1,6 @@
 <div>
-    <form class="example-form" [formGroup]="userInfo" (ngSubmit)="onSubmit()">
-        <h1>Sign Up Here!</h1>
-        <!-- <label for="username">Username:</label><br>
+    <form [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+        <label for="username">Username:</label><br>
         <input type="text" placeholder="Username" id="username" formControlName="username"><br>
         <label for="email">Email:</label><br>
         <input type="email" placeholder="Email" id="email" formControlName="email"><br>
@@ -9,24 +8,6 @@
         <input type="password" placeholder="Password" id="password" formControlName="password"><br>
         <label for="confirm password">Confirm Password:</label><br>
         <input type="password" placeholder="Confirm Password" id="confirm password" formControlName="passwordConfirmation"><br>
-         -->
-        <mat-form-field class="example-full-width">
-            <mat-label>Username</mat-label>
-            <input matInput type="text" id="username" formControlName="username">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput type="text" id="email" formControlName="email">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Password</mat-label>
-            <input matInput type="text" id="password" formControlName="password">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Confirm Password</mat-label>
-            <input matInput type="text" id="confirm password" formControlName="passwordConfirmation">
-          </mat-form-field>
-          <button mat-flat-button color="primary">Sign Up</button>
-
+        <button type="submit">Sign Up</button>
     </form>
 </div>
