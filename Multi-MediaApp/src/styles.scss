@@ -1,0 +1,41 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.example-form {
+    min-width: 150px;
+    max-width: 200px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+app-sarge-page {
+    position: relative;
+
+}
+
+.example-card {
+    max-width: 400px;
+    position: relative;
+    left: 40%;
+    align-items: start;
+
+}
+
+
+
+.UpperRight {
+    position: relative;
+    width: 100%;
+    left: 80%;
+}
