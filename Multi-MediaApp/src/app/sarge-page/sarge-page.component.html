@@ -1,0 +1,88 @@
+<div>
+
+
+    <form style="position: relative; left: 5%;" [formGroup]="promptData" class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Race?</mat-label>
+            <input matInput type="text" id="race" formControlName="race" (change)="onRaceChange($event)">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Body Type?</mat-label>
+            <input matInput type="text" id="body" formControlName="bodyType" (change)="onBodyTypeChange($event)">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Eye Color?</mat-label>
+            <input matInput type="text" id="eye" formControlName="eyeColor" (change)="onEyeChange($event)">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Hair Color?</mat-label>
+            <input matInput type="text" id="hair" formControlName="hairColor" (change)="onHairChange($event)">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Gender?</mat-label>
+            <input matInput type="text" id="gender" formControlName="gender" (change)="onGenderChange($event)">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Character Height?</mat-label>
+            <input matInput type="text" id="height" formControlName="height" (change)="onHeightChange($event)">
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <mat-form-field class="example-full-width">
+            <mat-label>Customize Prompt?</mat-label>
+            <input matInput value="{{prompt}}" type="text" id="prompt" formControlName="prompt"
+                (change)="onPromptChange($event)">
+        </mat-form-field>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="primary" (click)="LoadImage()">Generate Image</button>
+        @if(genimgUrl !== ""){
+        <button mat-raised-button color="primary" (click)="Create(genimgUrl)">Add to Avatars</button>
+        }
+        <mat-divider></mat-divider>
+        <div style="position: absolute; left: 150%; top: 0%;">
+            @if (imgLoading) {
+            <mat-spinner></mat-spinner>
+            }
+            @else if (!imgLoading && (genimgUrl !== ""|| existingimgUrl !=="")){
+            @if(genimgUrl !== ""){
+            <img src="{{genimgUrl}}" width="256" height="256">
+            }@else if(existingimgUrl !== ""){
+            <img src="{{existingimgUrl}}" width="256" height="256">
+            }
+            <mat-form-field class="example-full-width" style="width: 150px;">
+                <mat-label>Avatar's Name</mat-label>
+                <input matInput type="text" id="name" formControlName="name" (change)="onNameChange($event)">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="width: 400px;">
+                <mat-label>Avatar's Description</mat-label>
+                <textarea matInput type="text" id="desc" formControlName="description"
+                    (change)="onDescriptionChange($event)"></textarea>
+            </mat-form-field>
+            }
+        </div>
+    </form>
+    <table style="position: absolute; left:55%; top: 0%;">
+        <button mat-fab color="primary" (click)="Read()" aria-label="Example icon button with a delete icon">
+            <mat-icon>file_copy</mat-icon>
+        </button>
+        <tbody>
+            @for (avatar of displayContainer; track $index) {
+            <td>
+                <h3>{{avatar.name}}</h3>
+                <img src="{{avatar.img}}" width="128" height="128" (click)="ImgClick($index)">
+                @if(updBtn && (existingimgUrl === avatar.img)){
+                <button mat-mini-fab color="accent" (click)="Update($index)"
+                    aria-label="Example icon button with a delete icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                }
+                <button mat-mini-fab color="primary" (click)="Delete($index)"
+                    aria-label="Example icon button with a delete icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+
+            }
+        </tbody>
+    </table>
+    <img src="assest/localSavedImg/jetli.png">
+</div>

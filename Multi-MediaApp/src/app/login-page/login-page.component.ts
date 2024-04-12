@@ -1,27 +1,36 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDividerModule } from '@angular/material/divider';
+import { User } from '../sign-up/sign-up.user.interface';
+
+
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, MatDividerModule, MatFormFieldModule],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.sass'
+  styleUrl: './login-page.component.scss'
 })
-export class LoginPageComponent implements OnInit {
-  http = inject(HttpClient);
-  serverAddress:string = "http://localhost:3000/users";
-  allUserData:{email:String, password:String}[] = [];
-  loginMessage:String = "";
+export class LoginPageComponent {
 
-  ngOnInit(): void {
-    this.http.get(this.serverAddress).subscribe(response => {
-      this.allUserData = response as {email:String, password:String}[]
-    })
+  @Output() loginEvent = new EventEmitter<boolean>();
+  logIn(value: boolean) {
+    this.loginEvent.emit(value);
   }
-  
-  userInfo:FormGroup = new FormGroup({
+  http = inject(HttpClient);
+
+
+  serverAddress: string = "http://localhost:3000/auth";
+
+  loginMessage: String = "";
+
+  userInfo: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,
       Validators.email
@@ -31,30 +40,30 @@ export class LoginPageComponent implements OnInit {
     ])
   });
 
-  changeLoginMessage(message:String){
+  changeLoginMessage(message: String) {
     this.loginMessage = message;
     setTimeout(() => {
       this.loginMessage = "";
     }, 10000);
   }
 
-  async onSubmitForm(){
-    const userLoginObj:{email:String, password:String} = {
+  async onSubmitForm() {
+    const userLoginObj: { email: String, password: String } = {
       'email': this.userInfo.value.email,
       'password': this.userInfo.value.password
     }
 
-    const getUser:{email:String, password:String} | undefined = this.allUserData.find( ( user:{ email:String, password:String } ) => {
-      return userLoginObj.email === user.email && userLoginObj.password === user.password;
-    }) // get user should be sending a full http request to the server
+    this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe(res => {
+      console.log(res);
+      const { user, token } = res as { user: User, token: string };
 
-    if (getUser) {
-      console.log('found user : ', getUser);
-      this.changeLoginMessage("User found!!");
-    }
-    else {
-      this.changeLoginMessage("ERROR: User not found!!");
-    }
+      localStorage.setItem("token", JSON.stringify(res));
+      this.loginEvent.emit(true);
+    })
+  }
+
+  getUserFromStore() {
+    console.log("getting user");
 
   }
 

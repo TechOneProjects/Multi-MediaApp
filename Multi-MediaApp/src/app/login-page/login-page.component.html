@@ -1,7 +1,7 @@
 <h1>Log In</h1>
 
-<form [formGroup]="userInfo" (ngSubmit)="onSubmitForm()" >
-  <label for="email"> Email </label>
+<form class="example-form" [formGroup]="userInfo" (ngSubmit)="onSubmitForm()" >
+  <!-- <label for="email"> Email </label>
   <br />
   <input type="email" formControlName="email" />
   <br />
@@ -11,7 +11,18 @@
   <input type="password" formControlName="password" />
   <br />
   <br />
-  <button type="submit">Log In</button> | <button type="reset">Reset</button>
-  <br />
+  <button >Log In</button> | <button type="reset">Reset</button>
+  <br /> -->
+ 
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input matInput type="text" id="email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput type="text" id="password" formControlName="password">
+  </mat-form-field>
+
+  <button type="submit" mat-flat-button color="primary">Log In</button>
   {{ loginMessage }}
 </form>

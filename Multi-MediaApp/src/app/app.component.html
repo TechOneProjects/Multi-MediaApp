@@ -1,2 +1,75 @@
+<div>
+  <nav class="UpperRight">
+    <a routerLink="/sargepage">Sarge</a>
+    <a routerLink="/hakipage">Haki</a>
+    <a routerLink="/hasanpage">Hasan</a>
+    <a routerLink="/chasepage">Chase</a>
+    <a routerLink="/janettepage">Janette</a>
+    <a routerLink="/danielpage">Daniel</a>
+  </nav>
+</div>
 
-<router-outlet />
+<div>
+  <h1>Welcome to Tech One's Newest Multi-Media App</h1>
+
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="push">
+
+      <mat-divider></mat-divider>
+      <a routerLink="/chaseaboutpage">Chase</a>
+      <mat-divider></mat-divider>
+
+      <a routerLink="/sargeaboutpage">Sarge</a>
+      <mat-divider></mat-divider>
+
+      <a routerLink="/hakiaboutpage">Haki</a>
+      <mat-divider></mat-divider>
+
+      <a routerLink="/danielaboutpage">Daniel</a>
+      <mat-divider></mat-divider>
+
+      <a routerLink="/janetteaboutpage">Janette</a>
+      <mat-divider></mat-divider>
+
+      <a routerLink="/hasanaboutpage">Hasan</a>
+      <mat-divider></mat-divider>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <button type="button" mat-flat-button color="primary" (click)="drawer.toggle()">
+        About Us
+      </button>
+    </div>
+
+  </mat-drawer-container>
+  @if(isLoggedIn){
+  <app-homepage (logOutEvent)="logmein($event)"></app-homepage>
+
+  }
+  @else {
+  <h3>Already have an acount?</h3>
+  <button mat-flat-button color="primary" (click)="Displaylogin()">Log In</button>
+
+  @if(displayLogin){
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-content>
+        <app-login-page (loginEvent)="logmein($event)"></app-login-page>
+      </mat-card-content>
+    </mat-card-header>
+  </mat-card>
+  }
+
+  @if(!displayLogin && !isLoggedIn){
+
+
+  <mat-divider></mat-divider>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-content>
+        <app-sign-up (signUpEvent)="logmein($event)"></app-sign-up>
+      </mat-card-content>
+    </mat-card-header>
+  </mat-card>
+  }
+  }
