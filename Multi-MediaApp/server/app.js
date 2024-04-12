@@ -35,7 +35,7 @@ app.use(async (req, res, next) => {
         const token = auth.slice(prefix.length);
         try {
             const obj = jwt.verify(token, "secret");
-            console.log(obj)
+            // console.log(obj)
             req.user = obj
             console.log("added to req.user", req.user)
             next();
