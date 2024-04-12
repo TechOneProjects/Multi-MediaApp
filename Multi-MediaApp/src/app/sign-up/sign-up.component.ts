@@ -53,6 +53,8 @@ export class SignUpComponent {
       localStorage.setItem("token", JSON.stringify(res))
       }
     })
+
+    this.userInfo.reset()
   }
 
 }
