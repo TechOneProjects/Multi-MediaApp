@@ -23,6 +23,9 @@
         For my contribution to this Multi-Media app, I made an infinitely-looping image gallery. I wanted to have that curated, museum-tour feel, so it will loop through the images with no interferance. However, the user can, upon logging in, add to the database of images, edit an image, or delete it.
     </p>
     <p id="app-summary__details">
-        My part of the app relies on a service I created to manage image data. It will pull the data from the server and load it into the gallery array variable, which the base gallery-page component uses to built it's own array that doubles the original array. 
+        My part of the app relies on a service I created to manage image data. It will pull the data from the server and load it into the gallery array variable, which the base gallery-page component uses to build it's own array that doubles the original array. In the SASS file, for styling, I use a cascading design to accomodate browsers that don't have certain reqired features enabled. I have keyframes defined for scrolling animations and have the div containing the image cards translating to 50% towards the left. To accomodate for any jittering, I applied a mask over the container div that gives a fade-in-fade-out effect to the div. The scrolling animating is set to complete at a little over 150 seconds so that the gallery moves slow.
+    </p>
+    <p id="app-summary__styling">
+        For aesthetics I used the Angular Materials package. For the most part, I'm using the material input to modify my input elements with animations, transitions, and interactive labels. I'm also using material cards for the images in the gallery. This way, there's a nice UI showing the image as well as it's associated delete and edit buttons.
     </p>
 </section>
