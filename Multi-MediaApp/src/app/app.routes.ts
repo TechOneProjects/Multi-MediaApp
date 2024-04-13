@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { MediaPage2Component } from './media-page-2/media-page-2.component';
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 import { AboutChaseComponent } from './about-chase/about-chase.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
     {
@@ -16,5 +17,10 @@ export const routes: Routes = [
         path: "chase",
         component: AboutChaseComponent,
         title: "Chase"
+    },
+    {
+      path: "",
+      component: HomePageComponent,
+      title: "MultiMediaApp | Home"
     }
 ];

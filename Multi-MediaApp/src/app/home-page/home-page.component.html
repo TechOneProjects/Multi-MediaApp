@@ -1,40 +1,57 @@
 <div id="home-container">
-    <ul id="nav-container">
-        <li>
-            <a routerLink = "/">Home</a>
-        </li>
-        <li>
-            <a routerLink = "/daniels-media">Dnaiel's media</a>
-        </li>
-        <li>
-            <a routerLink = "/games">Games</a> 
-        </li>
-        <li>
-            <a routerLink = "/gallery">Gallery</a>
-        </li>
-        <li>
-            <a routerLink = "/music">Music</a>
-        </li>
-        <li>
-            <a routerLink = "/character">Character Creator</a>
-        </li>
-        <li>
-          <a routerLink = "/movies">Movies</a>
-        </li>
-    </ul>
     <div id="title-container">
         <h1>TechOne's Multi-Media</h1>
     </div>
-    <div id="sub-nav">
-        <button (click)="changeSelectedMedia('games')">Games</button>
-        <button (click)="changeSelectedMedia('gallery')">Gallery</button>
-        <button (click)="changeSelectedMedia('movies')">Movies</button>
-        <button (click)="changeSelectedMedia('music')">Music</button>
-        <button (click)="changeSelectedMedia('character')">Character</button>
-        <button (click)="changeSelectedMedia('daniel')">Daniel</button>
+    <div id="tab-container">
+
+        <mat-tab-group>
+            <mat-tab label="Thoughts">
+                <div class="content-container">
+                    <a routerLink="/thoughts">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Games">
+                <div class="content-container">
+                    <a routerLink="/games">
+                        <img class="featured-image">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Gallery">
+                <div class="content-container">
+                    <a routerLink="/gallery">
+                        <img class="featured-image">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Music">
+                <div class="content-container">
+                    <a routerLink="/music">
+                        <img [src]="allFeatured.music.imageURL" class="featured-image">
+                        <h3 class="featured-desc">{{allFeatured.music.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Character Creator">
+                <div class="content-container">
+                    <a routerLink="/characters">
+                        <img class="featured-image">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Movies">
+                <div class="content-container">
+                    <a routerLink="/movie">
+                        <img class="featured-image" [src]="allFeatured.movies.imageURL">
+                        <h3 class="featured-desc">{{allFeatured.movies.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
     </div>
-    <div id="content-container">
-            <h3>{{featuredMedia?.contentDesc}}</h3>
-            <img [src]="featuredMedia?.imageURL">
     </div>
-</div>

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Featured } from "./featured.interface"
+import {MatTabsModule } from '@angular/material/tabs'
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, MatTabsModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.sass'
 })
@@ -31,7 +32,7 @@ export class HomePageComponent implements OnInit{
       "imageURL" : "",
       "contentDesc": "" 
     },
-     "daniel" : {
+     "thoughts" : {
       "imageURL" : "",
       "contentDesc": "" 
     },
