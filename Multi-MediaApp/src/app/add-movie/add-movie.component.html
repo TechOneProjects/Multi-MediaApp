@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Add Movie</h2>
+<div class="dialog-content">
+  <mat-dialog-content>
+    <form id="addMovieForm" [formGroup]="addMovie" (ngSubmit)="onSubmit()">
+      @if(addMovie.controls['title'].invalid && (addMovie.controls['title'].touched || addMovie.controls['title'].dirty)){
+        <span class="text-red">Title is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput placeholder="Movie Title..." required />
+      </mat-form-field>
+      @if(addMovie.controls['poster_path'].invalid && (addMovie.controls['poster_path'].touched || addMovie.controls['poster_path'].dirty)){
+        <span class="text-red">Poster image link is required.</span>
+      }
+      <mat-form-field [floatLabel]="getFloatLabelValue()">
+        <mat-label>Poster Image</mat-label>
+        <input formControlName="poster_path" matInput placeholder="Link to poster image..." required />
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close aria-label="cancel button">Cancel</button>
+    <button type="submit" mat-button form="addMovieForm">Submit</button>
+  </mat-dialog-actions>
+</div>
