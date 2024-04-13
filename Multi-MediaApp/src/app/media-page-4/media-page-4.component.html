@@ -1,49 +1,53 @@
 <body>
-    
-<h1>Share a Thought!</h1>
+    <br>
+    <img mat-card-image src="../../assets/thoughts/Thought.PNG" alt="share-a-thought-img" class="thought-image"><br><br>
+    <div class="thoughts-form">
+            <form [formGroup]="thought" (submit)="onSubmit()">
+                <mat-form-field class="thought-form-textarea">
+                    <mat-label for="message">*Share Thought</mat-label><br>
+                    <textarea matInput placeholder="What's on your mind...." id="message"
+                        formControlName="message"></textarea><br>
+                </mat-form-field>
 
-<div class="thoughts-form">
-<form [formGroup]="thought" (submit)="onSubmit()">
-    <label for="message">Share Thought:</label><br>
-    <input type="text" placeholder="What's on your mind...." id="message" formControlName="message"><br>
-    <button type="submit">Create Thought</button>
-</form>
-</div>
+               <br> <button mat-flat-button color="primary" type="submit">Create Thought</button><br><br>
 
-<hr>
-<h1>All Thoughts</h1>
-@for (thought of thoughts; track $index) {
-<mat-card class="thought-card">
-    <mat-card-header>
-        <mat-card-title class="user">User</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <p>{{ thought.message }}</p>
-        <p class="message-date">{{ thought.timestamp | date:'h:mma MM-dd-yyyy'}}</p>
-        @for (reply of thought.replies; track $index) {
-        <p>{{ reply.message }}</p>
-        <p class="message-date">{{ reply.timestamp | date:'h:mma MM-dd-yyyy' }}</p>
-        }
-    </mat-card-content>
+            </form>
+    </div>
+
+    <hr>
+    <h1>All Thoughts</h1>
+    @for (thought of thoughts; track $index) {
+    <mat-card class="thought-card">
+        <mat-card-header>
+            <mat-card-title class="user">User</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ thought.message }}</p>
+            <p class="message-date">{{ thought.timestamp | date:'h:mma MM-dd-yyyy'}}</p>
+            @for (reply of thought.replies; track $index) {
+            <p>{{ reply.message }}</p>
+            <p class="message-date">{{ reply.timestamp | date:'h:mma MM-dd-yyyy' }}</p>
+            }
+        </mat-card-content>
         <br>
         <mat-card-actions>
-            <button (click)="setActiveThought(thought)" mat-button >Reply</button>
+            <button (click)="setActiveThought(thought)" mat-button>Reply</button>
         </mat-card-actions>
         @if (activeThought === thought) {
         <form [formGroup]="reply" (submit)="replyToMessage()">
             <mat-form-field class="example-full-width">
                 <mat-label>*Reply</mat-label>
-                <textarea matInput placeholder="Reply to this message..." formControlName="message" ></textarea>
+                <textarea matInput placeholder="Reply to this message..." formControlName="message"></textarea>
             </mat-form-field>
             <mat-card-actions>
                 <button type="submit" [disabled]="!reply.valid" mat-button>Send</button>
             </mat-card-actions>
         </form>
+        }
+
+    </mat-card>
+    <br>
+    <br>
     }
-    
-</mat-card>
-<br>
-<br>
-}
-<br>
+    <br>
 </body>
