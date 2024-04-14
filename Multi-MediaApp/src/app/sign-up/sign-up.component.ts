@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from './sign-up.user.interface'
 import mongoose from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import { UserService } from '../../services/user.service';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../user';
 
 
 
@@ -28,7 +28,7 @@ export class SignUpComponent {
   http = inject(HttpClient)
   async onSubmit(){
     // logic that adds new users to the databse
-    const newUser: User = {
+    const newUser:{}  = {
       id: uuidv4(),
       email: this.userInfo.value.email,
       password: this.userInfo.value.password,
@@ -40,8 +40,8 @@ export class SignUpComponent {
     console.log(newUser)
 
     this.http.post("http://localhost:3000/auth/signup", newUser).subscribe(res => {
-      console.log(res)
-      localStorage.setItem("token", JSON.stringify(res))
+      console.log(res);
+      localStorage.setItem("token", JSON.stringify(res));
     })
   }
 
