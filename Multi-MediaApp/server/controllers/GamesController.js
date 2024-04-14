@@ -22,7 +22,7 @@ router.post("/create", async (req, res) => {
         console.log('Body: ')
         console.log(req.body)
 
-        //const games = await gamesModel.create(req.body);
+        const games = await gamesModel.create(req.body);
         //res.status(200).json(games);
       } catch (error) {
         console.error(error.message);

@@ -68,8 +68,8 @@ export class GameSelectorService {
     image_path: string | null,
     ongoing: boolean
   }) {
-    const deleteEndpoint = '/create'
-    this.http.post((this.databaseUrl + deleteEndpoint),game).subscribe({
+    const createEndpoint = '/create'
+    this.http.post((this.databaseUrl + createEndpoint),game).subscribe({
       next: (res: any) => {
         //console.log(`REsponse: ${JSON.stringify(res)}`)
       },
@@ -77,7 +77,7 @@ export class GameSelectorService {
         console.log(`Error during post request: ${JSON.stringify(err)}`)
       }
     })
-    //this.getAllGames()
+    this.getAllGames()
   }
 
   updateGame(game: {
@@ -135,7 +135,7 @@ export class GameSelectorService {
         console.log(`Error during post request: ${JSON.stringify(err)}`)
       }
     })
-    //this.getAllGames()
+    this.getAllGames()
     console.log('Delete ended...')
 
   }

@@ -6,9 +6,9 @@
     <div id="form-container">
         @if(this.gamesSelector.createStarted ){
         <form [formGroup]="createForm" (ngSubmit)="createGameFromComponent({
-            name: this.updateForm.controls['name'].value,
-            description: this.updateForm.controls['description'].value,
-            image_path: this.updateForm.controls['image_path'].value,
+            name: this.createForm.controls['name'].value,
+            description: this.createForm.controls['description'].value,
+            image_path: this.createForm.controls['image_path'].value,
             ongoing: true
             })">
             <h2>Create a New Game Entry</h2>
@@ -22,7 +22,7 @@
             <label for="image_path">Enter new image path: </label>
             <input id="image_path" type="text" formControlName="image_path">
             <br/>
-            <button type="submit" [disabled]="!updateForm.valid">Submit</button>
+            <button type="submit" [disabled]="!createForm.valid">SUBMIT</button>
         </form>
         }
     </div>

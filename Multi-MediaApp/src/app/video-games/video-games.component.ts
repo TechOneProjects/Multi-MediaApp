@@ -74,7 +74,10 @@ export class VideoGamesComponent implements OnInit {
     description: string | null,
     image_path: string | null, ongoing: boolean
   }){
+    console.log('Create in console called')
     this.gamesSelector.createAGame(createdGame)
+    console.log('Create in console ended')
+
   }
   verifyGameUpdateData(updatedGame: {
     _id: string | null,
