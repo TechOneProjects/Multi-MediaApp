@@ -9,6 +9,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -16,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-media-page-4',
   standalone: true,
-  imports: [ReactiveFormsModule, DatePipe, MatButtonModule,MatCardModule, MatFormFieldModule, MatInputModule],
+  imports: [ReactiveFormsModule, DatePipe, MatButtonModule,MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatDividerModule],
   templateUrl: './media-page-4.component.html',
   styleUrl: './media-page-4.component.sass'
 })
@@ -33,6 +35,7 @@ export class MediaPage4Component implements OnInit, OnDestroy{
   thoughts!: any[]
   activeThought: any
   private subscription!: Subscription
+  showReplies = false
 
   constructor() { }
 
@@ -68,6 +71,21 @@ export class MediaPage4Component implements OnInit, OnDestroy{
       }
     }
 
+    deleteMessage(messageId: string) {
+      this.http.delete(`http://localhost:3000/thought/${messageId}`).subscribe(() => {
+        this.fetchMessages();
+      });
+    }
+
+    deleteReply(messageId: string, replyId: string) {
+      this.http.delete(`http://localhost:3000/thought/${messageId}/replies/${replyId}`).subscribe(() => {
+          this.fetchMessages();
+      });
+  }
+
+  toggleReplies() {
+    this.showReplies = !this.showReplies;
+  }
 
     ngOnInit(): void {
       this.fetchMessages()

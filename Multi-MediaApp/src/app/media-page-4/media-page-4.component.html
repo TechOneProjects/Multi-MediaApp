@@ -20,24 +20,32 @@
     <mat-card class="thought-card">
         <mat-card-header>
             <mat-card-title class="user">User</mat-card-title>
+            <button mat-fab color="warn" class="delete-btn" (click)="deleteMessage(thought._id)">
+                <mat-icon>delete</mat-icon>
+            </button>
         </mat-card-header>
         <mat-card-content>
             <p>{{ thought.message }}</p>
             <p class="message-date">{{ thought.timestamp | date:'h:mma MM-dd-yyyy'}}</p>
+            <br><br><br>
+            <hr>       
             @for (reply of thought.replies; track $index) {
+                <button mat-fab color="warn" (click)="deleteReply(thought._id, reply._id)">Delete Reply</button>
             <p>{{ reply.message }}</p>
             <p class="message-date">{{ reply.timestamp | date:'h:mma MM-dd-yyyy' }}</p>
+            <hr>  
             }
         </mat-card-content>
+    
         <br>
         <mat-card-actions>
-            <button (click)="setActiveThought(thought)" mat-button>Reply</button>
+            <button (click)="setActiveThought(thought)" class="delete-btn" mat-button>Reply</button>
         </mat-card-actions>
         @if (activeThought === thought) {
         <form [formGroup]="reply" (submit)="replyToMessage()">
-            <mat-form-field class="example-full-width">
+            <mat-form-field class="thought-form-textarea">
                 <mat-label>*Reply</mat-label>
-                <textarea matInput placeholder="Reply to this message..." formControlName="message"></textarea>
+                <textarea matInput placeholder="Reply to this message..." formControlName="message" ></textarea>
             </mat-form-field>
             <mat-card-actions>
                 <button type="submit" [disabled]="!reply.valid" mat-button>Send</button>
