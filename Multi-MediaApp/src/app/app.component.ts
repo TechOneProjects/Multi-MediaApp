@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +16,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginPageComponent, SargePageComponent,
+  imports: [RouterOutlet, GeneralAboutUsPageComponent, LoginPageComponent, SargePageComponent,
     RouterLink, HomepageComponent, SignUpComponent, MatDividerModule, MatButton, MatSidenavModule, MatButtonModule, MatCardModule],
   templateUrl: './app.component.html',
 
