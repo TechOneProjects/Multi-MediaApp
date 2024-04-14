@@ -22,7 +22,8 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
-        const token = jwt.sign({newUser}, "secret");
+
+        const token = {"token": jwt.sign({newUser}, "secret")};
         res.status(200).send(JSON.stringify(token));
     }
     else{

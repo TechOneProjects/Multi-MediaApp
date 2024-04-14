@@ -1,0 +1,17 @@
+<h2>Gallery</h2>
+
+<p>
+    Welcome to our gallery! Here's a collection of art, movie and animation stills, and much more. Please take a moment to check everything out!
+</p>
+
+<div id="scrolling-gallery" >
+    <div id="scroll-panel" >
+        @for (imageData of gallery; track imageData._id) {
+            <app-gallery-image [imageData]="imageData" />
+        }
+    </div>
+</div>
+
+@if (token) {
+    <app-gallery-form />
+}

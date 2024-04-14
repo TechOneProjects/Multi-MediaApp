@@ -1,0 +1,27 @@
+<div id="home-body-container">
+
+    <div id="side-nav-container">
+        <button mat-button (click)="switchComp()" id="switch-comp-button">Add Album</button>
+        <div id="filter-container">
+            <h2>Filter</h2>
+            <mat-radio-group [(ngModel)]="filterGenre" (ngModelChange)="filter()" id="radio-button-group">
+                <mat-radio-button value="Rock">Rock</mat-radio-button>
+                <mat-radio-button value="Hip Hop">Hip Hop</mat-radio-button>
+                <mat-radio-button value="Electronic">Electronic</mat-radio-button>
+                <mat-radio-button value="Funk / Soul">Funk / Soul</mat-radio-button>
+                <mat-radio-button value="Pop">Pop</mat-radio-button>
+                <mat-radio-button value="Jazz">Jazz</mat-radio-button>
+                <mat-radio-button value="" selected>None</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+    
+    <div id="main-album-container">
+        @for(album of filteredArr; track album._id) {
+            <div class="album-container" (click)="openBottomSheet(album)">
+                <p>{{album.title}} - {{album.artist}}</p>
+                <img [src]="album.cover_image" class="album-image">
+            </div>
+        }
+    </div>
+</div>
