@@ -1,8 +1,61 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<nav id="nav-container">
+    <div id="left-container">
+        <a routerLink="/">
+            <button mat-button id="home-button">
+                Multi Media
+            </button>
+        </a>
+    </div>
+    <div id="right-container">
+        <a routerLink="/thoughts">
+            <button mat-button style="color: white;">
+                Thoughts
+            </button>
+        </a>
+        <a routerLink="/games">
+            <button mat-button style="color: white;">
+                Games
+            </button>
+        </a>
+        <a routerLink="/gallery">
+            <button mat-button style="color: white;">
+                Gallery
+            </button>
+        </a>
+        <a routerLink="/music">
+            <button mat-button style="color: white;">
+                Music
+
+            </button>
+        </a>
+        <a routerLink="/character">
+            <button mat-button style="color: white;">
+                Character Creator
+            </button>
+        </a>
+        <a routerLink="/movie">
+            <button mat-button style="color: white;">
+                Movies
+            </button>
+        </a>
+        <a routerLink="/about">
+            <button mat-button style="color: white;">
+                About Us
+            </button>
+        </a>
+        @if(isLoggedIn) {
+        <button mat-button style="color:white;" (click)="logOut()">
+            Log out
+        </button>
+        } @else {
+        <a routerLink="/login">
+            <button mat-button style="color:white;">
+                Login
+            </button>
+        </a>
+        }
+
+    </div>
+
+</nav>
 <router-outlet></router-outlet>
