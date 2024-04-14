@@ -7,8 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-
-          "style": "scss"
+          "style": "sass"
         }
       },
       "root": "",
@@ -25,16 +24,14 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+             "src/styles.sass"
             ],
             "scripts": []
           },
@@ -88,16 +85,14 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-
-              "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles.sass"
             ],
             "scripts": []
           }

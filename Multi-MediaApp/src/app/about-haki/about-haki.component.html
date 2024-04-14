@@ -1,0 +1,31 @@
+<header>
+    <h2>
+        About Haki
+    </h2>
+    <summary>
+        <h4>Software Engineer | illustrator</h4>
+    </summary>
+</header>
+<img src="../../assets/images/profile/haki-illo.png" alt="An illustrated profile picture of Badi-Haki Martin, contributing engineer" height="500px" />
+<section id="introduction">
+    <p id="introduction__summary">
+        Hello, y'all! My name is Badi-Haki Martin, but please keep it simple and call me 'Haki'. I'm an illustrator, software engineer, and game developer from Atlanta, Georgia. I've been drawing all my life, I've been programming as a hobby since I was young, and as a professional I'm proud to call myself an employee of TechOne.
+    </p>
+    <p id="introduction__personals">
+        I'm a big fan of video games as an art form, anime, manga, comics, card games, model kits, basically all things nerdy. Strangely, I'm also quite fond of fishing and camping. I guess you could say the serenity of nature calls to this ol' city-boy. For fun, you can usually find me developing that 'dream game' that every developer has in the back of their head, and while I haven't done it professionally in quite some time, I'm still a pretty decent illustrator.
+    </p>
+</section>
+
+<br />
+
+<section id="app-summary">
+    <p id="app-summary__overview">
+        For my contribution to this Multi-Media app, I made an infinitely-looping image gallery. I wanted to have that curated, museum-tour feel, so it will loop through the images with no interferance. However, the user can, upon logging in, add to the database of images, edit an image, or delete it.
+    </p>
+    <p id="app-summary__details">
+        My part of the app relies on a service I created to manage image data. It will pull the data from the server and load it into the gallery array variable, which the base gallery-page component uses to build it's own array that doubles the original array. In the SASS file, for styling, I use a cascading design to accomodate browsers that don't have certain reqired features enabled. I have keyframes defined for scrolling animations and have the div containing the image cards translating to 50% towards the left. To accomodate for any jittering, I applied a mask over the container div that gives a fade-in-fade-out effect to the div. The scrolling animating is set to complete at a little over 150 seconds so that the gallery moves slow.
+    </p>
+    <p id="app-summary__styling">
+        For aesthetics I used the Angular Materials package. For the most part, I'm using the material input to modify my input elements with animations, transitions, and interactive labels. I'm also using material cards for the images in the gallery. This way, there's a nice UI showing the image as well as it's associated delete and edit buttons.
+    </p>
+</section>

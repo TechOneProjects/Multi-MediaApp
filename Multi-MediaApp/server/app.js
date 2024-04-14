@@ -11,7 +11,7 @@ const MONGODB_URI = "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mon
 const auth = require("./controllers/AuthController.js");
 const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
-const avatars = require("./controllers/AvatarsController.js");
+const gallery = require("./controllers/ImageController.js");
 
 
 app.use(express.json());
@@ -34,12 +34,13 @@ app.use(async (req, res, next) => {
     } else if (auth.startsWith(prefix)) {
         const token = auth.slice(prefix.length);
         try {
-            const user = jwt.verify(token, "secret");
-            req.user = user.newUser
+            const obj = jwt.verify(token, "secret");
+            // console.log(obj)
+            req.user = obj
             console.log("added to req.user", req.user)
             next();
         } catch (error) {
-            res.send(error)
+            res.status(400).send(error)
         }
     } else {
         res.status(403).send({
@@ -63,7 +64,7 @@ app.get("/check-auth", async (req, res) => {
 app.use('/auth', auth);
 app.use('/albums', albums);
 app.use('/movies', movies);
-app.use('/sargepage/avatars', avatars);
+app.use('/gallery', gallery);
 
 app.get("/", (req, res) => {
     res.send({ message: "Hello" });
