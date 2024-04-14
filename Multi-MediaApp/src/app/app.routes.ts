@@ -14,7 +14,7 @@ export const routes: Routes = [
     {
         path: "music", component: ChasesMusicComponent, title: "Music"
     },
-
+    {path: "about", component: GeneralAboutUsPageComponent},
     { path: "janette", component: JanetteComponent },
     { path: "movie", component: MediaPage2Component },
     {
