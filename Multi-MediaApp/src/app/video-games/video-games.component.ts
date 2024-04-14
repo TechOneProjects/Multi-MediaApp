@@ -48,6 +48,13 @@ export class VideoGamesComponent implements OnInit {
 
   })
 
+  createForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    image_path: new FormControl('')
+
+  })
+
   verifyUser(): void {
     const token = localStorage.getItem('token');
 
@@ -62,6 +69,13 @@ export class VideoGamesComponent implements OnInit {
     console.log('TEST')
   }
 
+  createGameFromComponent(createdGame: {
+    name: string | null,
+    description: string | null,
+    image_path: string | null, ongoing: boolean
+  }){
+    this.gamesSelector.createAGame(createdGame)
+  }
   verifyGameUpdateData(updatedGame: {
     _id: string | null,
     name: string | null,

@@ -3,14 +3,15 @@ import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 import { GalleryPageComponent } from './gallery-page/gallery-page.component';
-import { HomepageComponent } from './homepage/homepage.component';
+//import { HomepageComponent } from './homepage/homepage.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButton } from '@angular/material/button';
-import { SargePageComponent } from './sarge-page/sarge-page.component';
+//import { SargePageComponent } from './sarge-page/sarge-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { VideoGamesComponent } from './video-games/video-games.component';
 
 
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
@@ -19,7 +20,7 @@ import { ChasesMusicComponent } from './chases-music/chases-music.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginPageComponent, SargePageComponent, RouterLink, HomepageComponent, SignUpComponent, GeneralAboutUsPageComponent, ChasesMusicComponent, GalleryPageComponent],
+  imports: [RouterOutlet, LoginPageComponent, RouterLink, GeneralAboutUsPageComponent, ChasesMusicComponent, GalleryPageComponent, VideoGamesComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })

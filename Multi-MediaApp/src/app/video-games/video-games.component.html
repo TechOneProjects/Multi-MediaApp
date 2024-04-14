@@ -1,17 +1,18 @@
 <body>
     <h1>Organize your game catalog</h1>
     <div class="button-container">
-        <button mat-raised-button>Add a Game</button>
+        <button mat-raised-button (click)="this.gamesSelector.setCreateStatus(true)">Add a Game</button>
     </div>
-    <div>
-        @if(this.gamesSelector.updateStarted){
-        <form [formGroup]="updateForm" (ngSubmit)="verifyGameUpdateData({
-            _id: this.gamesSelector.getSelectedGameID(),
+    <div id="form-container">
+        @if(this.gamesSelector.createStarted ){
+        <form [formGroup]="createForm" (ngSubmit)="createGameFromComponent({
             name: this.updateForm.controls['name'].value,
             description: this.updateForm.controls['description'].value,
-            image_path: this.updateForm.controls['description'].value,
+            image_path: this.updateForm.controls['image_path'].value,
             ongoing: true
             })">
+            <h2>Create a New Game Entry</h2>
+            <br/>
             <label for="name">Enter new name: </label>
             <input id="name" type="text" formControlName="name">
             <br />
@@ -20,6 +21,31 @@
             <br />
             <label for="image_path">Enter new image path: </label>
             <input id="image_path" type="text" formControlName="image_path">
+            <br/>
+            <button type="submit" [disabled]="!updateForm.valid">Submit</button>
+        </form>
+        }
+    </div>
+    <div id="form-container">
+        @if(this.gamesSelector.updateStarted ){
+        <form [formGroup]="updateForm" (ngSubmit)="verifyGameUpdateData({
+            _id: this.gamesSelector.getSelectedGameID(),
+            name: this.updateForm.controls['name'].value,
+            description: this.updateForm.controls['description'].value,
+            image_path: this.updateForm.controls['image_path'].value,
+            ongoing: true
+            })">
+            <h2>Update Game Info</h2>
+            <br/>
+            <label for="name">Enter new name: </label>
+            <input id="name" type="text" formControlName="name">
+            <br />
+            <label for="description">Enter new description: </label>
+            <input id="description" type="text" formControlName="description">
+            <br />
+            <label for="image_path">Enter new image path: </label>
+            <input id="image_path" type="text" formControlName="image_path">
+            <br/>
             <button type="submit" [disabled]="!updateForm.valid">Submit</button>
         </form>
         }
@@ -38,10 +64,10 @@
                         <p>{{game.description}}</p>
                         <div id="button-container">
                             <button mat-raised-button id='update-button'
-                                (click)="this.gamesSelector.setupdateStatus(true, game._id)">
+                                (click)="this.gamesSelector.setUpdateStatus(true, game._id)">
                                 Update Game Info</button>
                             <button mat-raised-button>Arrow button</button>
-                            <button mat-raised-button id="delete-button">DELETE</button>
+                            <button mat-raised-button (click)="this.gamesSelector.deleteGame(game)" id="delete-button">DELETE</button>
                         </div>
                     </mat-list-item>
                     }

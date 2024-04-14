@@ -7,7 +7,6 @@ import { MediaPage2Component } from './media-page-2/media-page-2.component';
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 import { AboutChaseComponent } from './about-chase/about-chase.component';
 import { GalleryPageComponent } from './gallery-page/gallery-page.component';
-import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 
 export const routes: Routes = [
   {path: "about", component: GeneralAboutUsPageComponent},

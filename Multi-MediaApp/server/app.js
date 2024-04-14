@@ -12,6 +12,7 @@ const auth = require("./controllers/AuthController.js");
 const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
 const gallery = require("./controllers/ImageController.js");
+const games = require("./controllers/GamesController.js")
 
 const port = 3000
 
@@ -66,6 +67,7 @@ app.use('/auth', auth);
 app.use('/albums', albums);
 app.use('/movies', movies);
 app.use('/gallery', gallery);
+app.use('/games', games)
 
 app.get("/", (req, res) => {
     res.send({ message: "Hello" });

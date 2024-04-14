@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class GameSelectorService {
   gamesFound: boolean = false;
   updateStarted: boolean = false
+  createStarted: boolean = false
   gameObj: {} = {
     name: '',
     description: '',
@@ -23,9 +24,14 @@ export class GameSelectorService {
 
   constructor(private http: HttpClient) { }
 
-  setupdateStatus(status: boolean, _id: string) {
+  setUpdateStatus(status: boolean, _id: string) {
     this.updateStarted = status
     this.selectedGameID = _id
+  }
+
+  setCreateStatus(status: boolean) {
+    this.createStarted = status
+
   }
   getAllGames() {
     this.http.get(this.databaseUrl).subscribe({
@@ -56,9 +62,22 @@ export class GameSelectorService {
     return this.selectedGameID
   }
 
-  createAGame(game: { name: string, description: string, image_path: string }) {
-
-    this.getAllGames()
+  createAGame(game: {
+    name: string | null,
+    description: string | null,
+    image_path: string | null,
+    ongoing: boolean
+  }) {
+    const deleteEndpoint = '/create'
+    this.http.post((this.databaseUrl + deleteEndpoint),game).subscribe({
+      next: (res: any) => {
+        //console.log(`REsponse: ${JSON.stringify(res)}`)
+      },
+      error: (err) => {
+        console.log(`Error during post request: ${JSON.stringify(err)}`)
+      }
+    })
+    //this.getAllGames()
   }
 
   updateGame(game: {
@@ -72,9 +91,7 @@ export class GameSelectorService {
     console.log('Update Method Reached')
 
     const updateEndpoint = '/update'
-    const headers = new HttpHeaders({
-      "Content-Type": "application/json"
-    })
+
     console.log(`Update game name: ${game.name}`)
 
     Object.keys(game).forEach(key => {
@@ -85,8 +102,7 @@ export class GameSelectorService {
 
     this.http.put((
       this.databaseUrl + `/${game._id}`),
-      game,
-      { headers })
+      game)
       .subscribe({
         next: (res: any) => {
           //console.log(`REsponse: ${JSON.stringify(res)}`)
@@ -96,15 +112,32 @@ export class GameSelectorService {
         }
       })
     //Corresponding item in collection is updated / find using name field
-    //this.getAllGames()
+    this.getAllGames()
     console.log('Update Method eNDED')
 
-
+    this.setUpdateStatus(false, '')
   }
 
-  deleteGame(game: { name: string, description: string, image_path: string }) {
+  deleteGame(game: {
+    _id: string | null,
+    name: string | null,
+    description: string | null,
+    image_path: string | null,
+    ongoing: boolean
+  }) {
+    console.log('Delete started...')
+    this.http.delete(this.databaseUrl + `/${game._id}`)
+    .subscribe({
+      next: (res: any) => {
+        //console.log(`REsponse: ${JSON.stringify(res)}`)
+      },
+      error: (err) => {
+        console.log(`Error during post request: ${JSON.stringify(err)}`)
+      }
+    })
+    //this.getAllGames()
+    console.log('Delete ended...')
 
-    this.getAllGames()
   }
 
 }
