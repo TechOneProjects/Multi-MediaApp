@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { AboutHakiComponent } from './about-haki/about-haki.component';
+import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 import { JanetteComponent } from './janette/janette.component';
 import { AppComponent } from './app.component';
 import { MediaPage2Component } from './media-page-2/media-page-2.component';
@@ -22,5 +24,9 @@ export const routes: Routes = [
         path: "gallery",
         component: GalleryPageComponent,
         title: "MultiMediaApp | Gallery"
+    },
+    {
+        path: "haki",
+        component: AboutHakiComponent
     }
 ];
