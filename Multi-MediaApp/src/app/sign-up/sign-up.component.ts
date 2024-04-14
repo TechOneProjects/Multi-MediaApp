@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 import { User } from './sign-up.user.interface'
 import { v4 as uuidv4 } from 'uuid';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../user';
 
 
 

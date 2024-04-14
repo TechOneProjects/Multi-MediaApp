@@ -1,0 +1,28 @@
+<form [formGroup]="editImageForm" (ngSubmit)="handleSubmit()">
+    <mat-form-field>
+        <mat-label for="title">Title</mat-label>
+        <input matInput type="text" id="title" formControlName="title" />
+        @if (editImageForm.get("title")?.hasError("required") && editImageForm.get("title")?.touched ){
+            <span class="error">Need to enter a title</span>
+            }
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+        <mat-label for="imageURL">URL of the Image</mat-label>
+        <input matInput type="text" id="imageURL" formControlName="imageURL" />
+        @if (editImageForm.get("imageURL")?.hasError("required") && editImageForm.get("imageURL")?.touched ){
+            <span class="error">Need to enter an image URL</span>
+            }
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+        <mat-label for="altText">Short Text Description</mat-label>
+        <input matInput type="text" id="altText" formControlName="altText" />
+        @if (editImageForm.get("altText")?.hasError("required") && editImageForm.get("altText")?.touched ){
+            <span class="error">Give a description</span>
+            }
+    </mat-form-field>
+    <br />
+    <button mat-raised-button type="submit">Update Image</button>
+</form>
+<button mat-raised-button (click)="closeElement($event)">Close Window</button>

@@ -28,6 +28,7 @@ router.post("/signup", async (req, res)=>{
         // it is an asynchronous method, use async-await
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
+
         const token = {"token": jwt.sign({newUser}, "secret")};
         res.status(200).send(JSON.stringify({token, username }));
     }
@@ -41,11 +42,12 @@ router.post("/login", async ( req, res ) => {
     // model.find() returns an array
     // model.findOne() returns a single document
     // these are both asynchronous operations
+    console.log("loggin in")
     const userLookup = await User.findOne({email:email});
     if(userLookup){
         if(userLookup.password === password){
-            const token = {"token" : jwt.sign({userLookup}, "secret")};
-            res.status(200).send(JSON.stringify(token));
+            const token = jwt.sign({userLookup}, "secret");
+            res.status(200).send(JSON.stringify({user:userLookup,token:token}));
         }
         else{
             res.status(404).send({error:"Wrong password"});
