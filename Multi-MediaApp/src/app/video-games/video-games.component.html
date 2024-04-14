@@ -5,15 +5,22 @@
     </div>
     <div>
         @if(this.gamesSelector.updateStarted){
-        <form [formGroup]="updateForm" (ngSubmit)="this.gamesSelector.updateGame(gameDataHolder)">
+        <form [formGroup]="updateForm" (ngSubmit)="verifyGameUpdateData({
+            _id: this.gamesSelector.getSelectedGameID(),
+            name: this.updateForm.controls['name'].value,
+            description: this.updateForm.controls['description'].value,
+            image_path: this.updateForm.controls['description'].value,
+            ongoing: true
+            })">
             <label for="name">Enter new name: </label>
             <input id="name" type="text" formControlName="name">
-            <br/>
+            <br />
             <label for="description">Enter new description: </label>
-            <input id="description" type="text" formControlName ="description">
-            <br/>
+            <input id="description" type="text" formControlName="description">
+            <br />
             <label for="image_path">Enter new image path: </label>
-            <input id="image_path" type="text" formControlName ="image_path">
+            <input id="image_path" type="text" formControlName="image_path">
+            <button type="submit" [disabled]="!updateForm.valid">Submit</button>
         </form>
         }
     </div>
@@ -22,15 +29,20 @@
             <div class="game-list">
                 <h2>Ongoing Games</h2>
                 <mat-action-list role="list" id="ongoingGamesList">
-                    @if(gamesSelector.gamesFound){
+                    @if(gamesSelector.gamesFound && gamesSelector.ongoingGames[0]){
                     <!-- List items for ongoing games will be added dynamically -->
                     @for(game of gamesSelector.ongoingGames; track game ){
-                    <mat-list-item>
+                    <mat-list-item id="game-list-item">
                         <h3>{{game.name}}</h3>
                         <img matListItemAvatar src={{game.image_path}} alt="Image for game in list">
                         <p>{{game.description}}</p>
-                        <button mat-raised-button (click)="this.gamesSelector.setupdateStatus(true)">
-                            Update Game Info</button>
+                        <div id="button-container">
+                            <button mat-raised-button id='update-button'
+                                (click)="this.gamesSelector.setupdateStatus(true, game._id)">
+                                Update Game Info</button>
+                            <button mat-raised-button>Arrow button</button>
+                            <button mat-raised-button id="delete-button">DELETE</button>
+                        </div>
                     </mat-list-item>
                     }
                     }
@@ -39,13 +51,15 @@
             <div class="game-list">
                 <h2>Finished Games</h2>
                 <mat-action-list role="list" id="finishedGamesList">
-                    @if(gamesSelector.gamesFound){
+                    @if(gamesSelector.gamesFound && gamesSelector.finishedGames[0]){
                     <!-- List items for finished games will be added dynamically -->
                     @for(game of gamesSelector.ongoingGames; track game ){
-                    <mat-list-item>
+                    <mat-list-item id="game-list-item">
                         <h3>{{game.name}}</h3>
                         <img matListItemAvatar src={{game.image_path}} alt="Image for game in list">
                         <p>{{game.description}}</p>
+                        <button mat-raised-button>Arrow button</button>
+                        <button mat-raised-button id="delete-button">DELETE</button>
                     </mat-list-item>
                     }
                     }

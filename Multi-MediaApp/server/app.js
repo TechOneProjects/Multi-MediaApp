@@ -13,6 +13,8 @@ const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
 const games = require("./controllers/GamesController.js")
 
+const port = 3000
+
 app.use(express.json());
 app.use(cors());
 
@@ -69,7 +71,7 @@ app.get("/", (req, res) => {
 })
 
 mongoose.connect(MONGODB_URI).then(() => {
-    app.listen(3000, () => {
-        console.log('Server Running')
+    app.listen(port, () => {
+        console.log(`Server Running on ${port}`)
     });
 })

@@ -69,10 +69,7 @@
               "buildTarget": "Multi-MediaApp:build:development"
             }
           },
-          "defaultConfiguration": "development",
-          "options": {
-            "port": 3000
-          }
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
