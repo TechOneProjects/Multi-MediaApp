@@ -1,25 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from '../user';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatDividerModule,
+    MatButtonModule
+  ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.sass'
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   http = inject(HttpClient);
-  serverAddress:string = "http://localhost:3000/users";
-  allUserData:{email:String, password:String}[] = [];
-  loginMessage:String = "";
 
-  ngOnInit(): void {
-    this.http.get(this.serverAddress).subscribe(response => {
-      this.allUserData = response as {email:String, password:String}[]
-    })
-  }
+  serverAddress:string = "http://localhost:3000/auth";
+
+  loginMessage:String = "";
   
   userInfo:FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -44,18 +51,30 @@ export class LoginPageComponent implements OnInit {
       'password': this.userInfo.value.password
     }
 
-    const getUser:{email:String, password:String} | undefined = this.allUserData.find( ( user:{ email:String, password:String } ) => {
-      return userLoginObj.email === user.email && userLoginObj.password === user.password;
-    }) // get user should be sending a full http request to the server
-
-    if (getUser) {
-      console.log('found user : ', getUser);
-      this.changeLoginMessage("User found!!");
+    const httpObserver:{} = {
+      next: (res:{})=>{
+        console.log("logged in successfully");
+        console.log(res);
+        const { user, token } = res as {user:User, token:string};
+        localStorage.setItem("token", JSON.stringify(res));
+      },
+      error: (err:any)=>{
+        console.log(err.error.error);
+        this.changeLoginMessage(err.error.error);
+      },
+      complete: ()=>{},
     }
-    else {
-      this.changeLoginMessage("ERROR: User not found!!");
-    }
 
+    try{
+      this.http.post(`${this.serverAddress}/login`, userLoginObj).subscribe( 
+        httpObserver
+  )
+    }
+    catch(err:any){
+      const errorMessage:string = err.error.error;
+      console.log(err.error);
+      console.log(errorMessage);
+    }
   }
 
 }
