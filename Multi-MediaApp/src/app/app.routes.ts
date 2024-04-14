@@ -10,7 +10,6 @@ import { GalleryPageComponent } from './gallery-page/gallery-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 export const routes: Routes = [
-  {path: "about", component: GeneralAboutUsPageComponent},
     {
         path: "music", component: ChasesMusicComponent, title: "Music"
     },
