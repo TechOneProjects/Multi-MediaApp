@@ -36,7 +36,9 @@ export class ChasesMusicComponent implements OnInit{
         artist: album.artist,
         title: album.title, 
         genres: album.genres,
-        cover_image: album.cover_image})
+        cover_image: album.cover_image,
+        year: album.year
+      })
     })
     const data = await response.json();
     if(response.status == 200) {

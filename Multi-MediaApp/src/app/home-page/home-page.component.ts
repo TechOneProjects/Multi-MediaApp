@@ -22,11 +22,11 @@ export class HomePageComponent implements OnInit{
     },
      "games" : {
       "imageURL" : "../../assets/games.png",
-      "contentDesc": "Video Games" 
+      "contentDesc": "Video Games Collection" 
     },
      "gallery" : {
-      "imageURL" : "",
-      "contentDesc": "" 
+      "imageURL" : "../../assets/gallery.png",
+      "contentDesc": "Art Gallery" 
     },
      "characters" : {
       "imageURL" : "",
