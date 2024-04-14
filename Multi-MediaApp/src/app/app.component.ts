@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnChanges, inject } from '@angular/core';
+import { Component, OnChanges, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button'
@@ -12,7 +12,7 @@ import {MatButtonModule} from '@angular/material/button'
   templateUrl: './app.component.html',
   styleUrl: './app.component.sass'
 })
-export class AppComponent implements OnChanges {
+export class AppComponent implements OnChanges, OnInit {
   title = 'Multi-MediaApp';
   http = inject(HttpClient);
   isLoggedIn: boolean = false;
@@ -21,6 +21,12 @@ export class AppComponent implements OnChanges {
   logOut(){
     localStorage.removeItem("token")
     this.isLoggedIn = false;
+  }
+
+  ngOnInit(): void {
+    if(localStorage.getItem("token")) {
+      this.isLoggedIn = true;
+    }
   }
  
   ngOnChanges(): void {
