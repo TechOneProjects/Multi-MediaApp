@@ -56,7 +56,7 @@ export class LoginPageComponent {
         console.log("logged in successfully");
         console.log(res);
         const { user, token } = res as {user:User, token:string};
-        localStorage.setItem("token", JSON.stringify(res));
+        localStorage.setItem("token", token);
       },
       error: (err:any)=>{
         console.log(err.error.error);
