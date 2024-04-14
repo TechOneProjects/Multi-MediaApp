@@ -4,14 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { ThoughtsModle } from './thought.interface';
 import { ReplyModel } from './reply.interface';
 import { DatePipe } from '@angular/common';
-import { Subscription } from 'rxjs';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
-import jwt_decode from 'jwt-decode';
 
 
 
@@ -25,7 +23,7 @@ import jwt_decode from 'jwt-decode';
   styleUrl: './media-page-4.component.sass'
 })
 
-export class MediaPage4Component implements OnInit, OnDestroy{
+export class MediaPage4Component implements OnInit{
   thought: FormGroup = new FormGroup({
     message: new FormControl('', Validators.required),
   })
@@ -36,7 +34,6 @@ export class MediaPage4Component implements OnInit, OnDestroy{
   http = inject(HttpClient)
   thoughts!: any[]
   activeThought: any
-  private subscription!: Subscription
   username!: any
 
   constructor() { }
@@ -93,13 +90,7 @@ export class MediaPage4Component implements OnInit, OnDestroy{
       this.fetchMessages()
 
     }
-    
-
-
-    ngOnDestroy(): void {
-      this.subscription.unsubscribe();
-      
-    }
+  
 
   }
 
