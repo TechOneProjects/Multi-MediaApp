@@ -19,10 +19,14 @@
     @for (thought of thoughts; track $index) {
     <mat-card class="thought-card">
         <mat-card-header>
-            <mat-card-title class="user">{{username}}</mat-card-title>
+            <mat-card-title class="user">{{thought.username}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <p>{{ thought.message }}</p>
+            <div class="flex-box">
+            <div class="message">
+            <p class="thought">{{ thought.message }}</p>
+            </div>
+            </div>
             <br><br>
             <p class="message-date">{{ thought.timestamp | date:'h:mma'}} <br>
                 {{ thought.timestamp | date:'MM/dd/yyyy'}}</p>
@@ -36,7 +40,12 @@
             @for (reply of thought.replies; track $index) {
             <div class="reply-section">
                 <br>
-                <p>{{ reply.message }}</p>
+                <mat-card-header>
+                <mat-card-title class="reply-user">{{reply.username}}</mat-card-title>
+                </mat-card-header>
+                <div class="flex-box">
+                <p class="message">{{ reply.message }}</p>
+                </div>
                 <p class="reply-date">{{ reply.timestamp | date:'h:mma' }} <br>
                     {{ reply.timestamp | date:'MM/dd/yyyy' }}</p>
                 <br>

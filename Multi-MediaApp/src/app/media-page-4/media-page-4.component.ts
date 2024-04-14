@@ -45,10 +45,14 @@ export class MediaPage4Component implements OnInit, OnDestroy{
     if (this.thought.invalid) {
       return;
     }
-    const thought: ThoughtsModle = {message: this.thought.value.message, replies: []}
+    const thought: ThoughtsModle = { username: localStorage.getItem("username"), message: this.thought.value.message, replies: []}
     this.http.post("http://localhost:3000/thought", thought).subscribe()
     setTimeout(() => { this.fetchMessages() }, 500)
     console.log(thought)
+    this.thought.reset()
+    this.thought.controls["message"].setErrors(null)
+
+    
     }
 
     fetchMessages() {
@@ -63,7 +67,7 @@ export class MediaPage4Component implements OnInit, OnDestroy{
 
     replyToMessage() {
       if (this.reply.valid && this.activeThought) {
-        const message: ReplyModel = { message: this.reply.value.message} 
+        const message: ReplyModel = { username: localStorage.getItem("username"), message: this.reply.value.message} 
         this.http.post(`http://localhost:3000/thought/${this.activeThought._id}/replies`, message).subscribe(() => {
           this.fetchMessages();
           this.reply.reset();
@@ -87,8 +91,6 @@ export class MediaPage4Component implements OnInit, OnDestroy{
 
     ngOnInit(): void {
       this.fetchMessages()
-
-      this.username = localStorage.getItem("username")
 
     }
     

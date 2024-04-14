@@ -5,8 +5,9 @@ const Thought = require("../models/ThoughtModel.js")
 
 router.post("/", async (req, res) => {
     try {
-        const { message } = req.body;
-        const newMessage = new Thought({ message });
+        const { message, username } = req.body;
+        console.log(message)
+        const newMessage = new Thought({ message, username });
         await newMessage.save();
         res.status(201).json({ newMessage: 'Text uploaded successfully' });
     } catch (error) {
@@ -21,7 +22,8 @@ router.post('/:thoughtId/replies', async (req, res) => {
         if (!message) {
             return res.status(404).json({ message: 'Message not found' });
         }
-        message.replies.push({ message: req.body.message });
+        console.log(req.body)
+        message.replies.push({ username: req.body.username, message: req.body.message });
         await message.save();
         res.status(201).json(message);
     } catch (err) {
