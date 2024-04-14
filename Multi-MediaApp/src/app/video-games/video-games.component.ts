@@ -7,11 +7,7 @@ import { Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { single } from 'rxjs';
 // Define an interface for the form control values
-interface GameFormValues {
-  name: string | null | undefined;
-  description: string | null | undefined;
-  image_path: string | null | undefined;
-}
+
 @Component({
   selector: 'app-video-games',
   standalone: true,
@@ -68,6 +64,15 @@ export class VideoGamesComponent implements OnInit {
   test() {
     console.log('TEST')
   }
+  reloadComponentWithRouting(): void {
+    this.router.navigateByUrl('/games', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['app-video-games']);
+    });
+    console.log('Component Reloaded...')
+  }
+  reloadComponentWithoutRouting(): void {
+    window.location.reload();
+  }
 
   createGameFromComponent(createdGame: {
     name: string | null,
@@ -77,7 +82,12 @@ export class VideoGamesComponent implements OnInit {
     console.log('Create in console called')
     this.gamesSelector.createAGame(createdGame)
     console.log('Create in console ended')
+    this.reloadComponentWithoutRouting()
+  }
 
+  deleteGameFromComponent(deletedGame: {_id: string}){
+    this.gamesSelector.deleteGame(deletedGame)
+    this.reloadComponentWithoutRouting()
   }
   verifyGameUpdateData(updatedGame: {
     _id: string | null,
@@ -109,6 +119,7 @@ export class VideoGamesComponent implements OnInit {
         }
       //Send data to game service
       this.gamesSelector.updateGame(this.gameDataHolder)
+      this.reloadComponentWithoutRouting()
     } catch (err) {
       console.error(err)
     }

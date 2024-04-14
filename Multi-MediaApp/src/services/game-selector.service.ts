@@ -77,7 +77,6 @@ export class GameSelectorService {
         console.log(`Error during post request: ${JSON.stringify(err)}`)
       }
     })
-    this.getAllGames()
   }
 
   updateGame(game: {
@@ -118,13 +117,7 @@ export class GameSelectorService {
     this.setUpdateStatus(false, '')
   }
 
-  deleteGame(game: {
-    _id: string | null,
-    name: string | null,
-    description: string | null,
-    image_path: string | null,
-    ongoing: boolean
-  }) {
+  deleteGame(game: {_id: string | null}) {
     console.log('Delete started...')
     this.http.delete(this.databaseUrl + `/${game._id}`)
     .subscribe({
@@ -135,7 +128,6 @@ export class GameSelectorService {
         console.log(`Error during post request: ${JSON.stringify(err)}`)
       }
     })
-    this.getAllGames()
     console.log('Delete ended...')
 
   }

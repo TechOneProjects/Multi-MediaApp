@@ -67,7 +67,7 @@
                                 (click)="this.gamesSelector.setUpdateStatus(true, game._id)">
                                 Update Game Info</button>
                             <button mat-raised-button>Arrow button</button>
-                            <button mat-raised-button (click)="this.gamesSelector.deleteGame(game)" id="delete-button">DELETE</button>
+                            <button mat-raised-button (click)="deleteGameFromComponent(game)" id="delete-button">DELETE</button>
                         </div>
                     </mat-list-item>
                     }
