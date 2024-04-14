@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { Avatar } from "../sarge-page/sarge-page-avatar.interface"
 import { v4 as uuidv4 } from 'uuid';
 
-
+import { DisplayServiceService } from '../display-service.service';
 
 
 
@@ -21,7 +21,15 @@ import { v4 as uuidv4 } from 'uuid';
   templateUrl: './sarge-page.component.html',
   styleUrl: './sarge-page.component.sass'
 })
-export class SargePageComponent {
+export class SargePageComponent implements OnInit {
+
+  displayService = inject(DisplayServiceService);
+
+  ngOnInit(): void {
+   this.displayService.Read();
+  
+  }
+
   hairColor: string = "";
   eyeColor: string = "";
   skinColor: string = "";
@@ -37,8 +45,7 @@ export class SargePageComponent {
   displayLoaded: boolean = false;
   imgLoading: boolean = false;
   updBtn: boolean = false;
-  displayContainer: Avatar[] = [];
-
+ 
 
   promptData: FormGroup = new FormGroup({
     hairColor: new FormControl('', Validators.required),
@@ -52,77 +59,27 @@ export class SargePageComponent {
     prompt: new FormControl('')
   })
 
-  http = inject(HttpClient);
 
 
-  async Read() {
 
-    this.http.get("http://localhost:3000/avatars/read").subscribe(res => {
 
-      this.displayContainer = res as Avatar[];
-      this.displayContainer.reverse();
-    })
 
-    console.log(this.displayContainer);
-  }
-  async Create(imgurl: string) {
-
-    const newAvatar: Avatar = {
-      _id: uuidv4(),
-      name: this.promptData.value.name,
-      img: imgurl,
-      description: this.promptData.value.description,
-      date: Date()
-    }
-    console.log(newAvatar)
-
-    this.http.post("http://localhost:3000/avatars/add", newAvatar).subscribe(res => {
-      console.log(res)
-
-      //localStorage.setItem("token", JSON.stringify(res))
-    })
-  }
-  async Delete(id: number) {
-
-    const _id = this.displayContainer[id]._id;
-    console.log(_id);
-    this.http.delete(`http://localhost:3000/avatars/${_id}/delete`).subscribe(res => {
-    });
-
-  }
   ImgClick(id: number) {
 
-    const _id = this.displayContainer[id]._id;
+    const _id = this.displayService.displayContainer[id]._id;
     console.log(_id);
-    this.genimgUrl="";
-    this.existingimgUrl = this.displayContainer[id].img;
+    this.genimgUrl = "";
+    this.existingimgUrl = this.displayService.displayContainer[id].img;
     this.imgLoading = false;
     this.updBtn = true;
 
 
   }
-  async Update(id: number) {
 
-    const _id = this.displayContainer[id]._id;
-    console.log(_id);
-
-    const newAvatar: Avatar = {
-      _id: this.displayContainer[id]._id,
-      name: this.promptData.value.name,
-      img: this.displayContainer[id].img,
-      description: this.promptData.value.description,
-      date: Date()
-    }
-
-    console.log(newAvatar)
-    this.http.put(`http://localhost:3000/avatars/${_id}/update`, newAvatar).subscribe(res => {
-    })
-    this.updBtn = false;
-  }
   async LoadImage() {
 
     this.imgLoading = true;
-    this.existingimgUrl="";
+    this.existingimgUrl = "";
     const url = "https://api.openai.com/v1/images/generations";
     const API_KEY = "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";
     const options = {

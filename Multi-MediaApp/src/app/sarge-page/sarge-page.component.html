@@ -35,7 +35,8 @@
         <mat-divider></mat-divider>
         <button mat-raised-button color="primary" (click)="LoadImage()">Generate Image</button>
         @if(genimgUrl !== ""){
-        <button mat-raised-button color="primary" (click)="Create(genimgUrl)">Add to Avatars</button>
+        <button mat-raised-button color="primary" (click)="displayService.Create(genimgUrl,promptData)">Add to
+            Avatars</button>
         }
         <mat-divider></mat-divider>
         <div style="position: absolute; left: 150%; top: 0%;">
@@ -61,21 +62,22 @@
         </div>
     </form>
     <table style="position: absolute; left:55%; top: 0%;">
-        <button mat-fab color="primary" (click)="Read()" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" (click)="displayService.Read()"
+            aria-label="Example icon button with a delete icon">
             <mat-icon>file_copy</mat-icon>
         </button>
         <tbody>
-            @for (avatar of displayContainer; track $index) {
+            @for (avatar of displayService.displayContainer; track $index) {
             <td>
                 <h3>{{avatar.name}}</h3>
                 <img src="{{avatar.img}}" width="128" height="128" (click)="ImgClick($index)">
                 @if(updBtn && (existingimgUrl === avatar.img)){
-                <button mat-mini-fab color="accent" (click)="Update($index)"
+                <button mat-mini-fab color="accent" (click)="displayService.Update($index,promptData,updBtn)"
                     aria-label="Example icon button with a delete icon">
                     <mat-icon>edit</mat-icon>
                 </button>
                 }
-                <button mat-mini-fab color="primary" (click)="Delete($index)"
+                <button mat-mini-fab color="primary" (click)="displayService.Delete($index)"
                     aria-label="Example icon button with a delete icon">
                     <mat-icon>delete</mat-icon>
                 </button>
@@ -83,5 +85,5 @@
 
             }
         </tbody>
-    </table>   
+    </table>
 </div>
