@@ -38,6 +38,11 @@
                 Movies
             </button>
         </a>
+        <a routerLink="/about-us">
+            <button mat-button style="color: white;">
+                About Us
+            </button>
+        </a>
         @if(isLoggedIn) {
         <button mat-button style="color:white;" (click)="logOut()">
             Log out

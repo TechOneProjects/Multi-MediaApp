@@ -21,8 +21,8 @@ export class HomePageComponent implements OnInit{
       "contentDesc": "Radiohead - Ok, Computer" 
     },
      "games" : {
-      "imageURL" : "",
-      "contentDesc": "" 
+      "imageURL" : "../../assets/games.png",
+      "contentDesc": "Video Games" 
     },
      "gallery" : {
       "imageURL" : "",

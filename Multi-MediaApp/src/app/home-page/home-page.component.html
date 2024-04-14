@@ -15,8 +15,8 @@
             <mat-tab label="Games">
                 <div class="content-container">
                     <a routerLink="/games">
-                        <img class="featured-image">
-                        <h3 class="featured-desc"></h3>
+                        <img [src]="allFeatured.games.imageURL" class="featured-image">
+                        <h3 class="featured-desc">{{allFeatured.games.contentDesc}}</h3>
                     </a>
                 </div>
             </mat-tab>
