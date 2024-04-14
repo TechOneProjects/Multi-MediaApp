@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import jwt_decode from 'jwt-decode';
+
 
 
 
@@ -35,7 +37,7 @@ export class MediaPage4Component implements OnInit, OnDestroy{
   thoughts!: any[]
   activeThought: any
   private subscription!: Subscription
-  showReplies = false
+  username!: any
 
   constructor() { }
 
@@ -83,13 +85,14 @@ export class MediaPage4Component implements OnInit, OnDestroy{
       });
   }
 
-  toggleReplies() {
-    this.showReplies = !this.showReplies;
-  }
-
     ngOnInit(): void {
       this.fetchMessages()
+
+      this.username = localStorage.getItem("username")
+
     }
+    
+
 
     ngOnDestroy(): void {
       this.subscription.unsubscribe();

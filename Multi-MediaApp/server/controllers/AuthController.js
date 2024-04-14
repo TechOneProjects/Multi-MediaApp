@@ -29,7 +29,7 @@ router.post("/signup", async (req, res)=>{
         const newUser = await User.create({email:email, password:password, username:username});
         console.log(newUser);
         const token = {"token": jwt.sign({newUser}, "secret")};
-        res.status(200).send(JSON.stringify(token));
+        res.status(200).send(JSON.stringify({token, username }));
     }
     else{
         res.status(406).send({error:"Passwords do not match"})

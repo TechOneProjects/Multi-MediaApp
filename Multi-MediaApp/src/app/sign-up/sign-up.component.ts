@@ -50,8 +50,9 @@ export class SignUpComponent {
       }
       else {
       console.log(res)
-      localStorage.setItem("token", JSON.stringify(res))
-      }
+      localStorage.setItem("token", (res.token.token))
+      localStorage.setItem("username", (res.username))
+    }
     })
 
     this.userInfo.reset()

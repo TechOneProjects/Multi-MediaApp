@@ -2,16 +2,16 @@
     <br>
     <img mat-card-image src="../../assets/thoughts/Thought.PNG" alt="share-a-thought-img" class="thought-image"><br><br>
     <div class="thoughts-form">
-            <form [formGroup]="thought" (submit)="onSubmit()">
-                <mat-form-field class="thought-form-textarea">
-                    <mat-label for="message">*Share Thought</mat-label><br>
-                    <textarea matInput placeholder="What's on your mind...." id="message"
-                        formControlName="message"></textarea><br>
-                </mat-form-field>
+        <form [formGroup]="thought" (submit)="onSubmit()">
+            <mat-form-field class="thought-form-textarea">
+                <mat-label for="message">*Share Thought</mat-label><br>
+                <textarea matInput placeholder="What's on your mind...." id="message"
+                    formControlName="message"></textarea><br>
+            </mat-form-field>
 
-               <br> <button mat-flat-button color="primary" type="submit">Create Thought</button><br><br>
+            <br> <button mat-flat-button color="primary" type="submit">Create Thought</button><br><br>
 
-            </form>
+        </form>
     </div>
 
     <hr>
@@ -19,33 +19,45 @@
     @for (thought of thoughts; track $index) {
     <mat-card class="thought-card">
         <mat-card-header>
-            <mat-card-title class="user">User</mat-card-title>
-            <button mat-fab color="warn" class="delete-btn" (click)="deleteMessage(thought._id)">
-                <mat-icon>delete</mat-icon>
-            </button>
+            <mat-card-title class="user">{{username}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <p>{{ thought.message }}</p>
-            <p class="message-date">{{ thought.timestamp | date:'h:mma MM-dd-yyyy'}}</p>
-            <br><br><br>
-            <hr>       
+            <br><br>
+            <p class="message-date">{{ thought.timestamp | date:'h:mma'}} <br>
+                {{ thought.timestamp | date:'MM/dd/yyyy'}}</p>
+            <mat-card-actions>
+                <button mat-fab color="warn" class="delete-thought-btn" (click)="deleteMessage(thought._id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+
+            <hr>
             @for (reply of thought.replies; track $index) {
-                <button mat-fab color="warn" (click)="deleteReply(thought._id, reply._id)">Delete Reply</button>
-            <p>{{ reply.message }}</p>
-            <p class="message-date">{{ reply.timestamp | date:'h:mma MM-dd-yyyy' }}</p>
-            <hr>  
+            <div class="reply-section">
+                <br>
+                <p>{{ reply.message }}</p>
+                <p class="reply-date">{{ reply.timestamp | date:'h:mma' }} <br>
+                    {{ reply.timestamp | date:'MM/dd/yyyy' }}</p>
+                <br>
+                <mat-card-actions>
+                    <button mat-fab color="warn" class="delete-reply-btn"
+                        (click)="deleteReply(thought._id, reply._id)"><mat-icon>delete</mat-icon></button>
+                </mat-card-actions>
+            </div>
+            <hr>
             }
         </mat-card-content>
-    
+
         <br>
         <mat-card-actions>
-            <button (click)="setActiveThought(thought)" class="delete-btn" mat-button>Reply</button>
+            <button (click)="setActiveThought(thought)" mat-button>Reply</button>
         </mat-card-actions>
         @if (activeThought === thought) {
         <form [formGroup]="reply" (submit)="replyToMessage()">
             <mat-form-field class="thought-form-textarea">
                 <mat-label>*Reply</mat-label>
-                <textarea matInput placeholder="Reply to this message..." formControlName="message" ></textarea>
+                <textarea matInput placeholder="Reply to this message..." formControlName="message"></textarea>
             </mat-form-field>
             <mat-card-actions>
                 <button type="submit" [disabled]="!reply.valid" mat-button>Send</button>
