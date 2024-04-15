@@ -14,6 +14,8 @@ import { GalleryPageComponent } from './gallery-page/gallery-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 
+import { VideoGamesComponent } from './video-games/video-games.component';
+import { HasanAboutMeComponent } from './hasan-about-me/hasan-about-me.component';
 export const routes: Routes = [
   {
     path: "music", component: ChasesMusicComponent, title: "Music"
@@ -57,6 +59,37 @@ export const routes: Routes = [
     },
     {
         path:"sargeaboutme",component :SargeAboutMeComponent
+    },
+    {
+        path: "music", component: ChasesMusicComponent, title: "Music"
+    },
+    {path: "about", component: GeneralAboutUsPageComponent},
+    { path: "janette", component: JanetteComponent },
+    { path: "movie", component: MediaPage2Component },
+    { path: "games", component: VideoGamesComponent },
+    {
+        path: "chase",
+        component: AboutChaseComponent,
+        title: "Chase"
+    },
+    {
+        path: "gallery",
+        component: GalleryPageComponent,
+        title: "MultiMediaApp | Gallery"
+    },
+    {
+        path: "haki",
+        component: AboutHakiComponent
+    },
+    {
+        path: "hasan",
+        component: HasanAboutMeComponent,
+        title: "Hasan"
+    },
+    {
+      path: "",
+      component: HomePageComponent,
+      title: "MultiMediaApp | Home"
     }
   
 ];

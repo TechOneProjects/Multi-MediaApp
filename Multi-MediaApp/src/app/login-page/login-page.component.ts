@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { Router } from '@angular/router';
     MatInputModule,
     MatFormFieldModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    SignUpComponent
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.sass'

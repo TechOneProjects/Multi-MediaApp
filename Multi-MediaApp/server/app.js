@@ -15,7 +15,9 @@ const avatars = require("./controllers/AvatarsController.js");
 const gallery = require("./controllers/ImageController.js");
 const thought = require("./controllers/ThoughtController.js")
 
+const games = require("./controllers/GamesController.js")
 
+const port = 3000
 
 app.use(express.json());
 app.use(cors());
@@ -73,11 +75,14 @@ app.use('/movies', movies);
 app.use('/gallery', gallery);
 app.use('/thought', thought)
 
+app.use('/games', games)
 
 app.get("/", (req, res) => {
     res.send({ message: "Hello" });
 })
 
 mongoose.connect(MONGODB_URI).then(() => {
-    app.listen(3000);
+    app.listen(port, () => {
+        console.log(`Server Running on ${port}`)
+    });
 })
