@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,6 +24,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class LoginPageComponent {
   http = inject(HttpClient);
+  router = inject(Router)
 
   serverAddress:string = "http://localhost:3000/auth";
 
@@ -57,6 +59,8 @@ export class LoginPageComponent {
         console.log(res);
         const { user, token } = res as {user:User, token:string};
         localStorage.setItem("token", token);
+        localStorage.setItem("username", user.username.toString());
+        this.router.navigate([""])  
       },
       error: (err:any)=>{
         console.log(err.error.error);
@@ -75,6 +79,7 @@ export class LoginPageComponent {
       console.log(err.error);
       console.log(errorMessage);
     }
+    
   }
 
 }
