@@ -29,12 +29,12 @@ export class HomePageComponent implements OnInit{
       "contentDesc": "Art Gallery" 
     },
      "characters" : {
-      "imageURL" : "",
-      "contentDesc": "" 
+      "imageURL" : "https://i.ibb.co/3hgjLB5/img-Czy-Sz-FYzl4w5-Emg-B8f-B0-WUsx.png",
+      "contentDesc": "Supershark" 
     },
      "thoughts" : {
-      "imageURL" : "",
-      "contentDesc": "" 
+      "imageURL" : "../../assets/thought-feature.PNG",
+      "contentDesc": "Share a thought" 
     },
     
   }
