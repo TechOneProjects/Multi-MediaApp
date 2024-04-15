@@ -17,6 +17,12 @@ router.get("/", async ( req, res ) => {
 router.post("/signup", async (req, res)=>{
     console.log(req.body);
     const { email, password, passwordConfirmation, username } = req.body;
+    const emailExists = await User.findOne({email:email})
+    if(emailExists){
+        console.log("email exists")
+        res.send({error:"Email Already Exists"})
+        return
+    }
     if(password === passwordConfirmation){
         // The model.create() method is the same as calling new User() and User().save() at the same time
         // it is an asynchronous method, use async-await
@@ -24,7 +30,7 @@ router.post("/signup", async (req, res)=>{
         console.log(newUser);
 
         const token = {"token": jwt.sign({newUser}, "secret")};
-        res.status(200).send(JSON.stringify(token));
+        res.status(200).send(JSON.stringify({token, username }));
     }
     else{
         res.status(406).send({error:"Passwords do not match"})

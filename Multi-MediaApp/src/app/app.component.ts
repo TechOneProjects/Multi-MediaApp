@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   
   logOut(){
     localStorage.removeItem("token")
+    localStorage.removeItem("username")
     this.isLoggedIn = false;
   }
  
