@@ -24,15 +24,17 @@ export class AppComponent implements OnChanges, OnInit {
     this.isLoggedIn = false;
   }
 
-  ngOnInit(): void {
+  checkLogin() {
     if(localStorage.getItem("token")) {
       this.isLoggedIn = true;
     }
   }
+
+  ngOnInit(): void {
+    this.checkLogin();
+  }
  
   ngOnChanges(): void {
-    if(localStorage.getItem("token")) {
-      this.isLoggedIn = true;
-    }
+
   }
 }
