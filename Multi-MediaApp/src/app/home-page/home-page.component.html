@@ -9,7 +9,8 @@
             <mat-tab label="Thoughts">
                 <div class="content-container">
                     <a routerLink="/thoughts">
-                        <h3 class="featured-desc"></h3>
+                        <img [src]="allFeatured.thoughts.imageURL" class="featured-image">
+                        <h3 class="featured-desc">{{allFeatured.thoughts.contentDesc}}</h3>
                     </a>
                 </div>
             </mat-tab>
@@ -39,9 +40,9 @@
             </mat-tab>
             <mat-tab label="Character Creator">
                 <div class="content-container">
-                    <a routerLink="/characters">
-                        <img class="featured-image">
-                        <h3 class="featured-desc"></h3>
+                    <a routerLink="/character">
+                        <img class="featured-image" [src]="allFeatured.characters.imageURL">
+                        <h3 class="featured-desc">{{allFeatured.characters.contentDesc}}</h3>
                     </a>
                 </div>
             </mat-tab>

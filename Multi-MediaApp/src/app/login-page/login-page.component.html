@@ -1,34 +1,45 @@
-<h1>Log In</h1>
 
-<form [formGroup]="userInfo" (ngSubmit)="onSubmitForm()" >
-  <mat-form-field>
-    <mat-label for="email"> Email </mat-label>
-    <br />
-    <input matInput type="email" formControlName="email" />
-    <br />
-    @if (userInfo.get("email")?.hasError("required")) {
-      <span class="error">Email is required to log in</span>
-    }
-    @if (userInfo.get("email")?.hasError("email")) {
-      <span class="error">Please supply a valid email</span>
-    }
-  </mat-form-field>
-  <br />
-  <br />
-  <mat-form-field>
-    <mat-label for="password"> Password </mat-label>
-    <input matInput type="password" formControlName="password" />
-    <br />
-    @if (userInfo.get("password")?.hasError("required")) {
-      <span class="error">password is required to log in</span>
-    }
-  </mat-form-field>
-  <br />
-  <mat-divider />
-  <br />
-  <button mat-raised-button type="submit" [disabled]="userInfo.invalid" >Log In</button> | <button mat-raised-button type="reset" [disabled]="userInfo.invalid" >Reset</button>
-  <br />
-  <span class="error">
-    {{ loginMessage }}
-  </span>
-</form>
+<div id="wrapper">
+  <div>
+
+    <h1>Log In</h1>
+    
+    <form [formGroup]="userInfo" (ngSubmit)="onSubmitForm()" >
+      <mat-form-field>
+        <mat-label for="email"> Email </mat-label>
+        <br />
+        <input matInput type="email" formControlName="email" />
+        <br />
+        @if (userInfo.get("email")?.hasError("required")) {
+          <span class="error">Email is required to log in</span>
+        }
+        @if (userInfo.get("email")?.hasError("email")) {
+          <span class="error">Please supply a valid email</span>
+        }
+      </mat-form-field>
+      <br />
+      <br />
+      <mat-form-field>
+        <mat-label for="password"> Password </mat-label>
+        <input matInput type="password" formControlName="password" />
+        <br />
+        @if (userInfo.get("password")?.hasError("required")) {
+          <span class="error">password is required to log in</span>
+        }
+      </mat-form-field>
+      <br />
+      <mat-divider />
+      <br />
+      <button mat-raised-button type="submit" [disabled]="userInfo.invalid" >Log In</button> | <button mat-raised-button type="reset" [disabled]="userInfo.invalid" >Reset</button>
+      <br />
+      <span class="error">
+        {{ loginMessage }}
+      </span>
+    </form>
+  </div>
+  <div>
+
+    <h1>Sign Up</h1>
+    <app-sign-up></app-sign-up>
+  </div>
+  </div>
