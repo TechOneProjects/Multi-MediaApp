@@ -11,13 +11,14 @@ import { Avatar } from "../sarge-page/sarge-page-avatar.interface"
 import { v4 as uuidv4 } from 'uuid';
 
 import { DisplayServiceService } from '../display-service.service';
+import { SargeAboutMeComponent } from '../sarge-about-me/sarge-about-me.component';
 
 
 
 @Component({
   selector: 'app-sarge-page',
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, MatProgressSpinnerModule, MatDividerModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatIconModule],
+  imports: [MatFormFieldModule, MatInputModule, SargeAboutMeComponent, MatProgressSpinnerModule, MatDividerModule, MatButtonModule, FormsModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './sarge-page.component.html',
   styleUrl: './sarge-page.component.sass'
 })

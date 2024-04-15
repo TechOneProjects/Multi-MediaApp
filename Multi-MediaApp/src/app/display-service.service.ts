@@ -65,14 +65,14 @@ export class DisplayServiceService {
     btn = false;
   }
 
-  async Delete(id: number) {
+  async Delete(id: number, existingimgUrl: string) {
 
     const _id = this.displayContainer[id]._id;
     console.log(_id);
     this.http.delete(`http://localhost:3000/avatars/${_id}/delete`).subscribe(res => {
       const newary: Avatar[] = this.displayContainer.filter(e => { return e._id !== _id });
       this.displayContainer = newary;
+      existingimgUrl = "";
     });
-
   }
 }
