@@ -9,6 +9,7 @@ import { MediaPage2Component } from './media-page-2/media-page-2.component';
 import { MediaPage4Component } from './media-page-4/media-page-4.component';
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 import { AboutChaseComponent } from './about-chase/about-chase.component';
+import { AboutDanielVComponent } from './about-daniel-v/about-daniel-v.component';
 import { GalleryPageComponent } from './gallery-page/gallery-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -40,6 +41,10 @@ export const routes: Routes = [
     path: "",
     component: HomePageComponent,
     title: "MultiMediaApp | Home"
+    },
+    {
+        path: "daniel-v",
+        component: AboutDanielVComponent
   },
   {
     path: "thoughts",
