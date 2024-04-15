@@ -54,6 +54,7 @@ export const routes: Routes = [
     },
     {
         path:"sargeaboutme",component :SargeAboutMeComponent
+    },
     {
         path: "music", component: ChasesMusicComponent, title: "Music"
     },
