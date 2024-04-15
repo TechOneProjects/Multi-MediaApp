@@ -1,0 +1,58 @@
+<div id="home-container">
+    <div id="title-container">
+        <h1>TechOne's Multi-Media</h1>
+        <h3>Featured</h3>
+    </div>
+    <div id="tab-container">
+
+        <mat-tab-group>
+            <mat-tab label="Thoughts">
+                <div class="content-container">
+                    <a routerLink="/thoughts">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Games">
+                <div class="content-container">
+                    <a routerLink="/games">
+                        <img [src]="allFeatured.games.imageURL" class="featured-image">
+                        <h3 class="featured-desc">{{allFeatured.games.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Gallery">
+                <div class="content-container">
+                    <a routerLink="/gallery">
+                        <img class="featured-image" [src]="allFeatured.gallery.imageURL">
+                        <h3 class="featured-desc">{{allFeatured.gallery.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Music">
+                <div class="content-container">
+                    <a routerLink="/music">
+                        <img [src]="allFeatured.music.imageURL" class="featured-image">
+                        <h3 class="featured-desc">{{allFeatured.music.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Character Creator">
+                <div class="content-container">
+                    <a routerLink="/characters">
+                        <img class="featured-image">
+                        <h3 class="featured-desc"></h3>
+                    </a>
+                </div>
+            </mat-tab>
+            <mat-tab label="Movies">
+                <div class="content-container">
+                    <a routerLink="/movie">
+                        <img class="featured-image" [src]="allFeatured.movies.imageURL">
+                        <h3 class="featured-desc">{{allFeatured.movies.contentDesc}}</h3>
+                    </a>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    </div>

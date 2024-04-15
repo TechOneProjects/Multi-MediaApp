@@ -1,3 +1,62 @@
-<a routerLink="/sargeaboutme">about me</a>
-<a routerLink="/sargepage">Sarge Page</a>
+
+<nav id="nav-container">
+    <div id="left-container">
+        <a routerLink="/">
+            <button mat-button id="home-button">
+                Multi Media
+            </button>
+        </a>
+    </div>
+    <div id="right-container">
+        <a routerLink="/thoughts">
+            <button mat-button style="color: white;">
+                Thoughts
+            </button>
+        </a>
+        <a routerLink="/games">
+            <button mat-button style="color: white;">
+                Games
+            </button>
+        </a>
+        <a routerLink="/gallery">
+            <button mat-button style="color: white;">
+                Gallery
+            </button>
+        </a>
+        <a routerLink="/music">
+            <button mat-button style="color: white;">
+                Music
+
+            </button>
+        </a>
+        <a routerLink="/character">
+            <button mat-button style="color: white;">
+                Character Creator
+            </button>
+        </a>
+        <a routerLink="/movie">
+            <button mat-button style="color: white;">
+                Movies
+            </button>
+        </a>
+        @if(isLoggedIn) {
+            <a routerLink="/about">
+                <button mat-button style="color: white;">
+                    About Us
+                </button>
+            </a>
+            <button mat-button style="color:white;" (click)="logOut()">
+            Log out
+        </button>
+        } @else {
+        <a routerLink="/login">
+            <button mat-button style="color:white;">
+                Login
+            </button>
+        </a>
+        }
+
+    </div>
+
+</nav>
 <router-outlet></router-outlet>

@@ -1,0 +1,7 @@
+
+@if(selectedComp == "album") {
+    <app-album-display [dbAlbumArr]="dbAlbumArr" (selectedCompEvent)="switchComp($event)" (refreshFetch)="fetchDB()"></app-album-display>
+}@else {
+    <button mat-button (click)="switchComp('album')" id="back-bttn">Back</button>
+    <app-album-search (selectedCompEvent)="switchComp($event)" (addAlbumEvent)="addAlbum($event)"></app-album-search>
+}
