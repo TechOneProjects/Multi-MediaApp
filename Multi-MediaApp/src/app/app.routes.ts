@@ -9,6 +9,7 @@ import { AboutChaseComponent } from './about-chase/about-chase.component';
 import { GalleryPageComponent } from './gallery-page/gallery-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { VideoGamesComponent } from './video-games/video-games.component';
+import { HasanAboutMeComponent } from './hasan-about-me/hasan-about-me.component';
 export const routes: Routes = [
     {
         path: "music", component: ChasesMusicComponent, title: "Music"
@@ -30,6 +31,11 @@ export const routes: Routes = [
     {
         path: "haki",
         component: AboutHakiComponent
+    },
+    {
+        path: "hasan",
+        component: HasanAboutMeComponent,
+        title: "Hasan"
     },
     {
       path: "",
