@@ -11,7 +11,10 @@ const MONGODB_URI = "mongodb+srv://Admin:TechOne2401@multi-media-app.nywmu3r.mon
 const auth = require("./controllers/AuthController.js");
 const albums = require("./controllers/AlbumController.js");
 const movies = require("./controllers/MoviesController.js");
+const avatars = require("./controllers/AvatarsController.js");
 const gallery = require("./controllers/ImageController.js");
+const thought = require("./controllers/ThoughtController.js")
+
 const games = require("./controllers/GamesController.js")
 
 const port = 3000
@@ -65,8 +68,13 @@ app.get("/check-auth", async (req, res) => {
 // controllers and their routes
 app.use('/auth', auth);
 app.use('/albums', albums);
+
+app.use('/movies', movies)
+app.use('/avatars', avatars)
 app.use('/movies', movies);
 app.use('/gallery', gallery);
+app.use('/thought', thought)
+
 app.use('/games', games)
 
 app.get("/", (req, res) => {
