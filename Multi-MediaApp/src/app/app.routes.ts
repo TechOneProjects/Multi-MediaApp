@@ -7,15 +7,16 @@ import { MediaPage2Component } from './media-page-2/media-page-2.component';
 import { ChasesMusicComponent } from './chases-music/chases-music.component';
 import { AboutChaseComponent } from './about-chase/about-chase.component';
 import { GalleryPageComponent } from './gallery-page/gallery-page.component';
-
+import { HomePageComponent } from './home-page/home-page.component';
+import { VideoGamesComponent } from './video-games/video-games.component';
 export const routes: Routes = [
-  {path: "about", component: GeneralAboutUsPageComponent},
     {
         path: "music", component: ChasesMusicComponent, title: "Music"
     },
-
+    {path: "about", component: GeneralAboutUsPageComponent},
     { path: "janette", component: JanetteComponent },
     { path: "movie", component: MediaPage2Component },
+    { path: "games", component: VideoGamesComponent },
     {
         path: "chase",
         component: AboutChaseComponent,
@@ -29,5 +30,10 @@ export const routes: Routes = [
     {
         path: "haki",
         component: AboutHakiComponent
+    },
+    {
+      path: "",
+      component: HomePageComponent,
+      title: "MultiMediaApp | Home"
     }
 ];
