@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "multi-media-app": "file:Multi-MediaApp"
+  }
+}
