@@ -26,8 +26,8 @@ export class SargePageComponent implements OnInit {
   displayService = inject(DisplayServiceService);
 
   ngOnInit(): void {
-   this.displayService.Read();
-  
+    this.displayService.Read();
+
   }
 
   hairColor: string = "";
@@ -45,7 +45,7 @@ export class SargePageComponent implements OnInit {
   displayLoaded: boolean = false;
   imgLoading: boolean = false;
   updBtn: boolean = false;
- 
+
 
   promptData: FormGroup = new FormGroup({
     hairColor: new FormControl('', Validators.required),
@@ -67,12 +67,12 @@ export class SargePageComponent implements OnInit {
   ImgClick(id: number) {
 
     const _id = this.displayService.displayContainer[id]._id;
-    console.log(_id);
     this.genimgUrl = "";
     this.existingimgUrl = this.displayService.displayContainer[id].img;
     this.imgLoading = false;
     this.updBtn = true;
-
+    this.promptData.value.name = this.displayService.displayContainer[id].name;
+    this.promptData.value.description = this.displayService.displayContainer[id].description;
 
   }
 
@@ -97,10 +97,11 @@ export class SargePageComponent implements OnInit {
     }
     const res = await fetch(url, options);
     const data = await res.json();
-    console.log(data);
+
     this.genimgUrl = data.data[0].url;
     this.imgLoading = false;
-
+    this.promptData.reset();
+    this.promptData.controls["message"].setErrors(null)
 
   }
   Reset() {

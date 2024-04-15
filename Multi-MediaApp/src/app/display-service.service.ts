@@ -55,7 +55,12 @@ export class DisplayServiceService {
 
     console.log(newAvatar)
     this.http.put(`http://localhost:3000/avatars/${_id}/update`, newAvatar).subscribe(res => {
-      this.displayContainer.push(res as Avatar)
+
+      this.displayContainer.map((e) => {
+        if (e._id === newAvatar._id) {
+          this.displayContainer[id] = newAvatar;
+        }
+      })
     })
     btn = false;
   }
