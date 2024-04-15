@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { SargeAboutMeComponent } from './sarge-about-me/sarge-about-me.component';
+import { SargePageComponent } from './sarge-page/sarge-page.component';
 import { AboutHakiComponent } from './about-haki/about-haki.component';
 import { GeneralAboutUsPageComponent } from './general-about-us-page/general-about-us-page.component';
 import { JanetteComponent } from './janette/janette.component';
@@ -44,5 +46,12 @@ export const routes: Routes = [
   {
     path: "login",
     component: LoginPageComponent
-  }
+  },
+   {
+        path:"character",component :SargePageComponent
+    },
+    {
+        path:"sargeaboutme",component :SargeAboutMeComponent
+    }
+  
 ];
